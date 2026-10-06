@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>管理後台|黃芝亭主任</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pine:#1E3B34; --pine-2:#2C5248; --sage:#E4ECE6; --paper:#FAFBF9; --card:#FFFFFF;
+  --brass:#B07F2C; --brass-soft:#F3E7CF; --ink:#1A2421; --muted:#5F6E68; --line:#D5DFD9;
+  --ok:#2F7A55; --danger:#B3402F; --onpine:#FFFFFF;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --pine:#8FC2AE; --pine-2:#6FA894; --sage:#1C2925; --paper:#121916; --card:#18221E;
+    --brass:#D9AE62; --brass-soft:#2E2718; --ink:#E9EFEC; --muted:#9AABA4; --line:#2A3833;
+    --ok:#6CC398; --danger:#E5826F; --onpine:#0F1714;
+  }
+}
+:root[data-theme="dark"]{
+  --pine:#8FC2AE; --pine-2:#6FA894; --sage:#1C2925; --paper:#121916; --card:#18221E;
+  --brass:#D9AE62; --brass-soft:#2E2718; --ink:#E9EFEC; --muted:#9AABA4; --line:#2A3833;
+  --ok:#6CC398; --danger:#E5826F; --onpine:#0F1714;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:16px;line-height:1.6;-webkit-tap-highlight-color:transparent}
+.wrap{max-width:560px;margin:0 auto;padding:0 16px}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--brass);outline-offset:2px;border-radius:6px}
+[hidden]{display:none!important}
+
+.hero{background:var(--pine);color:var(--onpine);padding:20px 0 22px;border-radius:0 0 24px 24px}
+.hero .wrap{display:flex;align-items:center;gap:12px}
+.avatar{width:44px;height:44px;border-radius:50%;background:var(--brass);color:#fff;display:grid;place-items:center;font-weight:900;font-size:19px;flex:none}
+.hero b{display:block;font-size:18px}
+.hero span{font-size:13px;opacity:.8}
+.hero .grow{flex:1;min-width:0}
+.out{flex:none;background:color-mix(in srgb,var(--onpine) 15%,transparent);color:var(--onpine);border:none;border-radius:999px;padding:7px 14px;font-size:14px;cursor:pointer}
+
+main{padding:20px 0 60px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:12px}
+h2{font-size:22px;font-weight:900;margin:0 0 4px}
+h3{font-size:17px;margin:0 0 10px}
+.sub{color:var(--muted);margin:0 0 16px;font-size:15px}
+.field{margin-bottom:12px}
+.field label{display:block;font-weight:700;font-size:14px;margin-bottom:4px}
+.field input,.field select{width:100%;font-size:16px;padding:11px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--paper);appearance:none;-webkit-appearance:none}
+.field input:focus,.field select:focus{border-color:var(--pine);outline:none}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{display:flex;align-items:center;justify-content:center;width:100%;border:none;border-radius:14px;padding:14px;font-size:17px;font-weight:700;cursor:pointer}
+.btn.primary{background:var(--pine);color:var(--onpine)}
+.btn[disabled]{opacity:.6;cursor:wait}
+.msg{font-size:14px;margin:0 0 12px;color:var(--danger)}
+
+.seg{display:flex;background:var(--sage);border-radius:14px;padding:4px;gap:4px;margin-bottom:14px}
+.seg button{flex:1;border:none;background:none;padding:10px 4px;border-radius:10px;font-size:15px;font-weight:500;color:var(--muted);cursor:pointer}
+.seg button[aria-selected="true"]{background:var(--card);color:var(--ink);font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.chips button{border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:6px 14px;font-size:14px;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--pine);border-color:var(--pine);color:var(--onpine)}
+
+.item-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.item-top b{font-size:18px}
+.when{font-size:13px;color:var(--muted);white-space:nowrap}
+.kv{font-size:15px;margin:6px 0 0;color:var(--muted)}
+.kv strong{color:var(--ink);font-weight:500}
+.memo{margin-top:8px;padding:8px 10px;border-radius:10px;background:var(--sage);font-size:15px;white-space:pre-wrap;word-break:break-word}
+.actions{display:flex;gap:8px;align-items:center;margin-top:12px}
+.actions select{flex:1;font-size:16px;padding:9px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--paper)}
+.status-未聯絡{border-left:5px solid var(--danger)}
+.status-已聯絡{border-left:5px solid var(--brass)}
+.status-已完成{border-left:5px solid var(--ok);opacity:.75}
+.call{flex:none;text-decoration:none;background:var(--sage);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:500}
+.del{flex:none;border:none;background:none;color:var(--danger);font-size:14px;padding:8px 4px;cursor:pointer}
+.stage{display:inline-block;font-size:13px;font-weight:500;padding:2px 10px;border-radius:999px;background:var(--brass-soft);color:var(--brass)}
+.empty{text-align:center;color:var(--muted);padding:30px 0}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 18px;border-radius:999px;font-size:15px;z-index:50;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.show{opacity:1}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="avatar" aria-hidden="true">芝</div>
+    <div class="grow"><b>管理後台</b><span id="who">黃芝亭 主任</span></div>
+    <button class="out" type="button" id="logout" hidden>登出</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- 登入 -->
+  <section id="loginView">
+    <h2>登入</h2>
+    <p class="sub">請用主任的後台帳號登入。</p>
+    <form class="card" id="loginForm" novalidate>
+      <div class="field"><label for="email">Email</label><input id="email" type="email" autocomplete="username" inputmode="email"></div>
+      <div class="field"><label for="pw">密碼</label><input id="pw" type="password" autocomplete="current-password"></div>
+      <p class="msg" id="loginMsg" hidden></p>
+      <button class="btn primary" type="submit" id="loginBtn">登入</button>
+    </form>
+  </section>
+
+  <!-- 後台 -->
+  <section id="appView" hidden>
+    <div class="seg" role="tablist" aria-label="後台分類">
+      <button role="tab" aria-selected="true" id="t-req" aria-controls="p-req">客戶需求</button>
+      <button role="tab" aria-selected="false" id="t-unit" aria-controls="p-unit">戶別進度</button>
+    </div>
+
+    <div id="p-req" role="tabpanel" aria-labelledby="t-req">
+      <div class="chips" id="reqFilter"></div>
+      <div id="reqList"></div>
+    </div>
+
+    <div id="p-unit" role="tabpanel" aria-labelledby="t-unit" hidden>
+      <form class="card" id="unitForm" novalidate>
+        <h3>新增戶別</h3>
+        <div class="row2">
+          <div class="field"><label for="u-bldg">棟別</label><select id="u-bldg"></select></div>
+          <div class="field"><label for="u-floor">樓層</label><input id="u-floor" inputmode="numeric" placeholder="例如:5"></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label for="u-name">屋主稱呼</label><input id="u-name" placeholder="例如:王小姐"></div>
+          <div class="field"><label for="u-phone">手機</label><input id="u-phone" type="tel" inputmode="numeric" placeholder="0912345678"></div>
+        </div>
+        <div class="field"><label for="u-stage">目前階段</label><select id="u-stage"></select></div>
+        <p class="msg" id="unitMsg" hidden></p>
+        <button class="btn primary" type="submit" id="unitBtn">新增</button>
+      </form>
+      <div id="unitList"></div>
+    </div>
+  </section>
+</main>
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script>
+const STAGES=["簽約完成","建築施工","結構完成","取得使用執照","驗屋","交屋","入住"];
+const STATUSES=["未聯絡","已聯絡","已完成"];
+const BUILDINGS=["A棟","B棟","C棟","D棟"];
+const db=window.supabase.createClient(window.SUPABASE_URL,window.SUPABASE_KEY);
+const $=id=>document.getElementById(id);
+
+/* 小工具:安全地產生畫面元素(用 textContent,不會被輸入內容影響) */
+function el(tag,props={},...kids){
+  const e=document.createElement(tag);
+  Object.entries(props).forEach(([k,v])=>{if(k==='class')e.className=v;else if(k.startsWith('on'))e.addEventListener(k.slice(2),v);else e.setAttribute(k,v)});
+  kids.flat().forEach(k=>k!=null&&e.append(k));
+  return e;
+}
+function opts(sel,list,val){sel.innerHTML='';list.forEach((t,i)=>{const o=el('option',{value:typeof val==='function'?val(t,i):t},t);sel.append(o)})}
+function fmt(ts){const d=new Date(ts);return `${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`}
+function toast(t){const e=$('toast');e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),2200)}
+function say(id,t){$(id).textContent=t;$(id).hidden=!t}
+const normFloor=f=>f.replace(/\s|樓|F|f/g,'');
+
+/* ---------- 登入 / 登出 ---------- */
+$('loginForm').addEventListener('submit',async e=>{
+  e.preventDefault();say('loginMsg','');
+  const email=$('email').value.trim(),password=$('pw').value;
+  if(!email||!password){say('loginMsg','請輸入 Email 和密碼');return}
+  $('loginBtn').disabled=true;$('loginBtn').textContent='登入中…';
+  const {error}=await db.auth.signInWithPassword({email,password});
+  $('loginBtn').disabled=false;$('loginBtn').textContent='登入';
+  if(error){say('loginMsg','Email 或密碼不正確');return}
+  $('pw').value='';
+});
+$('logout').onclick=()=>db.auth.signOut();
+
+let started=false;
+db.auth.onAuthStateChange((ev,session)=>{setTimeout(()=>onSession(session),0)});
+async function onSession(session){
+  if(!session){started=false;$('appView').hidden=true;$('loginView').hidden=false;$('logout').hidden=true;$('who').textContent='黃芝亭 主任';return}
+  if(started)return;
+  const {data:ok}=await db.rpc('is_admin');
+  if(!ok){await db.auth.signOut();say('loginMsg','這個帳號沒有管理權限');return}
+  started=true;
+  $('who').textContent=session.user.email;
+  $('loginView').hidden=true;$('appView').hidden=false;$('logout').hidden=false;
+  loadReqs();loadUnits();
+}
+
+/* ---------- 分頁 ---------- */
+const tabs=[$('t-req'),$('t-unit')];
+tabs.forEach(t=>t.onclick=()=>tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);$(x.getAttribute('aria-controls')).hidden=!on}));
+
+/* ---------- 客戶需求 ---------- */
+let reqs=[],reqFilter='未聯絡';
+async function loadReqs(){
+  const {data,error}=await db.from('requests').select('*').order('created_at',{ascending:false});
+  if(error){$('reqList').replaceChildren(el('p',{class:'empty'},'讀取失敗,請重新整理'));return}
+  reqs=data;renderReqs();
+}
+function renderReqs(){
+  const f=$('reqFilter');f.innerHTML='';
+  ['全部',...STATUSES].forEach(s=>{
+    const n=s==='全部'?reqs.length:reqs.filter(r=>r.status===s).length;
+    f.append(el('button',{type:'button','aria-pressed':reqFilter===s,onclick:()=>{reqFilter=s;renderReqs()}},`${s} ${n}`));
+  });
+  const list=reqs.filter(r=>reqFilter==='全部'||r.status===reqFilter);
+  $('reqList').replaceChildren(...(list.length?list.map(reqCard):[el('p',{class:'empty'},'目前沒有資料')]));
+}
+function reqCard(r){
+  const sel=el('select',{'aria-label':'處理狀態',onchange:async e=>{
+    const v=e.target.value,{error}=await db.from('requests').update({status:v}).eq('id',r.id);
+    if(error){toast('更新失敗');e.target.value=r.status;return}
+    r.status=v;toast('已更新為「'+v+'」');renderReqs();
+  }});
+  opts(sel,STATUSES);sel.value=r.status;
+  const unit=[r.building,r.floor&&r.floor+'樓'].filter(Boolean).join(' ')||'未填';
+  return el('div',{class:'card status-'+r.status},
+    el('div',{class:'item-top'},el('b',{},r.name),el('span',{class:'when'},fmt(r.created_at))),
+    el('p',{class:'kv'},'戶別:',el('strong',{},unit),'|方便時間:',el('strong',{},r.contact_time||'—')),
+    el('p',{class:'kv'},'需要:',el('strong',{},(r.services||[]).join('、')||'—')),
+    r.memo?el('div',{class:'memo'},r.memo):null,
+    el('div',{class:'actions'},el('a',{class:'call',href:'tel:'+r.phone},'📞 '+r.phone),sel)
+  );
+}
+
+/* ---------- 戶別進度 ---------- */
+let units=[];
+opts($('u-bldg'),BUILDINGS);
+opts($('u-stage'),STAGES,(t,i)=>i+1);
+async function loadUnits(){
+  const {data,error}=await db.from('units').select('*').order('building').order('floor');
+  if(error){$('unitList').replaceChildren(el('p',{class:'empty'},'讀取失敗,請重新整理'));return}
+  units=data.sort((a,b)=>a.building.localeCompare(b.building)||(parseInt(a.floor)||0)-(parseInt(b.floor)||0));
+  renderUnits();
+}
+function renderUnits(){
+  $('unitList').replaceChildren(...(units.length?units.map(unitCard):[el('p',{class:'empty'},'還沒有戶別,請從上方新增')]));
+}
+function unitCard(u){
+  const sel=el('select',{'aria-label':'目前階段',onchange:async e=>{
+    const v=+e.target.value,{error}=await db.from('units').update({stage:v}).eq('id',u.id);
+    if(error){toast('更新失敗');e.target.value=u.stage;return}
+    u.stage=v;toast(`${u.building} ${u.floor}樓 → ${STAGES[v-1]}`);renderUnits();
+  }});
+  opts(sel,STAGES,(t,i)=>i+1);sel.value=u.stage;
+  const del=el('button',{type:'button',class:'del',onclick:async()=>{
+    if(!confirm(`確定要刪除 ${u.building} ${u.floor}樓(${u.owner_name})嗎?`))return;
+    const {error}=await db.from('units').delete().eq('id',u.id);
+    if(error){toast('刪除失敗');return}
+    units=units.filter(x=>x.id!==u.id);renderUnits();toast('已刪除');
+  }},'刪除');
+  return el('div',{class:'card'},
+    el('div',{class:'item-top'},el('b',{},`${u.building} ${u.floor}樓`),el('span',{class:'stage'},`第 ${u.stage} 步:${STAGES[u.stage-1]}`)),
+    el('p',{class:'kv'},'屋主:',el('strong',{},u.owner_name),'|手機:',el('strong',{},u.phone)),
+    el('div',{class:'actions'},sel,del)
+  );
+}
+$('unitForm').addEventListener('submit',async e=>{
+  e.preventDefault();say('unitMsg','');
+  const row={building:$('u-bldg').value,floor:normFloor($('u-floor').value),owner_name:$('u-name').value.trim(),phone:$('u-phone').value.replace(/\D/g,''),stage:+$('u-stage').value};
+  if(!row.floor||!row.owner_name){say('unitMsg','請填寫樓層和屋主稱呼');return}
+  if(!/^09\d{8}$/.test(row.phone)){say('unitMsg','手機請填 10 碼,例如 0912345678');return}
+  $('unitBtn').disabled=true;
+  const {data,error}=await db.from('units').insert(row).select().single();
+  $('unitBtn').disabled=false;
+  if(error){say('unitMsg',error.code==='23505'?'這一戶已經存在了':'新增失敗,請再試一次');return}
+  units.push(data);renderUnits();
+  $('u-floor').value=$('u-name').value=$('u-phone').value='';$('u-stage').value=1;
+  toast(`已新增 ${data.building} ${data.floor}樓`);
+});
+</script>
+</body>
+</html>

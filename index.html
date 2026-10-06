@@ -97,6 +97,19 @@ h2{font-size:24px;font-weight:900;margin:0 0 6px;color:var(--ink)}
 .step-body p{margin:10px 0 0;font-size:15px;color:var(--muted)}
 .step-body .prep{margin-top:8px;padding:10px 12px;border-radius:10px;background:var(--sage);color:var(--ink);font-size:15px}
 .note{font-size:13px;color:var(--muted);margin:8px 0 0}
+.lookup{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 14px 4px;margin-bottom:18px}
+.lookup h3{font-size:17px;margin:0 0 10px}
+.lookup .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.lookup .field{margin-bottom:10px}
+.lookup .field label{font-size:14px;margin-bottom:4px}
+.lookup .field input,.lookup .field select{font-size:16px;padding:10px 12px}
+.lookup .btn{padding:12px;margin-bottom:10px}
+.lookup-msg{font-size:14px;margin:0 0 10px;color:var(--muted)}
+.lookup-msg.bad{color:var(--danger)}
+.mine{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--brass-soft);border-radius:12px;padding:10px 12px;margin-bottom:10px;font-size:15px}
+.mine[hidden]{display:none}
+.mine button{flex:none;border:none;background:var(--card);border-radius:999px;padding:6px 12px;font-size:14px;cursor:pointer}
+.btn[disabled]{opacity:.6;cursor:wait}
 
 /* services */
 .svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -209,7 +222,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:28px 0 120px}
     <p>交屋進度隨時看,窗簾、家具、油漆一次幫您安排好。</p>
 
     <div class="journey" aria-label="目前交屋進度">
-      <div class="journey-head"><b>取得使用執照中</b><span>第 4 步,共 7 步</span></div>
+      <div class="journey-head"><b id="jTitle">取得使用執照中</b><span id="jStep">第 4 步,共 7 步</span></div>
       <div class="track" id="track">
         <div class="fill" id="fill"></div>
       </div>
@@ -232,8 +245,28 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:28px 0 120px}
   <section class="block" id="progress">
     <h2>交屋進度</h2>
     <p class="sub">點一下每個階段,看看會發生什麼、您可以先準備什麼。</p>
+    <form class="lookup" id="lookup" novalidate>
+      <h3>查詢我家進度</h3>
+      <div class="row3">
+        <div class="field">
+          <label for="q-bldg">棟別</label>
+          <select id="q-bldg"><option value="">請選擇</option><option>A棟</option><option>B棟</option><option>C棟</option><option>D棟</option></select>
+        </div>
+        <div class="field">
+          <label for="q-floor">樓層</label>
+          <input id="q-floor" inputmode="numeric" placeholder="例如:5">
+        </div>
+        <div class="field">
+          <label for="q-last3">手機末 3 碼</label>
+          <input id="q-last3" inputmode="numeric" maxlength="3" autocomplete="off" placeholder="例如:678">
+        </div>
+      </div>
+      <p class="lookup-msg" id="q-msg" role="status" hidden></p>
+      <button class="btn primary" type="submit" id="q-btn">查詢</button>
+    </form>
+    <div class="mine" id="mine" hidden><span id="mineText"></span><button type="button" id="mineReset">看範例</button></div>
     <ol class="tl" id="timeline"></ol>
-    <p class="note">進度為範例,實際時程以主任通知為準。</p>
+    <p class="note" id="tlNote">進度為範例,實際時程以主任通知為準。</p>
   </section>
 
   <section class="block" id="services">
@@ -293,7 +326,8 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:28px 0 120px}
     </div>
 
     <div class="panel" id="p-news" role="tabpanel" aria-labelledby="t-news">
-      <p class="updated">黃主任整理|更新於 2026/10/06</p>
+      <p class="updated" id="newsUpdated">黃主任整理|更新於 2026/10/06</p>
+      <div id="newsList">
       <a class="news" href="https://news.housefun.com.tw/" target="_blank" rel="noopener">
         <div class="meta"><span>好房網</span><span>10/06</span></div>
         <b>8 月房價指數價量齊揚,淡季出現回溫訊號</b>
@@ -318,6 +352,8 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:28px 0 120px}
         <p>整體房市呈現量縮、價穩、區域分化,政策逐步放寬。</p>
         <div class="why">給您的提醒:有換屋計畫的朋友,第二戶貸款空間變大了。</div>
       </a>
+      </div>
+      <p class="disc" id="newsNote" hidden>新聞每天早上 8 點、傍晚 6 點自動更新,點標題可閱讀原文。</p>
     </div>
 
     <div class="panel" id="p-bank" role="tabpanel" aria-labelledby="t-bank" hidden>
@@ -434,7 +470,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:28px 0 120px}
 <div class="sheet-bg" id="sheetBg" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
   <div class="sheet">
     <h3 id="sheetTitle">需求整理好了</h3>
-    <p>選一個方式傳給黃主任,訊息內容已經幫您寫好。</p>
+    <p id="sheetDesc">選一個方式傳給黃主任,訊息內容已經幫您寫好。</p>
     <div class="summary" id="summary"></div>
     <a class="btn line" id="sendLine" target="_blank" rel="noopener">用 LINE 傳送</a>
     <a class="btn primary" id="sendSms">用簡訊傳送</a>
@@ -443,6 +479,8 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:28px 0 120px}
 </div>
 <div class="toast" id="toast"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
 <script>
 const STAGES=[
   {t:"簽約完成",s:"done",d:"合約與付款期程都已確認。",p:"妥善保存合約與繳款收據。"},
@@ -469,24 +507,60 @@ const CHECK='<svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-lineca
 const HOME='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>';
 let picked=new Set();
 
-/* hero track */
-const track=document.getElementById('track');
-STAGES.forEach((s,i)=>{const d=document.createElement('div');d.className='dot '+s.s+(i===STAGES.length-1?' home':'');if(i===STAGES.length-1)d.innerHTML=HOME;track.appendChild(d)});
-const nowIdx=STAGES.findIndex(s=>s.s==='now');
-requestAnimationFrame(()=>setTimeout(()=>{document.getElementById('fill').style.width=`calc(${nowIdx/(STAGES.length-1)*100}% - 10px)`},200));
+/* Supabase(網址與公開金鑰在 supabase-config.js) */
+const db=window.supabase&&window.SUPABASE_URL?window.supabase.createClient(window.SUPABASE_URL,window.SUPABASE_KEY):null;
 
-/* timeline */
-const tl=document.getElementById('timeline');
-STAGES.forEach((s,i)=>{
-  const li=document.createElement('li');li.className=s.s;
-  li.innerHTML=`<span class="num">${s.s==='done'?'✓':i+1}</span>
-  <button class="step" type="button" aria-expanded="${s.s==='now'}">
-    <div class="step-top"><b>${s.t}</b><span class="tag ${s.s}">${TAGS[s.s]}</span></div>
-    <div class="step-body"><div><p>${s.d}</p><div class="prep">您可以先準備:${s.p}</div></div></div>
-  </button>`;
-  li.querySelector('.step').addEventListener('click',e=>{const b=e.currentTarget;b.setAttribute('aria-expanded',b.getAttribute('aria-expanded')!=='true')});
-  tl.appendChild(li);
+/* hero track + timeline:cur 是「進行中」那一步的索引 */
+const EXAMPLE_IDX=STAGES.findIndex(s=>s.s==='now');
+const track=document.getElementById('track'),fill=document.getElementById('fill'),tl=document.getElementById('timeline');
+function renderProgress(cur){
+  const st=i=>i<cur?'done':i===cur?'now':'todo';
+  track.querySelectorAll('.dot').forEach(d=>d.remove());
+  STAGES.forEach((s,i)=>{const d=document.createElement('div');d.className='dot '+st(i)+(i===STAGES.length-1?' home':'');if(i===STAGES.length-1)d.innerHTML=HOME;track.appendChild(d)});
+  requestAnimationFrame(()=>setTimeout(()=>{fill.style.width=`calc(${cur/(STAGES.length-1)*100}% - 10px)`},200));
+  document.getElementById('jTitle').textContent=STAGES[cur].t+(cur===STAGES.length-1?'':'中');
+  document.getElementById('jStep').textContent=`第 ${cur+1} 步,共 ${STAGES.length} 步`;
+  tl.innerHTML='';
+  STAGES.forEach((s,i)=>{
+    const li=document.createElement('li');li.className=st(i);
+    li.innerHTML=`<span class="num">${st(i)==='done'?'✓':i+1}</span>
+    <button class="step" type="button" aria-expanded="${i===cur}">
+      <div class="step-top"><b>${s.t}</b><span class="tag ${st(i)}">${TAGS[st(i)]}</span></div>
+      <div class="step-body"><div><p>${s.d}</p><div class="prep">您可以先準備:${s.p}</div></div></div>
+    </button>`;
+    li.querySelector('.step').addEventListener('click',e=>{const b=e.currentTarget;b.setAttribute('aria-expanded',b.getAttribute('aria-expanded')!=='true')});
+    tl.appendChild(li);
+  });
+}
+renderProgress(EXAMPLE_IDX);
+
+/* 查詢我家進度 */
+const lookup=document.getElementById('lookup'),qMsg=document.getElementById('q-msg'),qBtn=document.getElementById('q-btn');
+if(!db)lookup.hidden=true; // 資料庫還沒設定好時,先不顯示查詢框
+function qSay(t,bad){qMsg.textContent=t;qMsg.classList.toggle('bad',!!bad);qMsg.hidden=!t}
+lookup.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const b=document.getElementById('q-bldg').value,f=document.getElementById('q-floor').value.replace(/\s|樓|F|f/g,''),l=document.getElementById('q-last3').value.replace(/\D/g,'');
+  if(!b||!f||l.length!==3){qSay('請選擇棟別、填寫樓層和手機末 3 碼',true);return}
+  if(!db){qSay('查詢系統暫時無法使用,請直接聯絡主任',true);return}
+  qBtn.disabled=true;qBtn.textContent='查詢中…';qSay('');
+  try{
+    const {data,error}=await db.rpc('lookup_unit',{p_building:b,p_floor:f,p_last3:l});
+    if(error)throw error;
+    if(!data||!data.length){qSay('查不到符合的資料,請確認輸入是否正確,或直接聯絡主任',true);return}
+    const r=data[0],d=new Date(r.updated_at);
+    renderProgress(r.stage-1);
+    document.getElementById('mineText').textContent=`${b} ${f} 樓的進度`;
+    document.getElementById('mine').hidden=false;lookup.hidden=true;
+    document.getElementById('tlNote').textContent=`主任更新於 ${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()},實際時程以主任通知為準。`;
+  }catch(err){qSay('查詢失敗,請稍後再試',true)}
+  finally{qBtn.disabled=false;qBtn.textContent='查詢'}
 });
+document.getElementById('mineReset').onclick=()=>{
+  renderProgress(EXAMPLE_IDX);
+  document.getElementById('mine').hidden=true;lookup.hidden=false;qSay('');
+  document.getElementById('tlNote').textContent='進度為範例,實際時程以主任通知為準。';
+};
 
 /* services */
 const grid=document.getElementById('svcGrid');
@@ -514,8 +588,9 @@ F.forEach(k=>document.getElementById(k).addEventListener('input',save));
 load();render();
 
 /* form */
-const form=document.getElementById('form');
-form.addEventListener('submit',e=>{
+const form=document.getElementById('form'),subBtn=form.querySelector('[type=submit]');
+let savedMsg='';
+form.addEventListener('submit',async e=>{
   e.preventDefault();
   const name=document.getElementById('name').value.trim();
   const phone=document.getElementById('phone').value.replace(/\D/g,'');
@@ -528,6 +603,20 @@ form.addEventListener('submit',e=>{
   const unit=(bldg||'')+(floor?floor+'樓':'');
   const memo=document.getElementById('memo').value.trim();
   const msg=`黃主任您好,我想登記交屋服務:\n稱呼:${name}\n電話:${phone}\n戶別:${unit||'未填'}\n需要:${[...picked].join('、')}\n方便時間:${document.getElementById('time').value}${memo?'\n備註:'+memo:''}`;
+  // 先存進資料庫(同樣內容重送不會重複存)
+  let stored=msg===savedMsg;
+  if(!stored&&db){
+    subBtn.disabled=true;subBtn.textContent='送出中…';
+    try{
+      const {error}=await db.from('requests').insert({name,phone,building:bldg||null,floor:floor||null,services:[...picked],contact_time:document.getElementById('time').value,memo:memo||null});
+      if(error)throw error;
+      stored=true;savedMsg=msg;
+    }catch(err){}
+    subBtn.disabled=false;subBtn.textContent='確認並傳送需求';
+  }
+  // 存失敗也讓客戶能用 LINE/簡訊聯絡,避免漏掉需求
+  document.getElementById('sheetTitle').textContent=stored?'需求已送出 ✓':'系統忙碌中';
+  document.getElementById('sheetDesc').textContent=stored?'主任已經收到您的需求。也可以再用 LINE 或簡訊傳給黃主任,訊息內容已經幫您寫好。':'需求暫時沒有存進系統,請用 LINE 或簡訊傳給黃主任,訊息內容已經幫您寫好。';
   document.getElementById('summary').textContent=msg;
   document.getElementById('sendLine').href='https://line.me/R/msg/text/?'+encodeURIComponent(msg);
   document.getElementById('sendSms').href='sms:0956775561?&body='+encodeURIComponent(msg);
@@ -555,6 +644,31 @@ const tabs=[...document.querySelectorAll('.seg [role=tab]')];
 function pick(t){tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on})}
 tabs.forEach((t,i)=>{t.addEventListener('click',()=>pick(t));t.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const n=tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];pick(n);n.focus()}})});
 pick(tabs[0]);
+
+/* 房市新聞:讀取每天自動更新的 news.json,讀不到就保留上面寫好的新聞 */
+(async()=>{
+  try{
+    const r=await fetch('news.json',{cache:'no-store'});
+    if(!r.ok)return;
+    const {updated,items}=await r.json();
+    if(!Array.isArray(items)||!items.length)return;
+    const md=d=>{const x=new Date(d);return `${String(x.getMonth()+1).padStart(2,'0')}/${String(x.getDate()).padStart(2,'0')}`};
+    const list=document.getElementById('newsList');list.innerHTML='';
+    items.forEach(n=>{
+      if(!/^https?:\/\//.test(n.link))return;
+      const a=document.createElement('a');a.className='news';a.href=n.link;a.target='_blank';a.rel='noopener';
+      const m=document.createElement('div');m.className='meta';
+      const s1=document.createElement('span');s1.textContent=n.source||'新聞';
+      const s2=document.createElement('span');s2.textContent=md(n.date);
+      m.append(s1,s2);
+      const b=document.createElement('b');b.textContent=n.title;
+      a.append(m,b);list.appendChild(a);
+    });
+    const u=new Date(updated);
+    document.getElementById('newsUpdated').textContent=`自動更新於 ${u.getFullYear()}/${u.getMonth()+1}/${u.getDate()} ${String(u.getHours()).padStart(2,'0')}:${String(u.getMinutes()).padStart(2,'0')}`;
+    document.getElementById('newsNote').hidden=false;
+  }catch(e){}
+})();
 
 /* mortgage calc */
 function calc(){
