@@ -5,143 +5,251 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>管理後台|黃芝亭主任</title>
+<meta name="theme-color" content="#F7F2EA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#110D0A" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="交屋後台">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --pine:#1E3B34; --pine-2:#2C5248; --sage:#E4ECE6; --paper:#FAFBF9; --card:#FFFFFF;
-  --brass:#B07F2C; --brass-soft:#F3E7CF; --ink:#1A2421; --muted:#5F6E68; --line:#D5DFD9;
-  --ok:#2F7A55; --danger:#B3402F; --onpine:#FFFFFF;
-  box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px);
-  padding-bottom:env(safe-area-inset-bottom,0px);
+  --page:#F7F2EA; --surface:#FFFDF9; --group:#EFE6D9; --ink:#1E1914; --ink-2:#6E6157; --ink-3:#A39586;
+  --line:rgba(40,28,18,.09); --espresso:#17110D; --on-dark:#F6EEE3; --on-dark-2:rgba(246,238,227,.68);
+  --amber:#E3A14B; --amber-ink:#8E5A1B; --amber-soft:rgba(227,161,75,.16); --danger:#C2412D; --danger-bg:#D9483A; --ok:#3C8C5A;
+  --glass:rgba(247,242,234,.74);
+  --serif-tc:"Noto Serif TC","Songti TC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang TC","Helvetica Neue","Noto Sans TC","Microsoft JhengHei",sans-serif;
+  --ease:cubic-bezier(.32,.72,0,1); --spring:cubic-bezier(.34,1.4,.64,1);
+  --top:env(safe-area-inset-top,0px); --bottom:env(safe-area-inset-bottom,0px);
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --pine:#8FC2AE; --pine-2:#6FA894; --sage:#1C2925; --paper:#121916; --card:#18221E;
-    --brass:#D9AE62; --brass-soft:#2E2718; --ink:#E9EFEC; --muted:#9AABA4; --line:#2A3833;
-    --ok:#6CC398; --danger:#E5826F; --onpine:#0F1714;
+    --page:#110D0A; --surface:#1B1511; --group:#231B15; --ink:#F3EBE0; --ink-2:#AE9F90; --ink-3:#7C6E61;
+    --line:rgba(255,236,214,.09); --espresso:#0B0806; --amber-ink:#E9B467; --amber-soft:rgba(227,161,75,.18);
+    --danger:#F08A73; --ok:#7CCB98; --glass:rgba(17,13,10,.74);
   }
 }
 :root[data-theme="dark"]{
-  --pine:#8FC2AE; --pine-2:#6FA894; --sage:#1C2925; --paper:#121916; --card:#18221E;
-  --brass:#D9AE62; --brass-soft:#2E2718; --ink:#E9EFEC; --muted:#9AABA4; --line:#2A3833;
-  --ok:#6CC398; --danger:#E5826F; --onpine:#0F1714;
+  --page:#110D0A; --surface:#1B1511; --group:#231B15; --ink:#F3EBE0; --ink-2:#AE9F90; --ink-3:#7C6E61;
+  --line:rgba(255,236,214,.09); --espresso:#0B0806; --amber-ink:#E9B467; --amber-soft:rgba(227,161,75,.18);
+  --danger:#F08A73; --ok:#7CCB98; --glass:rgba(17,13,10,.74);
 }
-*,*::before,*::after{box-sizing:inherit}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:16px;line-height:1.6;-webkit-tap-highlight-color:transparent}
-.wrap{max-width:560px;margin:0 auto;padding:0 16px}
-a{color:inherit}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--page)}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;overscroll-behavior-y:none}
+a{color:inherit;text-decoration:none}
 button,input,select,textarea{font:inherit;color:inherit}
-:focus-visible{outline:3px solid var(--brass);outline-offset:2px;border-radius:6px}
+button{cursor:pointer;-webkit-user-select:none;user-select:none}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:12px}
 [hidden]{display:none!important}
+.grow{flex:1;min-width:0}
+.wrap{max-width:620px;margin:0 auto;padding:0 20px}
+.press{transition:transform .18s var(--ease),opacity .18s}
+.press:active{transform:scale(.97);opacity:.88}
 
-.hero{background:var(--pine);color:var(--onpine);padding:20px 0 22px;border-radius:0 0 24px 24px}
-.hero .wrap{display:flex;align-items:center;gap:12px}
-.avatar{width:44px;height:44px;border-radius:50%;background:var(--brass);color:#fff;display:grid;place-items:center;font-weight:900;font-size:19px;flex:none}
-.hero b{display:block;font-size:18px}
-.hero span{font-size:13px;opacity:.8}
-.hero .grow{flex:1;min-width:0}
-.out{flex:none;background:color-mix(in srgb,var(--onpine) 15%,transparent);color:var(--onpine);border:none;border-radius:999px;padding:7px 14px;font-size:14px;cursor:pointer}
+/* nav bar */
+.nav{position:sticky;top:0;z-index:30;padding-top:var(--top)}
+.nav::before{content:"";position:absolute;inset:0;background:var(--glass);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:.5px solid var(--line);opacity:0;transition:opacity .25s}
+.nav.solid::before{opacity:1}
+.nav .in{position:relative;max-width:620px;margin:0 auto;height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 8px}
+.nav .t{position:absolute;left:50%;transform:translateX(-50%) translateY(4px);font-size:17px;font-weight:600;opacity:0;transition:opacity .2s,transform .25s var(--ease);pointer-events:none;white-space:nowrap}
+.nav.solid .t{opacity:1;transform:translateX(-50%)}
+.nbtn{border:none;background:none;color:var(--amber-ink);font-size:17px;padding:8px 10px;min-height:44px;display:inline-flex;align-items:center;gap:4px}
+.nbtn svg{width:22px;height:22px}
+.ltitle{font-family:var(--serif-tc);font-weight:400;font-size:34px;line-height:1.2;margin:2px 0 4px}
+.lsub{color:var(--ink-2);font-size:15px;margin:0 0 18px}
 
-main{padding:20px 0 60px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:12px}
-h2{font-size:22px;font-weight:900;margin:0 0 4px}
-h3{font-size:17px;margin:0 0 10px}
-.sub{color:var(--muted);margin:0 0 16px;font-size:15px}
-.field{margin-bottom:12px}
-.field label{display:block;font-weight:700;font-size:14px;margin-bottom:4px}
-.field input,.field select{width:100%;font-size:16px;padding:11px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--paper);appearance:none;-webkit-appearance:none}
-.field input:focus,.field select:focus{border-color:var(--pine);outline:none}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.btn{display:flex;align-items:center;justify-content:center;width:100%;border:none;border-radius:14px;padding:14px;font-size:17px;font-weight:700;cursor:pointer}
-.btn.primary{background:var(--pine);color:var(--onpine)}
-.btn[disabled]{opacity:.6;cursor:wait}
-.msg{font-size:14px;margin:0 0 12px;color:var(--danger)}
+/* pull to refresh */
+.ptr{height:0;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;color:var(--ink-3)}
+.ptr svg{width:22px;height:22px;margin-bottom:8px;transition:transform .2s}
+.ptr.spin svg{animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-.seg{display:flex;background:var(--sage);border-radius:14px;padding:4px;gap:4px;margin-bottom:14px}
-.seg button{flex:1;border:none;background:none;padding:10px 4px;border-radius:10px;font-size:15px;font-weight:500;color:var(--muted);cursor:pointer}
-.seg button[aria-selected="true"]{background:var(--card);color:var(--ink);font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.08)}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
-.chips button{border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:6px 14px;font-size:14px;cursor:pointer}
-.chips button[aria-pressed="true"]{background:var(--pine);border-color:var(--pine);color:var(--onpine)}
+/* login */
+.login{min-height:calc(100dvh - 44px - var(--top));display:flex;flex-direction:column;justify-content:center;padding-bottom:12vh}
+.login .av{width:84px;height:84px;margin:0 auto 18px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#F6CF8E,#B47A32 70%,#7D5020);color:#1E1408;display:grid;place-items:center;font-family:var(--serif-tc);font-size:36px;box-shadow:0 0 0 6px var(--amber-soft),0 16px 40px rgba(180,110,40,.3)}
+.login h1{font-family:var(--serif-tc);font-weight:400;font-size:30px;text-align:center;margin:0 0 4px}
+.login p.s{text-align:center;color:var(--ink-2);margin:0 0 26px;font-size:15px}
 
-.item-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
-.item-top b{font-size:18px}
-.when{font-size:13px;color:var(--muted);white-space:nowrap}
-.kv{font-size:15px;margin:6px 0 0;color:var(--muted)}
+/* grouped list */
+.group{background:var(--surface);border-radius:16px;overflow:hidden}
+.gcap{font-size:13px;color:var(--ink-2);margin:22px 4px 8px}
+.row{display:flex;align-items:center;gap:12px;min-height:52px;padding:12px 16px;position:relative}
+.row+.row::before{content:"";position:absolute;top:0;left:16px;right:0;border-top:.5px solid var(--line)}
+.row .lbl{font-size:17px;flex:none;white-space:nowrap}
+.row input,.row select{flex:1;min-width:0;width:100%;border:none;background:none;font-size:17px;text-align:right;padding:0;outline:none;-webkit-appearance:none;appearance:none;color:var(--ink)}
+.row input::placeholder{color:var(--ink-3)}
+.row select{color:var(--ink-2);direction:rtl}
+.row select option{direction:ltr}
+.msg{color:var(--danger);font-size:14px;margin:8px 4px 0}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:none;border-radius:14px;min-height:52px;padding:14px 18px;font-size:17px;font-weight:600}
+.btn.dark{background:var(--ink);color:var(--page)}
+.btn.plain{background:var(--group);color:var(--ink)}
+.btn.danger{background:var(--danger-bg);color:#fff}
+.btn[disabled]{opacity:.55;pointer-events:none}
+
+/* segmented control */
+.seg{display:flex;background:var(--group);border-radius:10px;padding:2px;position:relative;margin-bottom:14px}
+.seg button{flex:1;position:relative;z-index:1;border:none;background:none;padding:8px 4px;font-size:14px;font-weight:500}
+.seg button[aria-selected="true"]{font-weight:600}
+.seg .thumb{position:absolute;top:2px;bottom:2px;left:2px;border-radius:8px;background:var(--surface);box-shadow:0 2px 8px rgba(0,0,0,.1),0 0 0 .5px rgba(0,0,0,.04);transition:transform .35s var(--ease),width .35s var(--ease)}
+
+/* filter chips */
+.chips{display:flex;gap:8px;overflow-x:auto;margin:0 -20px 14px;padding:0 20px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:500;display:inline-flex;align-items:center;gap:6px}
+.chips button .n{color:var(--ink-2);font-variant-numeric:tabular-nums}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--page);border-color:var(--ink)}
+.chips button[aria-pressed="true"] .n{color:inherit;opacity:.7}
+
+/* cells with swipe actions */
+.cell{position:relative;overflow:hidden}
+.cell+.cell{border-top:.5px solid var(--line)}
+.cell .acts{position:absolute;top:0;bottom:0;right:0;display:flex}
+.cell .acts button{border:none;color:#fff;font-size:14px;font-weight:600;width:84px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.cell .acts button svg{width:20px;height:20px}
+.cell .acts .a-ok{background:var(--amber);color:#1E1408}
+.cell .acts .a-del{background:var(--danger-bg)}
+.cell .face{position:relative;background:var(--surface);padding:14px 16px;touch-action:pan-y;transition:transform .35s var(--ease)}
+.cell .face.drag{transition:none}
+.top{display:flex;align-items:center;gap:10px}
+.dot{width:9px;height:9px;border-radius:50%;flex:none}
+.s-未聯絡 .dot{background:var(--danger-bg)}
+.s-已聯絡 .dot{background:var(--amber)}
+.s-已完成 .dot{background:var(--ok)}
+.s-已完成 .face>*{opacity:.72}
+.top b{font-size:17px;font-weight:600}
+.when{font-size:13px;color:var(--ink-2);white-space:nowrap;font-variant-numeric:tabular-nums}
+.kv{font-size:15px;color:var(--ink-2);margin:4px 0 0 19px}
 .kv strong{color:var(--ink);font-weight:500}
-.memo{margin-top:8px;padding:8px 10px;border-radius:10px;background:var(--sage);font-size:15px;white-space:pre-wrap;word-break:break-word}
-.actions{display:flex;gap:8px;align-items:center;margin-top:12px}
-.actions select{flex:1;font-size:16px;padding:9px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--paper)}
-.status-未聯絡{border-left:5px solid var(--danger)}
-.status-已聯絡{border-left:5px solid var(--brass)}
-.status-已完成{border-left:5px solid var(--ok);opacity:.75}
-.call{flex:none;text-decoration:none;background:var(--sage);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:500}
-.del{flex:none;border:none;background:none;color:var(--danger);font-size:14px;padding:8px 4px;cursor:pointer}
-.stage{display:inline-block;font-size:13px;font-weight:500;padding:2px 10px;border-radius:999px;background:var(--brass-soft);color:var(--brass)}
-.empty{text-align:center;color:var(--muted);padding:30px 0}
-.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 18px;border-radius:999px;font-size:15px;z-index:50;opacity:0;pointer-events:none;transition:opacity .2s}
-.toast.show{opacity:1}
+.memo{margin:8px 0 0 19px;padding:8px 12px;border-radius:12px;background:var(--group);font-size:15px;white-space:pre-wrap;word-break:break-word}
+.line2{display:flex;align-items:center;gap:8px;margin:12px 0 0 19px;flex-wrap:wrap}
+.call{display:inline-flex;align-items:center;gap:6px;background:var(--group);border-radius:999px;padding:7px 14px;font-size:15px;font-weight:500;font-variant-numeric:tabular-nums}
+.call svg{width:15px;height:15px;color:var(--ok)}
+.mseg{display:inline-flex;background:var(--group);border-radius:9px;padding:2px;margin-left:auto}
+.mseg button{border:none;background:none;border-radius:7px;padding:6px 10px;font-size:13px;font-weight:500;color:var(--ink-2)}
+.mseg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);font-weight:600;box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.empty{text-align:center;color:var(--ink-2);padding:40px 20px;font-size:15px}
+.empty b{display:block;font-family:var(--serif-tc);font-weight:400;font-size:20px;color:var(--ink);margin-bottom:4px}
+
+/* units */
+.uring{width:44px;height:44px;flex:none}
+.uring .tr{stroke:var(--amber-soft)}
+.uring text{font-size:13px;font-weight:600;fill:var(--ink)}
+.stagepick{position:relative;display:inline-flex;align-items:center;gap:6px;background:var(--amber-soft);color:var(--amber-ink);border-radius:999px;padding:7px 14px;font-size:15px;font-weight:600}
+.stagepick select{position:absolute;inset:0;opacity:0;width:100%;font-size:16px}
+.stagepick svg{width:10px;height:10px}
+.addbtn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:1px dashed var(--ink-3);background:none;border-radius:16px;min-height:52px;font-size:16px;font-weight:500;color:var(--ink);margin-bottom:14px}
+.addbtn svg{width:18px;height:18px}
+
+/* sheets */
+.scrim{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.32);opacity:0;pointer-events:none;transition:opacity .4s var(--ease)}
+.scrim.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;max-width:620px;margin:0 auto;background:var(--page);border-radius:14px 14px 0 0;transform:translateY(105%);transition:transform .5s var(--ease);visibility:hidden;max-height:calc(100% - var(--top) - 22px);display:flex;flex-direction:column}
+.sheet.on{transform:none;visibility:visible}
+.sheet .bar{display:flex;align-items:center;justify-content:space-between;padding:10px 8px 6px}
+.sheet .bar h3{font-size:17px;font-weight:600;margin:0}
+.sheet .bar .nbtn{min-width:64px}
+.sheet .body{overflow-y:auto;padding:0 20px calc(24px + var(--bottom))}
+.action{position:fixed;left:8px;right:8px;bottom:calc(8px + var(--bottom));z-index:51;max-width:604px;margin:0 auto;transform:translateY(130%);transition:transform .45s var(--ease);visibility:hidden}
+.action.on{transform:none;visibility:visible}
+.action .card{background:var(--surface);border-radius:14px;overflow:hidden;text-align:center}
+.action .q{padding:16px 18px;font-size:13px;color:var(--ink-2);border-bottom:.5px solid var(--line)}
+.action button{display:block;width:100%;border:none;background:var(--surface);min-height:56px;font-size:19px}
+.action .yes{color:var(--danger)}
+.action .no{margin-top:8px;border-radius:14px;font-weight:600}
+.toast{position:fixed;left:50%;top:calc(var(--top) + 12px);z-index:60;transform:translate(-50%,calc(-100% - 40px));visibility:hidden;background:var(--ink);color:var(--page);padding:10px 18px;border-radius:999px;font-size:15px;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,.2);transition:transform .45s var(--spring),visibility 0s .45s;pointer-events:none;max-width:calc(100% - 40px);text-align:center}
+.toast.show{transform:translate(-50%,0);visibility:visible;transition:transform .45s var(--spring),visibility 0s}
+main{padding-bottom:calc(40px + var(--bottom))}
+.hint{font-size:12px;color:var(--ink-3);text-align:center;margin:12px 0 0}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
 </style>
 </head>
 <body>
 
-<header class="hero">
-  <div class="wrap">
-    <div class="avatar" aria-hidden="true">芝</div>
-    <div class="grow"><b>管理後台</b><span id="who">黃芝亭 主任</span></div>
-    <button class="out" type="button" id="logout" hidden>登出</button>
+<header class="nav" id="nav">
+  <div class="in">
+    <button class="nbtn" type="button" id="refresh" hidden aria-label="重新整理"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg></button>
+    <span class="t" id="navTitle">管理後台</span>
+    <span></span>
+    <button class="nbtn" type="button" id="logout" hidden>登出</button>
   </div>
 </header>
+<div class="ptr" id="ptr" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg></div>
 
 <main class="wrap">
   <!-- 登入 -->
-  <section id="loginView">
-    <h2>登入</h2>
-    <p class="sub">請用主任的後台帳號登入。</p>
-    <form class="card" id="loginForm" novalidate>
-      <div class="field"><label for="email">Email</label><input id="email" type="email" autocomplete="username" inputmode="email"></div>
-      <div class="field"><label for="pw">密碼</label><input id="pw" type="password" autocomplete="current-password"></div>
-      <p class="msg" id="loginMsg" hidden></p>
-      <button class="btn primary" type="submit" id="loginBtn">登入</button>
+  <section id="loginView" class="login">
+    <div class="av" aria-hidden="true">芝</div>
+    <h1>管理後台</h1>
+    <p class="s">黃芝亭 主任專用</p>
+    <form id="loginForm" novalidate>
+      <div class="group">
+        <label class="row"><span class="lbl">Email</span><input id="email" type="email" autocomplete="username" inputmode="email" placeholder="name@example.com"></label>
+        <label class="row"><span class="lbl">密碼</span><input id="pw" type="password" autocomplete="current-password" placeholder="必填"></label>
+      </div>
+      <p class="msg" id="loginMsg" role="alert" hidden></p>
+      <button class="btn dark press" type="submit" id="loginBtn" style="margin-top:18px">登入</button>
     </form>
   </section>
 
   <!-- 後台 -->
   <section id="appView" hidden>
+    <h1 class="ltitle" id="bigTitle">客戶需求</h1>
+    <p class="lsub" id="who"></p>
     <div class="seg" role="tablist" aria-label="後台分類">
+      <span class="thumb" id="segThumb"></span>
       <button role="tab" aria-selected="true" id="t-req" aria-controls="p-req">客戶需求</button>
       <button role="tab" aria-selected="false" id="t-unit" aria-controls="p-unit">戶別進度</button>
     </div>
 
     <div id="p-req" role="tabpanel" aria-labelledby="t-req">
       <div class="chips" id="reqFilter"></div>
-      <div id="reqList"></div>
+      <div class="group" id="reqList"></div>
+      <p class="hint">往左滑可以快速標記或刪除・往下拉可重新整理</p>
     </div>
 
     <div id="p-unit" role="tabpanel" aria-labelledby="t-unit" hidden>
-      <form class="card" id="unitForm" novalidate>
-        <h3>新增戶別</h3>
-        <div class="row2">
-          <div class="field"><label for="u-bldg">棟別</label><select id="u-bldg"></select></div>
-          <div class="field"><label for="u-floor">樓層</label><input id="u-floor" inputmode="numeric" placeholder="例如:5"></div>
-        </div>
-        <div class="row2">
-          <div class="field"><label for="u-name">屋主稱呼</label><input id="u-name" placeholder="例如:王小姐"></div>
-          <div class="field"><label for="u-phone">手機</label><input id="u-phone" type="tel" inputmode="numeric" placeholder="0912345678"></div>
-        </div>
-        <div class="field"><label for="u-stage">目前階段</label><select id="u-stage"></select></div>
-        <p class="msg" id="unitMsg" hidden></p>
-        <button class="btn primary" type="submit" id="unitBtn">新增</button>
-      </form>
-      <div id="unitList"></div>
+      <button class="addbtn press" type="button" id="addUnit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>新增戶別</button>
+      <div class="group" id="unitList"></div>
+      <p class="hint">點進度可以直接修改・往左滑可刪除</p>
     </div>
   </section>
 </main>
-<div class="toast" id="toast"></div>
+
+<!-- 新增戶別抽屜 -->
+<div class="scrim" id="scrim"></div>
+<div class="sheet" id="unitSheet" role="dialog" aria-modal="true" aria-labelledby="usTitle" aria-hidden="true">
+  <div class="bar"><button class="nbtn" type="button" id="usCancel">取消</button><h3 id="usTitle">新增戶別</h3><button class="nbtn" type="submit" form="unitForm" id="unitBtn" style="font-weight:600;justify-content:flex-end">新增</button></div>
+  <div class="body">
+    <form id="unitForm" novalidate>
+      <div class="gcap" style="margin-top:6px">戶別</div>
+      <div class="group">
+        <label class="row"><span class="lbl grow">棟別</span><select id="u-bldg" aria-label="棟別" style="flex:0 1 auto;width:auto"></select></label>
+        <label class="row"><span class="lbl">樓層</span><input id="u-floor" inputmode="numeric" placeholder="例如 5"></label>
+      </div>
+      <div class="gcap">屋主</div>
+      <div class="group">
+        <label class="row"><span class="lbl">稱呼</span><input id="u-name" placeholder="例如 王小姐"></label>
+        <label class="row"><span class="lbl">手機</span><input id="u-phone" type="tel" inputmode="numeric" placeholder="0912345678"></label>
+      </div>
+      <div class="gcap">目前階段</div>
+      <div class="group">
+        <label class="row"><span class="lbl grow">階段</span><select id="u-stage" aria-label="目前階段" style="flex:0 1 auto;width:auto"></select></label>
+      </div>
+      <p class="msg" id="unitMsg" role="alert" hidden></p>
+      <button class="btn dark press" type="submit" style="margin-top:20px">新增戶別</button>
+    </form>
+  </div>
+</div>
+
+<!-- 確認動作表 -->
+<div class="action" id="action" role="alertdialog" aria-modal="true" aria-labelledby="actQ" aria-hidden="true">
+  <div class="card"><div class="q" id="actQ"></div><button type="button" class="yes" id="actYes">刪除</button></div>
+  <button type="button" class="no" id="actNo">取消</button>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
@@ -149,23 +257,44 @@ h3{font-size:17px;margin:0 0 10px}
 const STAGES=["簽約完成","建築施工","結構完成","取得使用執照","驗屋","交屋","入住"];
 const STATUSES=["未聯絡","已聯絡","已完成"];
 const BUILDINGS=["A棟","B棟","C棟","D棟"];
-const db=window.supabase.createClient(window.SUPABASE_URL,window.SUPABASE_KEY);
 const $=id=>document.getElementById(id);
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const db=window.supabase&&window.SUPABASE_URL?window.supabase.createClient(window.SUPABASE_URL,window.SUPABASE_KEY):null;
+const SVGNS='http://www.w3.org/2000/svg';
+const ICON={
+  phone:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>',
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+  trash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>',
+  down:'<svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3.5l3 3 3-3"/></svg>'
+};
 
-/* 小工具:安全地產生畫面元素(用 textContent,不會被輸入內容影響) */
+/* 安全地產生畫面元素(文字一律用 textContent) */
 function el(tag,props={},...kids){
   const e=document.createElement(tag);
-  Object.entries(props).forEach(([k,v])=>{if(k==='class')e.className=v;else if(k.startsWith('on'))e.addEventListener(k.slice(2),v);else e.setAttribute(k,v)});
+  Object.entries(props).forEach(([k,v])=>{if(k==='class')e.className=v;else if(k==='html')e.innerHTML=v;else if(k.startsWith('on'))e.addEventListener(k.slice(2),v);else e.setAttribute(k,v)});
   kids.flat().forEach(k=>k!=null&&e.append(k));
   return e;
 }
-function opts(sel,list,val){sel.innerHTML='';list.forEach((t,i)=>{const o=el('option',{value:typeof val==='function'?val(t,i):t},t);sel.append(o)})}
-function fmt(ts){const d=new Date(ts);return `${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`}
+function opts(sel,list,val){sel.innerHTML='';list.forEach((t,i)=>sel.append(el('option',{value:typeof val==='function'?val(t,i):t},t)))}
+function fmt(ts){const d=new Date(ts),n=new Date();const hm=`${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;if(d.toDateString()===n.toDateString())return '今天 '+hm;const y=new Date(n);y.setDate(n.getDate()-1);if(d.toDateString()===y.toDateString())return '昨天 '+hm;return `${d.getMonth()+1}/${d.getDate()} ${hm}`}
 function toast(t){const e=$('toast');e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),2200)}
 function say(id,t){$(id).textContent=t;$(id).hidden=!t}
 const normFloor=f=>f.replace(/\s|樓|F|f/g,'');
 
+/* 頂部小標題 */
+function updateNav(){const t=$('appView').hidden?null:$('bigTitle');$('nav').classList.toggle('solid',!!t&&t.getBoundingClientRect().bottom<44+parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--top')||0))}
+window.addEventListener('scroll',updateNav,{passive:true});
+
+/* ---------- 確認動作表 ---------- */
+let actResolve=null;
+function confirmSheet(q,yes){
+  return new Promise(res=>{actResolve=res;$('actQ').textContent=q;$('actYes').textContent=yes;$('action').classList.add('on');$('action').setAttribute('aria-hidden','false');$('scrim').classList.add('on');setTimeout(()=>$('actNo').focus(),50)});
+}
+function closeAction(v){if(!actResolve)return;$('action').classList.remove('on');$('action').setAttribute('aria-hidden','true');if(!$('unitSheet').classList.contains('on'))$('scrim').classList.remove('on');const r=actResolve;actResolve=null;r(v)}
+$('actYes').onclick=()=>closeAction(true);$('actNo').onclick=()=>closeAction(false);
+
 /* ---------- 登入 / 登出 ---------- */
+if(!db){say('loginMsg','資料庫連線設定有問題,請聯絡網站管理員');$('loginBtn').disabled=true}
 $('loginForm').addEventListener('submit',async e=>{
   e.preventDefault();say('loginMsg','');
   const email=$('email').value.trim(),password=$('pw').value;
@@ -176,56 +305,95 @@ $('loginForm').addEventListener('submit',async e=>{
   if(error){say('loginMsg','Email 或密碼不正確');return}
   $('pw').value='';
 });
-$('logout').onclick=()=>db.auth.signOut();
+$('logout').onclick=async()=>{if(await confirmSheet('確定要登出後台嗎?','登出'))db.auth.signOut()};
 
 let started=false;
-db.auth.onAuthStateChange((ev,session)=>{setTimeout(()=>onSession(session),0)});
+if(db)db.auth.onAuthStateChange((ev,session)=>{setTimeout(()=>onSession(session),0)});
 async function onSession(session){
-  if(!session){started=false;$('appView').hidden=true;$('loginView').hidden=false;$('logout').hidden=true;$('who').textContent='黃芝亭 主任';return}
+  if(!session){started=false;$('appView').hidden=true;$('loginView').hidden=false;$('logout').hidden=true;$('refresh').hidden=true;updateNav();return}
   if(started)return;
   const {data:ok}=await db.rpc('is_admin');
   if(!ok){await db.auth.signOut();say('loginMsg','這個帳號沒有管理權限');return}
   started=true;
   $('who').textContent=session.user.email;
-  $('loginView').hidden=true;$('appView').hidden=false;$('logout').hidden=false;
-  loadReqs();loadUnits();
+  $('loginView').hidden=true;$('appView').hidden=false;$('logout').hidden=false;$('refresh').hidden=false;
+  moveThumb();loadAll();
 }
+async function loadAll(){await Promise.all([loadReqs(),loadUnits()])}
+$('refresh').onclick=async()=>{$('refresh').disabled=true;await loadAll();$('refresh').disabled=false;toast('已更新')};
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&started)loadAll()});
 
 /* ---------- 分頁 ---------- */
 const tabs=[$('t-req'),$('t-unit')];
-tabs.forEach(t=>t.onclick=()=>tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);$(x.getAttribute('aria-controls')).hidden=!on}));
+function moveThumb(){const t=tabs.find(x=>x.getAttribute('aria-selected')==='true');if(!t||!t.offsetWidth)return;$('segThumb').style.width=t.offsetWidth+'px';$('segThumb').style.transform=`translateX(${t.offsetLeft-2}px)`}
+function pick(t){tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;$(x.getAttribute('aria-controls')).hidden=!on});$('bigTitle').textContent=t.textContent;$('navTitle').textContent=t.textContent;moveThumb()}
+tabs.forEach(t=>t.onclick=()=>pick(t));
+window.addEventListener('resize',moveThumb);
+
+/* ---------- 往左滑動作 ---------- */
+function swipeable(cell,face,width){
+  let x0=null,y0=null,dx=0,open=false,locked=null;
+  const set=(v,anim)=>{face.classList.toggle('drag',!anim);face.style.transform=v?`translateX(${v}px)`:''};
+  face.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;x0=e.clientX;y0=e.clientY;locked=null;dx=open?-width:0});
+  face.addEventListener('pointermove',e=>{
+    if(x0==null)return;const mx=e.clientX-x0,my=e.clientY-y0;
+    if(locked==null){if(Math.abs(mx)<8&&Math.abs(my)<8)return;locked=Math.abs(mx)>Math.abs(my)?'x':'y';if(locked==='x')face.setPointerCapture(e.pointerId)}
+    if(locked!=='x')return;
+    dx=Math.min(0,Math.max(-width-40,(open?-width:0)+mx));set(dx,false);
+  });
+  const end=()=>{if(x0==null)return;x0=null;if(locked!=='x'){return}open=dx<-width/2;set(open?-width:0,true);if(open)closeOthers(cell)};
+  face.addEventListener('pointerup',end);face.addEventListener('pointercancel',end);
+  face.addEventListener('click',e=>{if(locked==='x'){e.preventDefault();e.stopPropagation();locked=null}},true);
+  cell._close=()=>{open=false;set(0,true)};
+}
+function closeOthers(keep){document.querySelectorAll('.cell').forEach(c=>{if(c!==keep&&c._close)c._close()})}
 
 /* ---------- 客戶需求 ---------- */
 let reqs=[],reqFilter='未聯絡';
 async function loadReqs(){
   const {data,error}=await db.from('requests').select('*').order('created_at',{ascending:false});
-  if(error){$('reqList').replaceChildren(el('p',{class:'empty'},'讀取失敗,請重新整理'));return}
+  if(error){$('reqList').replaceChildren(el('div',{class:'empty'},'讀取失敗,請往下拉重新整理'));return}
   reqs=data;renderReqs();
 }
 function renderReqs(){
   const f=$('reqFilter');f.innerHTML='';
   ['全部',...STATUSES].forEach(s=>{
     const n=s==='全部'?reqs.length:reqs.filter(r=>r.status===s).length;
-    f.append(el('button',{type:'button','aria-pressed':reqFilter===s,onclick:()=>{reqFilter=s;renderReqs()}},`${s} ${n}`));
+    f.append(el('button',{type:'button',class:'press','aria-pressed':reqFilter===s,onclick:()=>{reqFilter=s;renderReqs()}},s,el('span',{class:'n'},String(n))));
   });
   const list=reqs.filter(r=>reqFilter==='全部'||r.status===reqFilter);
-  $('reqList').replaceChildren(...(list.length?list.map(reqCard):[el('p',{class:'empty'},'目前沒有資料')]));
+  $('reqList').replaceChildren(...(list.length?list.map(reqCell):[el('div',{class:'empty'},el('b',{},reqFilter==='未聯絡'?'都聯絡完了':'目前沒有資料'),reqFilter==='未聯絡'?'新的客戶需求會出現在這裡。':'')]));
 }
-function reqCard(r){
-  const sel=el('select',{'aria-label':'處理狀態',onchange:async e=>{
-    const v=e.target.value,{error}=await db.from('requests').update({status:v}).eq('id',r.id);
-    if(error){toast('更新失敗');e.target.value=r.status;return}
-    r.status=v;toast('已更新為「'+v+'」');renderReqs();
-  }});
-  opts(sel,STATUSES);sel.value=r.status;
+async function setStatus(r,v){
+  if(r.status===v)return;
+  const old=r.status;r.status=v;renderReqs();
+  const {error}=await db.from('requests').update({status:v}).eq('id',r.id);
+  if(error){r.status=old;renderReqs();toast('更新失敗,請再試一次');return}
+  toast(`${r.name} → ${v}`);
+}
+function reqCell(r){
   const unit=[r.building,r.floor&&r.floor+'樓'].filter(Boolean).join(' ')||'未填';
-  return el('div',{class:'card status-'+r.status},
-    el('div',{class:'item-top'},el('b',{},r.name),el('span',{class:'when'},fmt(r.created_at))),
-    el('p',{class:'kv'},'戶別:',el('strong',{},unit),'|方便時間:',el('strong',{},r.contact_time||'—')),
-    el('p',{class:'kv'},'需要:',el('strong',{},(r.services||[]).join('、')||'—')),
+  const mseg=el('div',{class:'mseg',role:'group','aria-label':'處理狀態'},STATUSES.map(s=>el('button',{type:'button','aria-pressed':r.status===s,onclick:()=>setStatus(r,s)},s)));
+  const face=el('div',{class:'face'},
+    el('div',{class:'top'},el('span',{class:'dot'}),el('b',{class:'grow'},r.name),el('span',{class:'when'},fmt(r.created_at))),
+    el('p',{class:'kv'},'戶別 ',el('strong',{},unit),'・',el('strong',{},r.contact_time||'都可以')),
+    el('p',{class:'kv'},'需要 ',el('strong',{},(r.services||[]).join('、')||'—')),
     r.memo?el('div',{class:'memo'},r.memo):null,
-    el('div',{class:'actions'},el('a',{class:'call',href:'tel:'+r.phone},'📞 '+r.phone),sel)
+    el('div',{class:'line2'},el('a',{class:'call press',href:'tel:'+r.phone,html:ICON.phone},r.phone.replace(/(\d{4})(\d{3})(\d{3})/,'$1 $2 $3')),mseg)
   );
+  const next=r.status==='未聯絡'?'已聯絡':r.status==='已聯絡'?'已完成':'未聯絡';
+  const acts=el('div',{class:'acts'},
+    el('button',{type:'button',class:'a-ok',html:ICON.check,onclick:()=>setStatus(r,next)},next),
+    el('button',{type:'button',class:'a-del',html:ICON.trash,onclick:async()=>{
+      cell._close();
+      if(!await confirmSheet(`要刪除 ${r.name} 的需求嗎?刪除後無法復原。`,'刪除需求'))return;
+      const {error}=await db.from('requests').delete().eq('id',r.id);
+      if(error){toast('刪除失敗');return}
+      reqs=reqs.filter(x=>x.id!==r.id);renderReqs();toast('已刪除');
+    }},'刪除'));
+  const cell=el('div',{class:'cell s-'+r.status},acts,face);
+  swipeable(cell,face,168);
+  return cell;
 }
 
 /* ---------- 戶別進度 ---------- */
@@ -234,32 +402,50 @@ opts($('u-bldg'),BUILDINGS);
 opts($('u-stage'),STAGES,(t,i)=>i+1);
 async function loadUnits(){
   const {data,error}=await db.from('units').select('*').order('building').order('floor');
-  if(error){$('unitList').replaceChildren(el('p',{class:'empty'},'讀取失敗,請重新整理'));return}
+  if(error){$('unitList').replaceChildren(el('div',{class:'empty'},'讀取失敗,請往下拉重新整理'));return}
   units=data.sort((a,b)=>a.building.localeCompare(b.building)||(parseInt(a.floor)||0)-(parseInt(b.floor)||0));
   renderUnits();
 }
 function renderUnits(){
-  $('unitList').replaceChildren(...(units.length?units.map(unitCard):[el('p',{class:'empty'},'還沒有戶別,請從上方新增')]));
+  $('unitList').replaceChildren(...(units.length?units.map(unitCell):[el('div',{class:'empty'},el('b',{},'還沒有戶別'),'按上方「新增戶別」開始建立。')]));
 }
-function unitCard(u){
-  const sel=el('select',{'aria-label':'目前階段',onchange:async e=>{
-    const v=+e.target.value,{error}=await db.from('units').update({stage:v}).eq('id',u.id);
-    if(error){toast('更新失敗');e.target.value=u.stage;return}
-    u.stage=v;toast(`${u.building} ${u.floor}樓 → ${STAGES[v-1]}`);renderUnits();
+function miniRing(stage){
+  const s=document.createElementNS(SVGNS,'svg');s.setAttribute('viewBox','0 0 44 44');s.setAttribute('class','uring');s.setAttribute('aria-hidden','true');
+  const C=2*Math.PI*18;
+  s.innerHTML=`<circle class="tr" cx="22" cy="22" r="18" fill="none" stroke-width="5"/><circle cx="22" cy="22" r="18" fill="none" stroke="#E3A14B" stroke-width="5" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-stage/7)}" transform="rotate(-90 22 22)"/><text x="22" y="26.5" text-anchor="middle">${stage}</text>`;
+  return s;
+}
+function unitCell(u){
+  const sel=el('select',{'aria-label':`${u.building} ${u.floor}樓 目前階段`,onchange:async e=>{
+    const v=+e.target.value,old=u.stage;u.stage=v;renderUnits();
+    const {error}=await db.from('units').update({stage:v}).eq('id',u.id);
+    if(error){u.stage=old;renderUnits();toast('更新失敗,請再試一次');return}
+    toast(`${u.building} ${u.floor}樓 → ${STAGES[v-1]}`);
   }});
   opts(sel,STAGES,(t,i)=>i+1);sel.value=u.stage;
-  const del=el('button',{type:'button',class:'del',onclick:async()=>{
-    if(!confirm(`確定要刪除 ${u.building} ${u.floor}樓(${u.owner_name})嗎?`))return;
+  const face=el('div',{class:'face'},
+    el('div',{class:'top',style:'gap:14px'},miniRing(u.stage),
+      el('div',{class:'grow'},el('b',{},`${u.building} ${u.floor}樓`),el('div',{class:'when',style:'font-size:14px'},`${u.owner_name}・${u.phone}`)),
+      el('label',{class:'stagepick press'},STAGES[u.stage-1],el('span',{html:ICON.down,style:'display:inline-flex'}),sel))
+  );
+  const acts=el('div',{class:'acts'},el('button',{type:'button',class:'a-del',html:ICON.trash,onclick:async()=>{
+    cell._close();
+    if(!await confirmSheet(`要刪除 ${u.building} ${u.floor}樓(${u.owner_name})嗎?刪除後無法復原。`,'刪除戶別'))return;
     const {error}=await db.from('units').delete().eq('id',u.id);
     if(error){toast('刪除失敗');return}
     units=units.filter(x=>x.id!==u.id);renderUnits();toast('已刪除');
-  }},'刪除');
-  return el('div',{class:'card'},
-    el('div',{class:'item-top'},el('b',{},`${u.building} ${u.floor}樓`),el('span',{class:'stage'},`第 ${u.stage} 步:${STAGES[u.stage-1]}`)),
-    el('p',{class:'kv'},'屋主:',el('strong',{},u.owner_name),'|手機:',el('strong',{},u.phone)),
-    el('div',{class:'actions'},sel,del)
-  );
+  }},'刪除'));
+  const cell=el('div',{class:'cell'},acts,face);
+  swipeable(cell,face,84);
+  return cell;
 }
+
+/* 新增戶別抽屜 */
+function openUnitSheet(){$('unitSheet').classList.add('on');$('unitSheet').setAttribute('aria-hidden','false');$('scrim').classList.add('on');say('unitMsg','');setTimeout(()=>$('u-floor').focus({preventScroll:true}),reduce?0:400)}
+function closeUnitSheet(){$('unitSheet').classList.remove('on');$('unitSheet').setAttribute('aria-hidden','true');$('scrim').classList.remove('on');$('addUnit').focus({preventScroll:true})}
+$('addUnit').onclick=openUnitSheet;$('usCancel').onclick=closeUnitSheet;
+$('scrim').onclick=()=>{if(actResolve)closeAction(false);else closeUnitSheet()};
+document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;if(actResolve)closeAction(false);else if($('unitSheet').classList.contains('on'))closeUnitSheet()});
 $('unitForm').addEventListener('submit',async e=>{
   e.preventDefault();say('unitMsg','');
   const row={building:$('u-bldg').value,floor:normFloor($('u-floor').value),owner_name:$('u-name').value.trim(),phone:$('u-phone').value.replace(/\D/g,''),stage:+$('u-stage').value};
@@ -269,10 +455,20 @@ $('unitForm').addEventListener('submit',async e=>{
   const {data,error}=await db.from('units').insert(row).select().single();
   $('unitBtn').disabled=false;
   if(error){say('unitMsg',error.code==='23505'?'這一戶已經存在了':'新增失敗,請再試一次');return}
-  units.push(data);renderUnits();
+  units.push(data);units.sort((a,b)=>a.building.localeCompare(b.building)||(parseInt(a.floor)||0)-(parseInt(b.floor)||0));renderUnits();
   $('u-floor').value=$('u-name').value=$('u-phone').value='';$('u-stage').value=1;
-  toast(`已新增 ${data.building} ${data.floor}樓`);
+  closeUnitSheet();toast(`已新增 ${data.building} ${data.floor}樓`);
 });
+
+/* ---------- 往下拉重新整理 ---------- */
+(()=>{
+  let y0=null,d=0,busy=false;const ptr=$('ptr');
+  addEventListener('touchstart',e=>{if(!started||busy||scrollY>0||$('scrim').classList.contains('on'))return;y0=e.touches[0].clientY;d=0},{passive:true});
+  addEventListener('touchmove',e=>{if(y0==null)return;d=Math.max(0,e.touches[0].clientY-y0);const h=Math.min(70,d*.5);ptr.style.height=h+'px';ptr.querySelector('svg').style.transform=`rotate(${h*4}deg)`},{passive:true});
+  addEventListener('touchend',async()=>{if(y0==null)return;y0=null;
+    if(d*.5>=56){busy=true;ptr.classList.add('spin');ptr.style.transition='height .3s';ptr.style.height='44px';await loadAll();toast('已更新');ptr.classList.remove('spin');busy=false}
+    ptr.style.transition='height .3s';ptr.style.height='0';setTimeout(()=>ptr.style.transition='',300)});
+})();
 </script>
 </body>
 </html>

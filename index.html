@@ -4,497 +4,642 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>交屋一條龍服務|黃芝亭主任</title>
+<meta name="description" content="黃芝亭主任的預售屋交屋一條龍服務:交屋進度查詢、窗簾家具油漆等裝修需求登記、房市與過戶知識。">
+<meta name="theme-color" content="#F7F2EA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#110D0A" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="黃主任交屋">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --pine:#1E3B34; --pine-2:#2C5248; --sage:#E4ECE6; --paper:#FAFBF9; --card:#FFFFFF;
-  --brass:#B07F2C; --brass-soft:#F3E7CF; --ink:#1A2421; --muted:#5F6E68; --line:#D5DFD9;
-  --ok:#2F7A55; --danger:#B3402F; --onpine:#FFFFFF;
-  box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px);
-  padding-bottom:env(safe-area-inset-bottom,0px);
+  --page:#F7F2EA; --surface:#FFFDF9; --group:#EFE6D9; --ink:#1E1914; --ink-2:#6E6157; --ink-3:#A39586;
+  --line:rgba(40,28,18,.09); --espresso:#17110D; --espresso-2:#2A1E16; --on-dark:#F6EEE3; --on-dark-2:rgba(246,238,227,.68);
+  --amber:#E3A14B; --amber-ink:#8E5A1B; --amber-soft:rgba(227,161,75,.16); --danger:#C2412D; --ok:#3C8C5A; --line-green:#06C755;
+  --glass:rgba(247,242,234,.72); --glass-dark:rgba(255,244,228,.12);
+  --serif:"Cormorant Garamond","Noto Serif TC","Songti TC",serif;
+  --serif-tc:"Noto Serif TC","Songti TC","Cormorant Garamond",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang TC","Helvetica Neue","Noto Sans TC","Microsoft JhengHei",sans-serif;
+  --ease:cubic-bezier(.32,.72,0,1); --spring:cubic-bezier(.34,1.4,.64,1);
+  --top:env(safe-area-inset-top,0px); --bottom:env(safe-area-inset-bottom,0px);
+  --tabh:56px;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --pine:#8FC2AE; --pine-2:#6FA894; --sage:#1C2925; --paper:#121916; --card:#18221E;
-    --brass:#D9AE62; --brass-soft:#2E2718; --ink:#E9EFEC; --muted:#9AABA4; --line:#2A3833;
-    --ok:#6CC398; --danger:#E5826F; --onpine:#0F1714;
+    --page:#110D0A; --surface:#1B1511; --group:#231B15; --ink:#F3EBE0; --ink-2:#AE9F90; --ink-3:#7C6E61;
+    --line:rgba(255,236,214,.09); --espresso:#0B0806; --espresso-2:#1F1712; --amber-ink:#E9B467; --amber-soft:rgba(227,161,75,.18);
+    --danger:#F08A73; --ok:#7CCB98; --glass:rgba(17,13,10,.72);
   }
 }
 :root[data-theme="dark"]{
-  --pine:#8FC2AE; --pine-2:#6FA894; --sage:#1C2925; --paper:#121916; --card:#18221E;
-  --brass:#D9AE62; --brass-soft:#2E2718; --ink:#E9EFEC; --muted:#9AABA4; --line:#2A3833;
-  --ok:#6CC398; --danger:#E5826F; --onpine:#0F1714;
+  --page:#110D0A; --surface:#1B1511; --group:#231B15; --ink:#F3EBE0; --ink-2:#AE9F90; --ink-3:#7C6E61;
+  --line:rgba(255,236,214,.09); --espresso:#0B0806; --espresso-2:#1F1712; --amber-ink:#E9B467; --amber-soft:rgba(227,161,75,.18);
+  --danger:#F08A73; --ok:#7CCB98; --glass:rgba(17,13,10,.72);
 }
-*,*::before,*::after{box-sizing:inherit}
-html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);-webkit-text-size-adjust:100%}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Heiti TC","Microsoft JhengHei",sans-serif;font-size:16px;line-height:1.7;-webkit-tap-highlight-color:transparent}
-.wrap{max-width:560px;margin:0 auto;padding:0 20px}
-a{color:inherit}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--page)}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;overscroll-behavior-y:none}
+a{color:inherit;text-decoration:none}
 button,input,select,textarea{font:inherit;color:inherit}
-:focus-visible{outline:3px solid var(--brass);outline-offset:2px;border-radius:6px}
+button{cursor:pointer;-webkit-user-select:none;user-select:none}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:12px}
+[hidden]{display:none!important}
+.grow{flex:1;min-width:0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{max-width:620px;margin:0 auto;padding:0 20px}
 
-/* top nav */
-.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:none}
-.nav .wrap::-webkit-scrollbar{display:none}
-.nav a{flex:none;text-decoration:none;font-size:15px;font-weight:500;padding:8px 14px;border-radius:999px;color:var(--muted)}
-.nav a.on{background:var(--pine);color:var(--onpine)}
+/* app shell: scales back when a sheet opens, like iOS */
+#services.on{padding-bottom:calc(var(--tabh) + var(--bottom) + 110px)}
+#app{min-height:100vh;min-height:100dvh;background:var(--page);transform-origin:50% 0;transition:transform .5s var(--ease),border-radius .5s var(--ease),filter .5s var(--ease)}
+body.sheet-open{background:#000}
+body.sheet-open #app{transform:scale(.94) translateY(calc(var(--top) + 10px));border-radius:14px;overflow:hidden;filter:brightness(.82)}
 
-/* hero */
-.hero{background:var(--pine);color:var(--onpine);padding:28px 0 32px;border-radius:0 0 28px 28px}
-.who{display:flex;align-items:center;gap:12px;margin-bottom:22px}
-.avatar{width:48px;height:48px;border-radius:50%;background:var(--brass);color:#fff;display:grid;place-items:center;font-weight:900;font-size:20px;flex:none}
-.who b{display:block;font-size:17px}
-.who span{font-size:14px;opacity:.8}
-.hero h1{font-size:30px;line-height:1.35;font-weight:900;margin:0 0 10px;letter-spacing:.02em}
-.hero p{margin:0;opacity:.88;font-size:16px}
+/* press feedback */
+.press{transition:transform .18s var(--ease),opacity .18s}
+.press:active{transform:scale(.97);opacity:.88}
 
-/* journey (signature element) */
-.journey{margin-top:26px;background:color-mix(in srgb,var(--onpine) 10%,transparent);border-radius:20px;padding:18px 16px 16px}
-.journey-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
-.journey-head b{font-size:17px}
-.journey-head span{font-size:14px;opacity:.85}
-.track{position:relative;display:flex;justify-content:space-between;align-items:center;height:34px}
-.track::before{content:"";position:absolute;left:10px;right:22px;top:50%;height:3px;background:color-mix(in srgb,var(--onpine) 28%,transparent);border-radius:2px}
-.track .fill{position:absolute;left:10px;top:50%;height:3px;background:var(--brass);border-radius:2px;transform:translateY(-50%);width:0;transition:width 1.2s cubic-bezier(.2,.7,.2,1)}
-.track::before{transform:translateY(-50%)}
-.dot{position:relative;z-index:1;width:20px;height:20px;border-radius:50%;background:var(--pine);border:3px solid color-mix(in srgb,var(--onpine) 45%,transparent)}
-.dot.done{background:var(--brass);border-color:var(--brass)}
-.dot.now{background:var(--onpine);border-color:var(--brass);box-shadow:0 0 0 5px color-mix(in srgb,var(--brass) 40%,transparent)}
-.dot.home{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;border-width:2px}
-.dot.home svg{width:18px;height:18px}
-.track-labels{display:flex;justify-content:space-between;font-size:12px;opacity:.8;margin-top:8px}
+/* top nav bar */
+.topbar{position:fixed;inset:0 0 auto 0;z-index:30;padding-top:var(--top);pointer-events:none}
+.topbar .inner{height:44px;display:flex;align-items:center;justify-content:center;position:relative}
+.topbar::before{content:"";position:absolute;inset:0;background:var(--glass);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:.5px solid var(--line);opacity:0;transition:opacity .25s}
+.topbar.solid::before{opacity:1}
+.topbar .t{position:relative;font-size:17px;font-weight:600;opacity:0;transform:translateY(4px);transition:opacity .2s,transform .25s var(--ease)}
+.topbar.solid .t{opacity:1;transform:none}
 
-/* sections */
-section.block{padding:40px 0 8px}
-h2{font-size:24px;font-weight:900;margin:0 0 6px;color:var(--ink)}
-.sub{color:var(--muted);margin:0 0 20px;font-size:15px}
+/* tab panels */
+.panel{display:none;padding-bottom:calc(var(--tabh) + var(--bottom) + 32px)}
+.panel.on{display:block;animation:in .38s var(--ease)}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.ltitle{font-family:var(--serif-tc);font-weight:400;font-size:36px;line-height:1.15;letter-spacing:.01em;margin:0;padding:calc(var(--top) + 52px) 0 6px}
+.lsub{color:var(--ink-2);font-size:16px;margin:0 0 22px}
 
-/* timeline */
-.tl{list-style:none;margin:0;padding:0;position:relative}
-.tl li{position:relative;padding-left:44px;padding-bottom:12px}
-.tl li::before{content:"";position:absolute;left:15px;top:30px;bottom:-4px;width:2px;background:var(--line)}
-.tl li:last-child::before{display:none}
-.tl li.done::before{background:var(--brass)}
-.num{position:absolute;left:0;top:4px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:14px;font-weight:700;background:var(--card);border:2px solid var(--line);color:var(--muted)}
-.done .num{background:var(--brass);border-color:var(--brass);color:#fff}
-.now .num{background:var(--pine);border-color:var(--pine);color:var(--onpine)}
-.step{width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 14px;cursor:pointer;display:block}
-.now .step{border-color:var(--pine);border-width:2px}
-.step-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.step-top b{font-size:17px}
-.tag{flex:none;font-size:13px;font-weight:500;padding:2px 10px;border-radius:999px}
-.tag.done{background:var(--brass-soft);color:var(--brass)}
-.tag.now{background:var(--pine);color:var(--onpine)}
-.tag.todo{background:var(--sage);color:var(--muted)}
-.step-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
-.step[aria-expanded="true"] .step-body{grid-template-rows:1fr}
-.step-body>div{overflow:hidden}
-.step-body p{margin:10px 0 0;font-size:15px;color:var(--muted)}
-.step-body .prep{margin-top:8px;padding:10px 12px;border-radius:10px;background:var(--sage);color:var(--ink);font-size:15px}
-.note{font-size:13px;color:var(--muted);margin:8px 0 0}
-.lookup{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 14px 4px;margin-bottom:18px}
-.lookup h3{font-size:17px;margin:0 0 10px}
-.lookup .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
-.lookup .field{margin-bottom:10px}
-.lookup .field label{font-size:14px;margin-bottom:4px}
-.lookup .field input,.lookup .field select{font-size:16px;padding:10px 12px}
-.lookup .btn{padding:12px;margin-bottom:10px}
-.lookup-msg{font-size:14px;margin:0 0 10px;color:var(--muted)}
-.lookup-msg.bad{color:var(--danger)}
-.mine{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--brass-soft);border-radius:12px;padding:10px 12px;margin-bottom:10px;font-size:15px}
-.mine[hidden]{display:none}
-.mine button{flex:none;border:none;background:var(--card);border-radius:999px;padding:6px 12px;font-size:14px;cursor:pointer}
-.btn[disabled]{opacity:.6;cursor:wait}
+/* section heads */
+.shead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:40px 0 14px}
+.shead h2{font-family:var(--serif-tc);font-weight:400;font-size:26px;margin:0;letter-spacing:.01em}
+.pill{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 5px 5px 16px;font-size:14px;font-weight:500;white-space:nowrap}
+.pill .arr{width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--page);display:grid;place-items:center}
+.pill .arr svg{width:14px;height:14px}
+.pill.light{background:var(--on-dark);color:#17110D;border-color:transparent}
+.pill.light .arr{background:#17110D;color:var(--on-dark)}
 
-/* services */
-.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.svc{position:relative;text-align:left;background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:14px;cursor:pointer;min-height:132px;display:flex;flex-direction:column;transition:border-color .2s,background .2s}
-.svc svg{width:30px;height:30px;stroke:var(--pine);margin-bottom:8px}
-.svc b{font-size:17px}
-.svc span{font-size:13px;color:var(--muted);line-height:1.5}
-.svc .chk{position:absolute;top:12px;right:12px;width:24px;height:24px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center}
-.svc .chk svg{width:14px;height:14px;margin:0;stroke:#fff;opacity:0}
-.svc[aria-pressed="true"]{border-color:var(--brass);background:var(--brass-soft)}
-.svc[aria-pressed="true"] .chk{background:var(--brass);border-color:var(--brass)}
-.svc[aria-pressed="true"] .chk svg{opacity:1}
-.hint{font-size:14px;color:var(--muted);margin-top:12px;text-align:center}
+/* grouped list (iOS settings style) */
+.group{background:var(--surface);border-radius:16px;overflow:hidden}
+.gcap{font-size:13px;color:var(--ink-2);margin:22px 4px 8px}
+.gfoot{font-size:13px;color:var(--ink-2);margin:8px 4px 0;line-height:1.5}
+.row{display:flex;align-items:center;gap:12px;min-height:52px;padding:12px 16px;position:relative;width:100%;background:none;border:none;text-align:left}
+.row+.row::before,.row+.acc::before,.acc+.row::before,.acc+.acc::before{content:"";position:absolute;top:0;left:16px;right:0;border-top:.5px solid var(--line)}
+.acc{position:relative}
+.row .grow{flex:1;min-width:0}
+.row .lbl{font-size:17px;flex:none;white-space:nowrap}
+.row .lbl.grow{flex:1}
+.row .lbl.grow+select{flex:0 1 auto;width:auto;max-width:60%}
+.row .val{color:var(--ink-2);font-size:16px;text-align:right}
+.row .meta{font-size:13px;color:var(--ink-2)}
+.chev{width:8px;height:14px;flex:none;color:var(--ink-3)}
+.ico{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;flex:none;color:#fff}
+.ico svg{width:18px;height:18px}
+.row input,.row select{flex:1;border:none;background:none;font-size:17px;text-align:right;padding:0;min-width:0;width:100%;-webkit-appearance:none;appearance:none;outline:none;color:var(--ink)}
+.row input::placeholder{color:var(--ink-3)}
+.row select{color:var(--ink-2);direction:rtl}
+.row select option{direction:ltr}
+.row textarea{border:none;background:none;width:100%;font-size:17px;resize:none;min-height:84px;outline:none;padding:0}
+.row.err .lbl{color:var(--danger)}
+.ferr{color:var(--danger);font-size:13px;margin:6px 4px 0}
 
-/* form */
-.form{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px 16px}
-.field{margin-bottom:16px}
-.field label{display:block;font-weight:700;font-size:15px;margin-bottom:6px}
-.field label small{font-weight:400;color:var(--muted)}
-.field input,.field select,.field textarea{width:100%;font-size:17px;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--paper);appearance:none;-webkit-appearance:none}
-.field textarea{min-height:88px;resize:vertical}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--pine);outline:none}
-.field.err input{border-color:var(--danger)}
-.err-msg{display:none;color:var(--danger);font-size:14px;margin-top:4px}
-.field.err .err-msg{display:block}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips button{border:1.5px solid var(--line);background:var(--paper);border-radius:999px;padding:7px 14px;font-size:15px;cursor:pointer}
-.chips button[aria-pressed="true"]{background:var(--pine);border-color:var(--pine);color:var(--onpine)}
-.chips .empty{font-size:14px;color:var(--muted)}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:none;border-radius:14px;padding:15px;font-size:17px;font-weight:700;cursor:pointer;text-decoration:none}
-.btn.primary{background:var(--pine);color:var(--onpine)}
-.btn.line{background:#06C755;color:#fff}
-.btn.ghost{background:var(--sage);color:var(--ink)}
+/* buttons */
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:none;border-radius:14px;min-height:52px;padding:14px 18px;font-size:17px;font-weight:600}
 .btn svg{width:20px;height:20px}
+.btn.dark{background:var(--ink);color:var(--page)}
+.btn.amber{background:var(--amber);color:#1E1408}
+.btn.line{background:var(--line-green);color:#fff}
+.btn.plain{background:var(--group);color:var(--ink)}
+.btn[disabled]{opacity:.55;pointer-events:none}
 
-/* knowledge */
-.seg{display:flex;background:var(--sage);border-radius:14px;padding:4px;gap:4px;margin-bottom:16px}
-.seg button{flex:1;border:none;background:none;padding:10px 4px;border-radius:10px;font-size:15px;font-weight:500;color:var(--muted);cursor:pointer}
-.seg button[aria-selected="true"]{background:var(--card);color:var(--ink);font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.08)}
-.panel[hidden]{display:none}
-.updated{font-size:13px;color:var(--muted);margin:0 0 12px}
-.news{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:10px}
-.meta{font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
-.news b,.fact b{display:block;font-size:17px;line-height:1.45;margin:4px 0}
-.news p,.fact p{margin:0;font-size:15px;color:var(--muted)}
-.why{margin-top:10px;font-size:14px;background:var(--brass-soft);color:var(--ink);padding:8px 10px;border-radius:10px}
-.fact{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:10px}
-.fact ul{margin:6px 0 0;padding-left:20px;font-size:15px;color:var(--muted)}
-.calc{background:var(--pine);color:var(--onpine);border-radius:18px;padding:16px;margin-bottom:10px}
-.calc h3{margin:0 0 10px;font-size:18px}
-.calc .grid3{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:8px}
-.calc label{font-size:13px;opacity:.85;display:block;margin-bottom:4px}
-.calc input,.calc select{width:100%;font-size:17px;padding:10px;border-radius:10px;border:none;background:color-mix(in srgb,var(--onpine) 14%,transparent);color:var(--onpine);appearance:none;-webkit-appearance:none}
-.calc select option{color:#1A2421}
-.calc .out{margin-top:14px;display:flex;justify-content:space-between;align-items:baseline}
-.calc .out b{font-size:28px;font-weight:900;color:var(--brass)}
-.calc .out span{font-size:14px;opacity:.85}
-.kstep{display:flex;gap:12px;margin-bottom:12px}
-.kstep .n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--pine);color:var(--onpine);display:grid;place-items:center;font-size:14px;font-weight:700;margin-top:2px}
-.kstep b{display:block;font-size:16px}
-.kstep p{margin:2px 0 0;font-size:15px;color:var(--muted)}
-.tbl{overflow-x:auto}
-.fees{width:100%;border-collapse:collapse;font-size:15px;margin-top:6px}
-.fees td{padding:9px 4px;border-bottom:1px solid var(--line);vertical-align:top}
-.fees td:first-child{font-weight:700;white-space:nowrap;padding-right:10px}
-.fees td:last-child{color:var(--muted)}
-.disc{font-size:13px;color:var(--muted);margin:6px 0 0}
+/* HERO */
+.hero{position:relative;background:var(--espresso);color:var(--on-dark);border-radius:0 0 30px 30px;overflow:hidden;padding:calc(var(--top) + 62px) 0 22px;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:
+  radial-gradient(60% 55% at 74% 40%,rgba(255,170,80,.42),rgba(255,140,50,.08) 55%,transparent 75%),
+  radial-gradient(90% 60% at 0% 100%,rgba(120,70,35,.35),transparent 70%),
+  linear-gradient(180deg,#1A120D 0%,#21160F 60%,#2B1C12 100%);opacity:0;transition:opacity 1.6s ease .2s}
+.hero.lit::before{opacity:1}
+.hero .table{position:absolute;left:0;right:0;bottom:0;height:150px;z-index:-1;background:linear-gradient(180deg,#3A2718 0,#24180F 18%,#160F0A 100%);border-top:1px solid rgba(255,200,140,.14)}
+.lamp{position:absolute;right:13%;bottom:118px;width:58px;height:190px;z-index:0}
+.lamp .glass{position:absolute;left:0;right:0;top:0;bottom:36px;border-radius:30px 30px 8px 8px;border:1px solid rgba(255,236,210,.28);background:linear-gradient(90deg,rgba(255,255,255,.05),rgba(255,240,220,.2) 28%,rgba(255,255,255,.03) 55%,rgba(255,240,220,.12) 85%,rgba(255,255,255,.04))}
+.lamp .fil{position:absolute;left:50%;top:26px;width:5px;height:108px;margin-left:-2.5px;border-radius:3px;background:linear-gradient(#FFF6DE,#FFD07A);box-shadow:0 0 10px 3px rgba(255,206,120,.9),0 0 46px 16px rgba(255,160,60,.5),0 0 120px 50px rgba(255,140,40,.22);opacity:.15;transition:opacity 1.2s ease .35s}
+.hero.lit .lamp .fil{opacity:1}
+.lamp .base{position:absolute;left:-4px;right:-4px;bottom:0;height:40px;border-radius:6px 6px 10px 10px;background:linear-gradient(180deg,#2A211B,#0D0A08 70%);box-shadow:inset 0 1px 0 rgba(255,220,180,.25)}
+.lamp .knob{position:absolute;left:50%;bottom:44px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:rgba(255,236,210,.5);box-shadow:0 0 0 4px rgba(255,236,210,.12)}
+.lamp .reflect{position:absolute;left:-40px;right:-40px;bottom:-26px;height:30px;background:radial-gradient(50% 50% at 50% 50%,rgba(255,170,80,.35),transparent 70%);opacity:0;transition:opacity 1.4s ease .5s}
+.hero.lit .lamp .reflect{opacity:1}
+.hero h1{font-family:var(--serif-tc);font-weight:300;font-size:clamp(44px,13vw,64px);line-height:1.08;letter-spacing:.04em;margin:0 0 14px;max-width:60%}
+.hero .lead{font-size:15px;color:var(--on-dark-2);margin:0 0 22px;max-width:56%;line-height:1.6}
+.hero .who{display:flex;align-items:center;gap:10px;margin-bottom:26px}
+.hero .who .av{width:36px;height:36px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#F1C27D,#B47A32);color:#1E1408;display:grid;place-items:center;font-family:var(--serif-tc);font-size:17px}
+.hero .who b{display:block;font-size:15px;font-weight:600}
+.hero .who span{font-size:12px;color:var(--on-dark-2)}
+.hero .cta{margin-bottom:96px}
+.glass-chip{position:absolute;right:20px;top:calc(var(--top) + 150px);z-index:1;display:flex;align-items:center;gap:10px;padding:10px 14px 10px 10px;border-radius:16px;background:var(--glass-dark);border:1px solid rgba(255,236,210,.16);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);color:var(--on-dark);font-size:13px;max-width:46%}
+.glass-chip b{display:block;font-size:14px;font-weight:600}
+.glass-chip span{color:var(--on-dark-2);font-size:12px}
+.glass-chip svg{width:34px;height:34px;flex:none}
+.hero .tags{display:flex;flex-wrap:wrap;gap:8px;position:relative}
+.hero .tags button{border:1px solid rgba(255,236,210,.22);background:rgba(255,236,210,.06);color:var(--on-dark);border-radius:999px;padding:7px 14px;font-size:13px;display:inline-flex;align-items:center;gap:8px}
+.hero .tags button::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--amber)}
+.hero .tags button.first{background:var(--on-dark);color:#17110D}
 
-/* contact */
-.card-contact{background:var(--pine);color:var(--onpine);border-radius:22px;padding:22px 18px}
-.card-contact .who{margin-bottom:16px}
-.cline{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-top:1px solid color-mix(in srgb,var(--onpine) 20%,transparent);font-size:16px}
-.cline span{opacity:.8;font-size:14px}
-.cline b{font-size:18px;letter-spacing:.03em}
-.copy{background:color-mix(in srgb,var(--onpine) 15%,transparent);color:var(--onpine);border:none;border-radius:999px;padding:6px 12px;font-size:14px;cursor:pointer}
-footer{text-align:center;color:var(--muted);font-size:13px;padding:28px 0 120px}
+/* progress ring */
+.ring{display:block}
+.ring .track{stroke:var(--amber-soft)}
+.ring .prog{transition:stroke-dashoffset 1.2s var(--ease)}
+.ringcard{display:flex;align-items:center;gap:18px;background:var(--surface);border-radius:22px;padding:18px;margin-top:-1px}
+.ringcard .ring{width:96px;height:96px;flex:none}
+.ringcard .k{font-size:13px;color:var(--ink-2)}
+.ringcard .v{font-family:var(--serif-tc);font-size:22px;margin:2px 0 6px}
+.ringcard .lnk{font-size:15px;color:var(--amber-ink);font-weight:500;display:inline-flex;align-items:center;gap:6px;background:none;border:none;padding:10px 0;margin:-10px 0}
+.ringtxt{font-family:var(--sans);font-weight:600}
 
-/* bottom bar */
-.bar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--card);border-top:1px solid var(--line);padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px))}
-.bar .in{max-width:560px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:8px}
-.bar a,.bar button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;text-decoration:none;border:none;border-radius:14px;padding:8px 4px;font-size:13px;font-weight:500;cursor:pointer;background:var(--sage);color:var(--ink);position:relative}
-.bar svg{width:22px;height:22px}
-.bar .main{background:var(--brass);color:#fff;flex-direction:row;font-size:16px;font-weight:700;gap:8px}
-.badge{min-width:22px;height:22px;border-radius:11px;background:#fff;color:var(--brass);font-size:13px;font-weight:900;display:none;place-items:center;padding:0 6px}
-.badge.show{display:grid}
+/* service carousel (home) */
+.rail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px;padding:0 20px 6px;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.scard{flex:none;width:62%;max-width:240px;scroll-snap-align:start;aspect-ratio:3/4;border-radius:22px;position:relative;overflow:hidden;background:var(--espresso);color:var(--on-dark);border:none;padding:0;text-align:left}
+.scard .glow{position:absolute;inset:0;background:radial-gradient(60% 45% at 50% 38%,rgba(255,170,80,.38),transparent 70%),linear-gradient(180deg,#1C140E,#2A1D14)}
+.scard .art{position:absolute;left:50%;top:36%;width:42%;transform:translate(-50%,-50%);color:#FFD28C;filter:drop-shadow(0 0 10px rgba(255,180,90,.65))}
+.scard .art svg{width:100%;height:auto;stroke:currentColor}
+.scard .lab{position:absolute;left:10px;right:10px;bottom:10px;padding:12px 14px;border-radius:14px;background:rgba(255,236,210,.1);border:1px solid rgba(255,236,210,.14);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:space-between;gap:8px}
+.scard .lab b{display:block;font-family:var(--serif-tc);font-weight:400;font-size:19px}
+.scard .lab span{font-size:12px;color:var(--on-dark-2)}
+.scard .lab .plus{width:28px;height:28px;border-radius:50%;background:var(--on-dark);color:#17110D;display:grid;place-items:center;flex:none}
+.scard .plus svg{width:14px;height:14px}
 
-/* sheet */
-.sheet-bg{position:fixed;inset:0;z-index:40;background:rgba(10,20,16,.5);display:none;align-items:flex-end;justify-content:center}
-.sheet-bg.open{display:flex}
-.sheet{background:var(--card);width:100%;max-width:560px;border-radius:24px 24px 0 0;padding:24px 20px calc(24px + env(safe-area-inset-bottom,0px));animation:up .3s ease}
-@keyframes up{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
-.sheet h3{font-size:22px;margin:0 0 6px}
-.sheet p{color:var(--muted);margin:0 0 14px;font-size:15px}
-.summary{background:var(--sage);border-radius:14px;padding:12px 14px;font-size:15px;margin-bottom:16px;white-space:pre-line}
-.sheet .btn{margin-bottom:10px}
-.toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 18px;border-radius:999px;font-size:15px;z-index:50;opacity:0;pointer-events:none;transition:opacity .2s}
-.toast.show{opacity:1}
+/* marquee */
+.marquee{margin:44px 0 0;background:var(--espresso);color:var(--on-dark);overflow:hidden;padding:18px 0;border-radius:0}
+.marquee .mtrack{display:flex;width:max-content;animation:mq 38s linear infinite}
+.marquee span{font-family:var(--serif-tc);font-weight:300;font-size:30px;letter-spacing:.06em;white-space:nowrap;padding-right:28px}
+.marquee i{font-style:normal;color:var(--amber);padding-right:28px;font-family:var(--serif);font-size:28px}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* news rows */
+.nrow{display:block;padding:14px 16px;position:relative}
+.nrow+.nrow::before{content:"";position:absolute;top:0;left:16px;right:0;border-top:.5px solid var(--line)}
+.nrow .src{font-size:13px;color:var(--ink-2);display:flex;justify-content:space-between;gap:10px}
+.nrow b{display:block;font-size:16px;font-weight:500;line-height:1.5;margin-top:3px}
+.nrow .why{font-size:14px;color:var(--amber-ink);margin-top:6px}
+
+/* FAQ */
+.faq .acc button{width:100%;display:flex;align-items:center;gap:12px;padding:16px;background:none;border:none;text-align:left;font-size:16px;font-weight:500}
+.faq .acc button .grow{flex:1}
+.faq .pm{width:26px;height:26px;border-radius:50%;background:var(--group);display:grid;place-items:center;flex:none;transition:transform .3s var(--ease),background .2s}
+.faq .pm svg{width:12px;height:12px}
+.faq .acc.open .pm{transform:rotate(45deg);background:var(--ink);color:var(--page)}
+.collapse{display:grid;grid-template-rows:0fr;transition:grid-template-rows .38s var(--ease)}
+.open>.collapse{grid-template-rows:1fr}
+.collapse>div{overflow:hidden}
+.faq .ans{padding:0 16px 16px;color:var(--ink-2);font-size:15px;line-height:1.65}
+
+footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-height:1.7}
+
+/* PROGRESS TAB */
+.bigring{display:flex;flex-direction:column;align-items:center;background:var(--espresso);color:var(--on-dark);border-radius:26px;padding:26px 20px 22px;position:relative;overflow:hidden;isolation:isolate}
+.bigring::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(55% 50% at 50% 42%,rgba(255,170,80,.28),transparent 70%)}
+.bigring .ring{width:178px;height:178px}
+.bigring .ring .track{stroke:rgba(255,200,140,.14)}
+.bigring .st{font-family:var(--serif-tc);font-size:24px;margin:16px 0 2px}
+.bigring .sm{font-size:13px;color:var(--on-dark-2)}
+.mine{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;padding:10px 12px 10px 16px;border-radius:14px;background:var(--amber-soft);font-size:15px}
+.mine button{border:none;background:var(--surface);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:500}
+.qmsg{font-size:14px;margin:10px 4px 0;color:var(--ink-2)}
+.qmsg.bad{color:var(--danger)}
+.steps .acc>button{width:100%;display:flex;align-items:center;gap:14px;padding:14px 16px;background:none;border:none;text-align:left}
+.sdot{width:26px;height:26px;border-radius:50%;flex:none;display:grid;place-items:center;border:1.5px solid var(--ink-3)}
+.sdot svg{width:13px;height:13px}
+.done .sdot{background:var(--amber);border-color:var(--amber);color:#1E1408}
+.now .sdot{border-color:var(--amber);position:relative}
+.now .sdot::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--amber);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(.6);opacity:.6}}
+.steps .t{font-size:17px}
+.todo .t{color:var(--ink-2)}
+.tag{font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;flex:none}
+.done .tag{background:var(--amber-soft);color:var(--amber-ink)}
+.now .tag{background:var(--ink);color:var(--page)}
+.todo .tag{background:var(--group);color:var(--ink-2)}
+.steps .body{padding:0 16px 16px 56px;font-size:15px;color:var(--ink-2)}
+.steps .prep{margin-top:8px;padding:10px 12px;border-radius:12px;background:var(--group);color:var(--ink)}
+
+/* SERVICES TAB */
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sgrid .scard{width:auto;max-width:none;aspect-ratio:4/5}
+.sgrid .scard .art{top:34%;width:40%}
+.sgrid .scard .lab{display:block}
+.sgrid .scard .lab b{font-size:18px}
+.sgrid .scard .chk{position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(255,236,210,.5);display:grid;place-items:center;transition:all .3s var(--spring)}
+.sgrid .scard .chk svg{width:14px;height:14px;opacity:0;transform:scale(.4);transition:all .3s var(--spring)}
+.sgrid .scard[aria-pressed="true"]{box-shadow:0 0 0 2.5px var(--amber)}
+.sgrid .scard[aria-pressed="true"] .chk{background:var(--amber);border-color:var(--amber);color:#1E1408}
+.sgrid .scard[aria-pressed="true"] .chk svg{opacity:1;transform:none}
+.fab{position:fixed;left:50%;bottom:calc(var(--tabh) + var(--bottom) + 14px);z-index:25;transform:translate(-50%,140%);opacity:0;transition:transform .5s var(--spring),opacity .3s;width:min(calc(100% - 40px),420px);border-radius:999px;box-shadow:0 10px 30px rgba(30,18,8,.28)}
+.fab.show{transform:translate(-50%,0);opacity:1}
+.fab .n{min-width:24px;height:24px;border-radius:12px;background:#1E1408;color:var(--amber);font-size:14px;display:grid;place-items:center;padding:0 7px}
+
+/* LEARN TAB */
+.seg{display:flex;background:var(--group);border-radius:10px;padding:2px;position:relative;margin-bottom:6px}
+.seg button{flex:1;position:relative;z-index:1;border:none;background:none;padding:8px 4px;font-size:14px;font-weight:500;color:var(--ink)}
+.seg .thumb{position:absolute;top:2px;bottom:2px;left:2px;border-radius:8px;background:var(--surface);box-shadow:0 2px 8px rgba(0,0,0,.1),0 0 0 .5px rgba(0,0,0,.04);transition:transform .35s var(--ease)}
+.seg button[aria-selected="true"]{font-weight:600}
+.calc{background:var(--espresso);color:var(--on-dark);border-radius:22px;padding:18px;position:relative;overflow:hidden;isolation:isolate}
+.calc::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(70% 60% at 100% 100%,rgba(255,170,80,.25),transparent 70%)}
+.calc h3{font-family:var(--serif-tc);font-weight:400;font-size:20px;margin:0 0 14px}
+.calc .g3{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:8px}
+.calc label{display:block;font-size:12px;color:var(--on-dark-2);margin-bottom:5px}
+.calc input,.calc select{width:100%;font-size:17px;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,236,210,.14);background:rgba(255,236,210,.08);color:var(--on-dark);-webkit-appearance:none;appearance:none;outline:none}
+.calc input:focus,.calc select:focus{border-color:var(--amber)}
+.calc select option{color:#17110D}
+.calc .out{display:flex;justify-content:space-between;align-items:baseline;margin-top:18px}
+.calc .out span{font-size:14px;color:var(--on-dark-2)}
+.calc .out b{font-family:var(--sans);font-size:32px;font-weight:600;color:var(--amber);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.fact{padding:16px}
+.fact+.fact{border-top:.5px solid var(--line)}
+.fact .src{font-size:13px;color:var(--ink-2);display:flex;justify-content:space-between}
+.fact b{display:block;font-size:17px;font-weight:600;margin:4px 0}
+.fact p{margin:0;font-size:15px;color:var(--ink-2);line-height:1.6}
+.fact ul{margin:6px 0 0;padding-left:20px;font-size:15px;color:var(--ink-2);line-height:1.7}
+.fact .why{margin-top:10px;font-size:14px;color:var(--amber-ink)}
+.kstep{display:flex;gap:14px;padding:14px 16px;position:relative}
+.kstep+.kstep::before{content:"";position:absolute;top:0;left:56px;right:0;border-top:.5px solid var(--line)}
+.kstep .n{width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--page);font-size:13px;font-weight:600;display:grid;place-items:center;flex:none;margin-top:1px}
+.kstep b{display:block;font-size:16px;font-weight:600}
+.kstep p{margin:2px 0 0;font-size:14px;color:var(--ink-2)}
+.fee{display:flex;justify-content:space-between;gap:16px;padding:13px 16px;position:relative;font-size:15px}
+.fee+.fee::before{content:"";position:absolute;top:0;left:16px;right:0;border-top:.5px solid var(--line)}
+.fee span:last-child{color:var(--ink-2);text-align:right}
+
+/* CONTACT TAB */
+.profile{display:flex;flex-direction:column;align-items:center;text-align:center;padding:8px 0 4px}
+.profile .av{width:96px;height:96px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#F6CF8E,#B47A32 70%,#7D5020);color:#1E1408;display:grid;place-items:center;font-family:var(--serif-tc);font-size:42px;box-shadow:0 0 0 6px var(--amber-soft),0 16px 40px rgba(180,110,40,.3)}
+.profile h2{font-family:var(--serif-tc);font-weight:400;font-size:28px;margin:16px 0 2px}
+.profile p{margin:0;color:var(--ink-2);font-size:15px}
+.qa{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0 0}
+.qa a,.qa button{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 6px;border-radius:16px;background:var(--surface);border:none;font-size:13px;font-weight:500;color:var(--ink)}
+.qa .ic{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#fff}
+.qa .ic svg{width:20px;height:20px}
+
+/* TAB BAR */
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:30;padding-bottom:var(--bottom);background:var(--glass);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-top:.5px solid var(--line)}
+.tabbar .in{max-width:620px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);height:var(--tabh)}
+.tabbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:10.5px;font-weight:500;color:var(--ink-3);transition:color .2s}
+.tabbar a svg{width:25px;height:25px;transition:transform .35s var(--spring)}
+.tabbar a[aria-current="page"]{color:var(--amber-ink)}
+.tabbar a[aria-current="page"] svg{transform:translateY(-1px) scale(1.06)}
+.tabbar a:active svg{transform:scale(.88)}
+
+/* SHEET */
+.scrim{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .45s var(--ease)}
+.scrim.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;max-width:620px;margin:0 auto;height:calc(100% - var(--top) - 22px);background:var(--page);border-radius:14px 14px 0 0;transform:translateY(105%);transition:transform .5s var(--ease);display:flex;flex-direction:column;box-shadow:0 -10px 40px rgba(0,0,0,.25);visibility:hidden}
+.sheet.on{transform:translateY(0);visibility:visible}
+.sheet.drag{transition:none}
+.sheet .grab{padding:8px 0 0;display:flex;justify-content:center;touch-action:none}
+.sheet .grab i{width:36px;height:5px;border-radius:3px;background:var(--ink-3);opacity:.5}
+.sheet .bar{display:flex;align-items:center;justify-content:space-between;padding:6px 8px 8px;touch-action:none}
+.sheet .bar h3{font-size:17px;font-weight:600;margin:0}
+.sheet .bar button{border:none;background:none;color:var(--amber-ink);font-size:17px;padding:8px 10px;min-width:64px;text-align:left}
+.sheet .bar .sp{min-width:64px}
+.sheet .body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:0 20px calc(24px + var(--bottom))}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:14px 16px}
+.chips button{border:1px solid var(--line);background:var(--page);border-radius:999px;padding:7px 14px;font-size:15px;transition:background .2s,color .2s,transform .2s var(--spring)}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--page);border-color:var(--ink)}
+.chips button:active{transform:scale(.94)}
+.chips.err{box-shadow:inset 0 0 0 1.5px var(--danger);border-radius:16px}
+.done-view{text-align:center;padding-top:20px}
+.done-view .ok{width:76px;height:76px;margin:0 auto 14px;border-radius:50%;background:var(--amber);color:#1E1408;display:grid;place-items:center;animation:pop .6s var(--spring)}
+.done-view .ok svg{width:36px;height:36px;stroke-dasharray:30;stroke-dashoffset:30;animation:draw .5s .25s ease forwards}
+.done-view.warn .ok{background:var(--group);color:var(--ink)}
+@keyframes pop{from{transform:scale(.4);opacity:0}}
+@keyframes draw{to{stroke-dashoffset:0}}
+.done-view h3{font-family:var(--serif-tc);font-weight:400;font-size:26px;margin:0 0 6px}
+.done-view p{color:var(--ink-2);margin:0 0 18px;font-size:15px}
+.summary{text-align:left;background:var(--surface);border-radius:16px;padding:14px 16px;font-size:15px;white-space:pre-line;margin-bottom:16px;line-height:1.7}
+.stack{display:grid;gap:10px}
+
+.toast{position:fixed;left:50%;top:calc(var(--top) + 12px);z-index:60;transform:translate(-50%,calc(-100% - 40px));visibility:hidden;background:var(--ink);color:var(--page);padding:10px 18px;border-radius:999px;font-size:15px;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,.2);transition:transform .45s var(--spring),visibility 0s .45s;pointer-events:none;max-width:calc(100% - 40px);text-align:center}
+.toast.show{transform:translate(-50%,0);visibility:visible;transition:transform .45s var(--spring),visibility 0s}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;transition-delay:0s!important}
+  .marquee .mtrack{animation:none;flex-wrap:wrap;width:auto;justify-content:center}
+}
+@media (min-width:700px){
+  .ltitle{font-size:44px}
+  .hero h1{max-width:52%}
+}
+@media (max-width:360px){
+  .hero .lead{max-width:62%}
+  .glass-chip{display:none}
+  .lamp{right:8%}
+}
 </style>
 </head>
 <body>
+<div id="app">
 
-<header class="hero" id="top">
-  <div class="wrap">
-    <div class="who">
-      <div class="avatar" aria-hidden="true">芝</div>
-      <div><b>黃芝亭 主任</b><span>您的專屬交屋顧問</span></div>
+<!-- ========== 首頁 ========== -->
+<section class="panel" id="home" data-title="黃芝亭 主任" aria-label="首頁">
+  <header class="hero" id="hero">
+    <div class="table" aria-hidden="true"></div>
+    <div class="lamp" aria-hidden="true"><div class="glass"></div><div class="fil"></div><div class="knob"></div><div class="base"></div><div class="reflect"></div></div>
+    <a class="glass-chip press" href="#progress" aria-label="查看目前交屋進度">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" fill="none" stroke="rgba(255,200,140,.2)" stroke-width="5"/><circle id="miniRing" cx="20" cy="20" r="15" fill="none" stroke="#E3A14B" stroke-width="5" stroke-linecap="round" stroke-dasharray="94.25" stroke-dashoffset="94.25" transform="rotate(-90 20 20)" style="transition:stroke-dashoffset 1.2s var(--ease) .6s"/></svg>
+      <div><span>目前進度</span><b id="chipStage">取得使用執照</b></div>
+    </a>
+    <div class="wrap">
+      <div class="who"><div class="av" aria-hidden="true">芝</div><div><b>黃芝亭 主任</b><span>您的專屬交屋顧問</span></div></div>
+      <h1>從簽約<br>到入住</h1>
+      <p class="lead">交屋進度隨時看,窗簾、家具、油漆,一次幫您安排好。</p>
+      <a class="pill light press cta" href="#progress">查看交屋進度<span class="arr"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 11l6-6M6 5h5v5"/></svg></span></a>
+      <div class="tags" id="heroTags"></div>
     </div>
-    <h1>從簽約到拿鑰匙,<br>都由我陪您走完</h1>
-    <p>交屋進度隨時看,窗簾、家具、油漆一次幫您安排好。</p>
+  </header>
 
-    <div class="journey" aria-label="目前交屋進度">
-      <div class="journey-head"><b id="jTitle">取得使用執照中</b><span id="jStep">第 4 步,共 7 步</span></div>
-      <div class="track" id="track">
-        <div class="fill" id="fill"></div>
-      </div>
-      <div class="track-labels"><span>簽約</span><span>現在</span><span>入住</span></div>
-    </div>
-  </div>
-</header>
-
-<nav class="nav" aria-label="頁面導覽">
   <div class="wrap">
-    <a href="#progress" data-sec="progress">交屋進度</a>
-    <a href="#services" data-sec="services">一條龍服務</a>
-    <a href="#request" data-sec="request">登記需求</a>
-    <a href="#learn" data-sec="learn">房市知識</a>
-    <a href="#contact" data-sec="contact">聯絡主任</a>
+    <div class="shead" style="margin-top:28px"><h2>您的交屋進度</h2></div>
+    <div class="ringcard">
+      <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+        <defs><linearGradient id="rg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6C77C"/><stop offset="1" stop-color="#C9822E"/></linearGradient></defs>
+        <circle class="track" cx="60" cy="60" r="50" fill="none" stroke-width="14"/>
+        <circle class="prog" data-ring cx="60" cy="60" r="50" fill="none" stroke="url(#rg1)" stroke-width="14" stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="314.16" transform="rotate(-90 60 60)"/>
+        <text class="ringtxt" x="60" y="66" text-anchor="middle" font-size="22" fill="currentColor" data-ringtxt>4/7</text>
+      </svg>
+      <div>
+        <div class="k" data-stepk>第 4 步,共 7 步</div>
+        <div class="v" data-stagev>取得使用執照中</div>
+        <a class="lnk" href="#progress">查詢我家進度 <svg class="chev" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+
+    <div class="shead"><h2>一條龍服務</h2><a class="pill press" href="#services">全部服務<span class="arr"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 11l6-6M6 5h5v5"/></svg></span></a></div>
+    <div class="rail" id="rail"></div>
   </div>
-</nav>
 
-<main class="wrap">
-  <section class="block" id="progress">
-    <h2>交屋進度</h2>
-    <p class="sub">點一下每個階段,看看會發生什麼、您可以先準備什麼。</p>
-    <form class="lookup" id="lookup" novalidate>
-      <h3>查詢我家進度</h3>
-      <div class="row3">
-        <div class="field">
-          <label for="q-bldg">棟別</label>
-          <select id="q-bldg"><option value="">請選擇</option><option>A棟</option><option>B棟</option><option>C棟</option><option>D棟</option></select>
-        </div>
-        <div class="field">
-          <label for="q-floor">樓層</label>
-          <input id="q-floor" inputmode="numeric" placeholder="例如:5">
-        </div>
-        <div class="field">
-          <label for="q-last3">手機末 3 碼</label>
-          <input id="q-last3" inputmode="numeric" maxlength="3" autocomplete="off" placeholder="例如:678">
-        </div>
+  <div class="marquee" aria-hidden="true"><div class="mtrack" id="mq"></div></div>
+
+  <div class="wrap">
+    <div class="shead"><h2>房市快訊</h2><a class="pill press" href="#learn">更多<span class="arr"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 11l6-6M6 5h5v5"/></svg></span></a></div>
+    <div class="group" id="homeNews"></div>
+
+    <div class="shead"><h2>常見問題</h2></div>
+    <div class="group faq" id="faq"></div>
+
+    <footer>黃芝亭 主任|預售屋交屋一條龍服務<br>最後更新:2026/10/06</footer>
+  </div>
+</section>
+
+<!-- ========== 交屋進度 ========== -->
+<section class="panel" id="progress" data-title="交屋進度" aria-label="交屋進度">
+  <div class="wrap">
+    <h1 class="ltitle">交屋進度</h1>
+    <p class="lsub">輸入您的戶別,查看專屬進度。</p>
+    <div class="bigring">
+      <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+        <defs><linearGradient id="rg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F9D193"/><stop offset="1" stop-color="#D08A33"/></linearGradient></defs>
+        <circle class="track" cx="60" cy="60" r="50" fill="none" stroke-width="12"/>
+        <circle class="prog" data-ring cx="60" cy="60" r="50" fill="none" stroke="url(#rg2)" stroke-width="12" stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="314.16" transform="rotate(-90 60 60)"/>
+        <text class="ringtxt" x="60" y="62" text-anchor="middle" font-size="26" fill="#F6EEE3" data-ringtxt>4/7</text>
+        <text x="60" y="80" text-anchor="middle" font-size="10" fill="rgba(246,238,227,.6)">步驟</text>
+      </svg>
+      <div class="st" data-stagev>取得使用執照中</div>
+      <div class="sm" id="tlNote">目前顯示範例進度</div>
+    </div>
+    <div class="mine" id="mine" hidden><span id="mineText"></span><button type="button" class="press" id="mineReset">看範例</button></div>
+
+    <form id="lookup" novalidate>
+      <div class="gcap">查詢我家進度</div>
+      <div class="group">
+        <label class="row"><span class="lbl grow">棟別</span><select id="q-bldg" aria-label="棟別"><option value="">請選擇</option><option>A棟</option><option>B棟</option><option>C棟</option><option>D棟</option></select></label>
+        <label class="row"><span class="lbl">樓層</span><input id="q-floor" inputmode="numeric" placeholder="例如 5" autocomplete="off"></label>
+        <label class="row"><span class="lbl" style="white-space:nowrap">手機末 3 碼</span><input id="q-last3" inputmode="numeric" maxlength="3" placeholder="例如 678" autocomplete="off"></label>
       </div>
-      <p class="lookup-msg" id="q-msg" role="status" hidden></p>
-      <button class="btn primary" type="submit" id="q-btn">查詢</button>
+      <p class="qmsg" id="q-msg" role="status" hidden></p>
+      <button class="btn dark press" type="submit" id="q-btn" style="margin-top:14px">查詢</button>
     </form>
-    <div class="mine" id="mine" hidden><span id="mineText"></span><button type="button" id="mineReset">看範例</button></div>
-    <ol class="tl" id="timeline"></ol>
-    <p class="note" id="tlNote">進度為範例,實際時程以主任通知為準。</p>
-  </section>
 
-  <section class="block" id="services">
-    <h2>一條龍服務</h2>
-    <p class="sub">點選您需要的項目,會自動帶入下方需求表。</p>
-    <div class="svc-grid" id="svcGrid"></div>
-    <p class="hint" id="svcHint">還沒選擇,可以多選喔</p>
-  </section>
+    <div class="gcap" style="margin-top:30px">每個階段</div>
+    <div class="group steps" id="timeline"></div>
+    <p class="gfoot">點一下階段,看看會發生什麼、可以先準備什麼。實際時程以主任通知為準。</p>
+  </div>
+</section>
 
-  <section class="block" id="request">
-    <h2>登記需求</h2>
-    <p class="sub">填好後一鍵用 LINE 或簡訊傳給我,我會盡快回覆您。</p>
-    <form class="form" id="form" novalidate>
-      <div class="field">
-        <label>需要的服務</label>
-        <div class="chips" id="chips"></div>
-      </div>
-      <div class="field" id="f-name">
-        <label for="name">您的稱呼</label>
-        <input id="name" autocomplete="name" placeholder="例如:王小姐">
-        <div class="err-msg">請填寫稱呼,方便我聯繫您</div>
-      </div>
-      <div class="field" id="f-phone">
-        <label for="phone">手機號碼</label>
-        <input id="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="09xx-xxx-xxx">
-        <div class="err-msg">請填寫 10 碼手機號碼,例如 0912345678</div>
-      </div>
-      <div class="row2">
-        <div class="field">
-          <label for="bldg">棟別</label>
-          <select id="bldg"><option value="">請選擇</option><option>A棟</option><option>B棟</option><option>C棟</option><option>D棟</option></select>
-        </div>
-        <div class="field">
-          <label for="floor">樓層 <small>(選填)</small></label>
-          <input id="floor" inputmode="numeric" placeholder="例如:5">
-        </div>
-      </div>
-      <div class="field">
-        <label for="time">方便聯絡的時間</label>
-        <select id="time"><option>都可以</option><option>平日白天</option><option>平日晚上</option><option>週末假日</option></select>
-      </div>
-      <div class="field">
-        <label for="memo">想說的話 <small>(選填)</small></label>
-        <textarea id="memo" placeholder="例如:想要遮光窗簾、預算大約 5 萬"></textarea>
-      </div>
-      <button class="btn primary" type="submit">確認並傳送需求</button>
-    </form>
-  </section>
+<!-- ========== 一條龍服務 ========== -->
+<section class="panel" id="services" data-title="一條龍服務" aria-label="一條龍服務">
+  <div class="wrap">
+    <h1 class="ltitle">一條龍服務</h1>
+    <p class="lsub">選好需要的項目,一次登記給主任。</p>
+    <div class="sgrid" id="svcGrid"></div>
+    <p class="gfoot" style="text-align:center;margin-top:16px">可以多選。費用依項目與坪數報價,確認後才會進行。</p>
+  </div>
+</section>
 
-  <section class="block" id="learn">
-    <h2>房市知識</h2>
-    <p class="sub">最新房市動態、銀行房貸消息與過戶常識,幫您做好準備。</p>
+<!-- ========== 房市知識 ========== -->
+<section class="panel" id="learn" data-title="房市知識" aria-label="房市知識">
+  <div class="wrap">
+    <h1 class="ltitle">房市知識</h1>
+    <p class="lsub">房市動態、房貸消息與過戶常識。</p>
     <div class="seg" role="tablist" aria-label="知識分類">
+      <span class="thumb" id="segThumb"></span>
       <button role="tab" aria-selected="true" aria-controls="p-news" id="t-news">房市新聞</button>
       <button role="tab" aria-selected="false" aria-controls="p-bank" id="t-bank">銀行房貸</button>
       <button role="tab" aria-selected="false" aria-controls="p-law" id="t-law">過戶小學堂</button>
     </div>
 
-    <div class="panel" id="p-news" role="tabpanel" aria-labelledby="t-news">
-      <p class="updated" id="newsUpdated">黃主任整理|更新於 2026/10/06</p>
-      <div id="newsList">
-      <a class="news" href="https://news.housefun.com.tw/" target="_blank" rel="noopener">
-        <div class="meta"><span>好房網</span><span>10/06</span></div>
-        <b>8 月房價指數價量齊揚,淡季出現回溫訊號</b>
-        <p>全國房價指數較上月微幅上漲,交易量也同步增加。</p>
-        <div class="why">給您的提醒:市場沒有大跌,交屋後的資產價值相對穩定。</div>
-      </a>
-      <a class="news" href="https://news.housefun.com.tw/" target="_blank" rel="noopener">
-        <div class="meta"><span>好房網</span><span>10/06</span></div>
-        <b>預售屋解約統計出爐,台中西屯區居全台前段</b>
-        <p>中南部部分買方因資金不足選擇解約,西屯區累計解約件數偏高。</p>
-        <div class="why">給您的提醒:提早規劃自備款與貸款,就能安心交屋,有疑問隨時問我。</div>
-      </a>
-      <a class="news" href="https://www.ctee.com.tw/livenews/house" target="_blank" rel="noopener">
-        <div class="meta"><span>工商時報</span><span>09/26</span></div>
-        <b>台中房市降溫,五大建商仍推百億大案</b>
-        <p>建商看好台中產業與人口成長,逆勢推出新案。</p>
-        <div class="why">給您的提醒:中科、惠來產業園區帶動就業,台中長期需求有支撐。</div>
-      </a>
-      <a class="news" href="https://www.chinatimes.com/newspapers/20260923000584-260110" target="_blank" rel="noopener">
-        <div class="meta"><span>中國時報</span><span>09/23</span></div>
-        <b>央行鬆綁信用管制,業界看好市場信心回溫</b>
-        <p>整體房市呈現量縮、價穩、區域分化,政策逐步放寬。</p>
-        <div class="why">給您的提醒:有換屋計畫的朋友,第二戶貸款空間變大了。</div>
-      </a>
-      </div>
-      <p class="disc" id="newsNote" hidden>新聞每天早上 8 點、傍晚 6 點自動更新,點標題可閱讀原文。</p>
+    <div id="p-news" role="tabpanel" aria-labelledby="t-news">
+      <div class="gcap" id="newsUpdated">黃主任整理|更新於 2026/10/06</div>
+      <div class="group" id="newsList"></div>
+      <p class="gfoot" id="newsNote" hidden>每天早上 8 點、傍晚 6 點自動更新,點標題可閱讀原文。</p>
     </div>
 
-    <div class="panel" id="p-bank" role="tabpanel" aria-labelledby="t-bank" hidden>
-      <p class="updated">黃主任整理|更新於 2026/10/06</p>
+    <div id="p-bank" role="tabpanel" aria-labelledby="t-bank" hidden>
+      <div class="gcap">房貸月付試算</div>
       <div class="calc">
-        <h3>房貸月付試算</h3>
-        <div class="grid3">
+        <h3>每月要繳多少?</h3>
+        <div class="g3">
           <div><label for="c-amt">貸款(萬元)</label><input id="c-amt" inputmode="decimal" value="800"></div>
           <div><label for="c-rate">年利率 %</label><input id="c-rate" inputmode="decimal" value="2.275"></div>
           <div><label for="c-yr">年限</label><select id="c-yr"><option>20</option><option selected>30</option><option>40</option></select></div>
         </div>
         <div class="out"><span>每月約需繳</span><b id="c-out">—</b></div>
       </div>
-      <p class="disc" style="margin-bottom:14px">以本息平均攤還概算,實際以銀行核貸為準。</p>
-
-      <div class="fact">
-        <div class="meta"><span>中央銀行</span><span>9/17 理監事會</span></div>
-        <b>利率連 10 季不變,第二戶房貸放寬到 7 成</b>
-        <p>重貼現率維持 2%。自 9 月 18 日起,自然人第二戶購屋貸款上限從 6 成調高到 7 成。</p>
-        <div class="why">給您的提醒:先買後賣的換屋族,自備款壓力少了一成。</div>
-      </div>
-      <div class="fact">
-        <div class="meta"><span>財政部</span><span>8/1 上路</span></div>
-        <b>青安 3.0 開跑,首購族要看新門檻</b>
-        <ul>
-          <li>申請期間到 2029 年 7 月 31 日</li>
-          <li>申貸時須未滿 50 歲、本人年所得不超過 200 萬</li>
-          <li>額度:一般 1,000 萬、新婚 1,200 萬、育兒家庭 1,500 萬</li>
-          <li>前 3 年利率約 1.775%,之後每年少補貼半碼,回到約 2.275%</li>
-          <li>各縣市有房屋總價上限,只剩一段式機動利率</li>
-        </ul>
-      </div>
-      <div class="fact">
-        <b>交屋前的貸款小提醒</b>
-        <p>今年銀行鑑價普遍較保守,實際核貸成數可能比預期低。建議交屋前 3 個月先找銀行試估,並多預留一到兩成自備款。</p>
-      </div>
-    </div>
-
-    <div class="panel" id="p-law" role="tabpanel" aria-labelledby="t-law" hidden>
-      <div class="fact">
-        <b>預售屋交屋過戶流程</b>
-        <div style="margin-top:10px">
-          <div class="kstep"><span class="n">1</span><div><b>建商取得使照、辦理保存登記</b><p>房子先登記在建商名下,才能過戶給您。</p></div></div>
-          <div class="kstep"><span class="n">2</span><div><b>銀行對保</b><p>和銀行確認貸款金額、利率與年限,簽署借款契約。</p></div></div>
-          <div class="kstep"><span class="n">3</span><div><b>用印、繳稅</b><p>提供印章與證件給代書,繳納契稅、印花稅。</p></div></div>
-          <div class="kstep"><span class="n">4</span><div><b>過戶登記、設定抵押</b><p>代書送地政事務所,完成所有權移轉與銀行抵押設定。</p></div></div>
-          <div class="kstep"><span class="n">5</span><div><b>銀行撥款、點交</b><p>貸款撥給建商後,驗屋無誤就能拿鑰匙。</p></div></div>
+      <p class="gfoot">以本息平均攤還概算,實際以銀行核貸為準。</p>
+      <div class="gcap">最新消息|黃主任整理 2026/10/06</div>
+      <div class="group">
+        <div class="fact">
+          <div class="src"><span>中央銀行</span><span>9/17 理監事會</span></div>
+          <b>利率連 10 季不變,第二戶房貸放寬到 7 成</b>
+          <p>重貼現率維持 2%。自 9 月 18 日起,自然人第二戶購屋貸款上限從 6 成調高到 7 成。</p>
+          <div class="why">給您的提醒:先買後賣的換屋族,自備款壓力少了一成。</div>
+        </div>
+        <div class="fact">
+          <div class="src"><span>財政部</span><span>8/1 上路</span></div>
+          <b>青安 3.0 開跑,首購族要看新門檻</b>
+          <ul>
+            <li>申請期間到 2029 年 7 月 31 日</li>
+            <li>申貸時須未滿 50 歲、本人年所得不超過 200 萬</li>
+            <li>額度:一般 1,000 萬、新婚 1,200 萬、育兒家庭 1,500 萬</li>
+            <li>前 3 年利率約 1.775%,之後每年少補貼半碼,回到約 2.275%</li>
+            <li>各縣市有房屋總價上限,只剩一段式機動利率</li>
+          </ul>
+        </div>
+        <div class="fact">
+          <b>交屋前的貸款小提醒</b>
+          <p>今年銀行鑑價普遍較保守,實際核貸成數可能比預期低。建議交屋前 3 個月先找銀行試估,並多預留一到兩成自備款。</p>
         </div>
       </div>
-      <div class="fact">
-        <b>過戶會用到的費用</b>
-        <div class="tbl">
-          <table class="fees">
-            <tr><td>契稅</td><td>房屋評定現值 × 6%</td></tr>
-            <tr><td>印花稅</td><td>公契金額 × 0.1%</td></tr>
-            <tr><td>登記規費</td><td>申報地價加房屋現值 × 0.1%</td></tr>
-            <tr><td>書狀費</td><td>每張約 80 元</td></tr>
-            <tr><td>抵押設定費</td><td>設定金額 × 0.1%</td></tr>
-            <tr><td>代書費</td><td>依代書與案件而定,可先詢價</td></tr>
-          </table>
-        </div>
-      </div>
-      <div class="fact">
-        <b>過戶要準備什麼</b>
-        <ul>
-          <li>身分證正本、印鑑章與印鑑證明</li>
-          <li>戶籍謄本(要申請自住稅率時需要)</li>
-          <li>買賣契約書與繳款收據</li>
-        </ul>
-      </div>
-      <div class="fact">
-        <b>交屋後別忘了</b>
-        <ul>
-          <li>辦妥戶籍遷入,申請房屋稅、地價稅自住優惠稅率</li>
-          <li>地價稅自用住宅稅率,要在當年 9 月 22 日前申請</li>
-          <li>保留驗屋紀錄,保固期內有問題可請建商修繕</li>
-        </ul>
-      </div>
-      <p class="disc">費用與流程依個案略有不同,實際以代書試算為準。</p>
     </div>
-  </section>
 
-  <section class="block" id="contact">
-    <h2>聯絡主任</h2>
-    <p class="sub">有任何問題都歡迎直接找我。</p>
-    <div class="card-contact">
-      <div class="who">
-        <div class="avatar" aria-hidden="true">芝</div>
-        <div><b>黃芝亭 主任</b><span>交屋與售後服務</span></div>
+    <div id="p-law" role="tabpanel" aria-labelledby="t-law" hidden>
+      <div class="gcap">預售屋交屋過戶流程</div>
+      <div class="group">
+        <div class="kstep"><span class="n">1</span><div><b>建商取得使照、辦理保存登記</b><p>房子先登記在建商名下,才能過戶給您。</p></div></div>
+        <div class="kstep"><span class="n">2</span><div><b>銀行對保</b><p>和銀行確認貸款金額、利率與年限,簽署借款契約。</p></div></div>
+        <div class="kstep"><span class="n">3</span><div><b>用印、繳稅</b><p>提供印章與證件給代書,繳納契稅、印花稅。</p></div></div>
+        <div class="kstep"><span class="n">4</span><div><b>過戶登記、設定抵押</b><p>代書送地政事務所,完成所有權移轉與銀行抵押設定。</p></div></div>
+        <div class="kstep"><span class="n">5</span><div><b>銀行撥款、點交</b><p>貸款撥給建商後,驗屋無誤就能拿鑰匙。</p></div></div>
       </div>
-      <div class="cline"><div><span>電話</span><br><b>0956-775-561</b></div><a class="copy" href="tel:0956775561">撥打</a></div>
-      <div class="cline"><div><span>LINE ID</span><br><b>0956775561</b></div><button class="copy" id="copyLine" type="button">複製</button></div>
-      <a class="btn line" style="margin-top:14px" href="https://line.me/R/ti/p/~0956775561" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8.1-6C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>
-        加我 LINE 好友
-      </a>
+      <div class="gcap">過戶會用到的費用</div>
+      <div class="group">
+        <div class="fee"><span>契稅</span><span>房屋評定現值 × 6%</span></div>
+        <div class="fee"><span>印花稅</span><span>公契金額 × 0.1%</span></div>
+        <div class="fee"><span>登記規費</span><span>申報地價加房屋現值 × 0.1%</span></div>
+        <div class="fee"><span>書狀費</span><span>每張約 80 元</span></div>
+        <div class="fee"><span>抵押設定費</span><span>設定金額 × 0.1%</span></div>
+        <div class="fee"><span>代書費</span><span>依代書與案件而定</span></div>
+      </div>
+      <div class="gcap">過戶要準備什麼</div>
+      <div class="group"><div class="fact"><ul style="margin:0">
+        <li>身分證正本、印鑑章與印鑑證明</li>
+        <li>戶籍謄本(要申請自住稅率時需要)</li>
+        <li>買賣契約書與繳款收據</li>
+      </ul></div></div>
+      <div class="gcap">交屋後別忘了</div>
+      <div class="group"><div class="fact"><ul style="margin:0">
+        <li>辦妥戶籍遷入,申請房屋稅、地價稅自住優惠稅率</li>
+        <li>地價稅自用住宅稅率,要在當年 9 月 22 日前申請</li>
+        <li>保留驗屋紀錄,保固期內有問題可請建商修繕</li>
+      </ul></div></div>
+      <p class="gfoot">費用與流程依個案略有不同,實際以代書試算為準。</p>
     </div>
-  </section>
-  <footer>黃芝亭 主任|預售屋交屋一條龍服務<br>最後更新:2026/10/06</footer>
-</main>
+  </div>
+</section>
 
-<div class="bar">
+<!-- ========== 聯絡主任 ========== -->
+<section class="panel" id="contact" data-title="聯絡主任" aria-label="聯絡主任">
+  <div class="wrap">
+    <h1 class="ltitle">聯絡主任</h1>
+    <p class="lsub">有任何問題,都歡迎直接找我。</p>
+    <div class="profile">
+      <div class="av" aria-hidden="true">芝</div>
+      <h2>黃芝亭 主任</h2>
+      <p>交屋與售後服務</p>
+    </div>
+    <div class="qa">
+      <a class="press" href="tel:0956775561"><span class="ic" style="background:#3C8C5A"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></span>打電話</a>
+      <a class="press" href="https://line.me/R/ti/p/~0956775561" target="_blank" rel="noopener"><span class="ic" style="background:var(--line-green)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8.1-6C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg></span>加 LINE</a>
+      <button class="press" type="button" data-open-sheet><span class="ic" style="background:var(--amber);color:#1E1408"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>登記需求</button>
+    </div>
+    <div class="gcap" style="margin-top:28px">聯絡資訊</div>
+    <div class="group">
+      <a class="row press" href="tel:0956775561"><span class="lbl grow">電話</span><span class="val">0956-775-561</span><svg class="chev" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"/></svg></a>
+      <button class="row press" type="button" id="copyLine"><span class="lbl grow">LINE ID</span><span class="val">0956775561</span><span class="meta" style="color:var(--amber-ink);font-weight:500">複製</span></button>
+    </div>
+    <footer>黃芝亭 主任|預售屋交屋一條龍服務</footer>
+  </div>
+</section>
+
+</div><!-- /#app -->
+
+<div class="topbar" id="topbar"><div class="inner"><span class="t" id="topTitle"></span></div></div>
+
+<nav class="tabbar" aria-label="主要分頁">
   <div class="in">
-    <a href="tel:0956775561" aria-label="打電話給主任">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>打電話
-    </a>
-    <a href="https://line.me/R/ti/p/~0956775561" target="_blank" rel="noopener" aria-label="加主任 LINE">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8.1-6C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>LINE
-    </a>
-    <button class="main" type="button" id="barReq">登記需求<span class="badge" id="badge">0</span></button>
+    <a href="#home" data-tab="home"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M4.5 12.5 14 4.5l9.5 8V23a1 1 0 0 1-1 1H17v-6.5h-6V24H5.5a1 1 0 0 1-1-1z"/></svg>首頁</a>
+    <a href="#progress" data-tab="progress"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="14" cy="14" r="9.5" opacity=".35"/><path d="M14 4.5a9.5 9.5 0 0 1 9 12.6"/><circle cx="14" cy="14" r="5" opacity=".35"/><path d="M14 9a5 5 0 0 1 5 5"/></svg>進度</a>
+    <a href="#services" data-tab="services"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 13V10a2.5 2.5 0 0 1 2.5-2.5h11A2.5 2.5 0 0 1 22 10v3"/><path d="M3.5 15.5a2.2 2.2 0 0 1 4.4 0V18h12.2v-2.5a2.2 2.2 0 0 1 4.4 0V22H3.5z"/><path d="M6.5 22v2M21.5 22v2"/></svg>服務</a>
+    <a href="#learn" data-tab="learn"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5.5h14v17a1.5 1.5 0 0 0 1.5 1.5H6.5A1.5 1.5 0 0 1 5 22.5z"/><path d="M19 10h3.5v12.5a1.5 1.5 0 0 1-3 0"/><path d="M8.5 9.5h7M8.5 13h7M8.5 16.5h4.5"/></svg>知識</a>
+    <a href="#contact" data-tab="contact"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M14 4.5c5.8 0 10.5 3.8 10.5 8.5S19.8 21.5 14 21.5c-1 0-2-.1-2.9-.3L6 24l1-4.3C4.9 18.2 3.5 15.7 3.5 13 3.5 8.3 8.2 4.5 14 4.5z"/></svg>聯絡</a>
   </div>
-</div>
+</nav>
 
-<div class="sheet-bg" id="sheetBg" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
-  <div class="sheet">
-    <h3 id="sheetTitle">需求整理好了</h3>
-    <p id="sheetDesc">選一個方式傳給黃主任,訊息內容已經幫您寫好。</p>
-    <div class="summary" id="summary"></div>
-    <a class="btn line" id="sendLine" target="_blank" rel="noopener">用 LINE 傳送</a>
-    <a class="btn primary" id="sendSms">用簡訊傳送</a>
-    <button class="btn ghost" type="button" id="closeSheet">返回修改</button>
+<button class="btn amber fab" type="button" id="fab" data-open-sheet aria-hidden="true" tabindex="-1">登記需求<span class="n" id="fabN">0</span></button>
+
+<!-- 需求表單抽屜 -->
+<div class="scrim" id="scrim"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" aria-hidden="true">
+  <div class="grab" id="grab"><i></i></div>
+  <div class="bar" id="sheetBar">
+    <button type="button" id="sheetCancel">取消</button>
+    <h3 id="sheetTitle">登記需求</h3>
+    <span class="sp"></span>
+  </div>
+  <div class="body" id="sheetBody">
+    <form id="form" novalidate>
+      <div class="gcap" style="margin-top:6px">需要的服務(可多選)</div>
+      <div class="group"><div class="chips" id="chips"></div></div>
+      <p class="ferr" id="e-svc" hidden>請至少選一項需要的服務</p>
+
+      <div class="gcap">聯絡資料</div>
+      <div class="group">
+        <label class="row" id="f-name"><span class="lbl">稱呼</span><input id="name" autocomplete="name" placeholder="例如 王小姐"></label>
+        <label class="row" id="f-phone"><span class="lbl">手機</span><input id="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="0912 345 678"></label>
+      </div>
+      <p class="ferr" id="e-info" hidden></p>
+
+      <div class="gcap">戶別</div>
+      <div class="group">
+        <label class="row"><span class="lbl grow">棟別</span><select id="bldg" aria-label="棟別"><option value="">請選擇</option><option>A棟</option><option>B棟</option><option>C棟</option><option>D棟</option></select></label>
+        <label class="row"><span class="lbl">樓層</span><input id="floor" inputmode="numeric" placeholder="選填,例如 5"></label>
+      </div>
+
+      <div class="gcap">其他</div>
+      <div class="group">
+        <label class="row"><span class="lbl grow">方便聯絡時間</span><select id="time" aria-label="方便聯絡時間"><option>都可以</option><option>平日白天</option><option>平日晚上</option><option>週末假日</option></select></label>
+        <label class="row" style="align-items:flex-start;flex-direction:column;gap:6px"><span class="lbl">想說的話(選填)</span><textarea id="memo" rows="3" placeholder="例如:想要遮光窗簾,預算大約 5 萬"></textarea></label>
+      </div>
+      <button class="btn dark press" type="submit" id="subBtn" style="margin-top:22px">送出需求</button>
+      <p class="gfoot" style="text-align:center">送出後主任會盡快與您聯繫。</p>
+    </form>
+
+    <div class="done-view" id="doneView" hidden>
+      <div class="ok" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+      <h3 id="doneTitle">已收到您的需求</h3>
+      <p id="doneDesc">主任會盡快與您聯繫。</p>
+      <div class="summary" id="summary"></div>
+      <div class="stack">
+        <a class="btn line press" id="sendLine" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8.1-6C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>用 LINE 傳給主任</a>
+        <a class="btn plain press" id="sendSms">用簡訊傳給主任</a>
+        <button class="btn dark press" type="button" id="doneBtn">完成</button>
+      </div>
+    </div>
   </div>
 </div>
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
 <script>
+const $=id=>document.getElementById(id);
 const STAGES=[
-  {t:"簽約完成",s:"done",d:"合約與付款期程都已確認。",p:"妥善保存合約與繳款收據。"},
-  {t:"建築施工",s:"done",d:"建商依進度施工,我會定期回報工地狀況。",p:"可以開始想想喜歡的裝潢風格。"},
-  {t:"結構完成",s:"done",d:"房子的骨架已完成,格局正式定案。",p:"適合開始規劃家具尺寸與系統櫃。"},
-  {t:"取得使用執照",s:"now",d:"政府審核通過後,房子就能正式交屋。",p:"建議先預約窗簾、系統櫃丈量,交屋後就能馬上施工。"},
-  {t:"驗屋",s:"todo",d:"我會陪您一起驗屋,並提供驗屋清單。",p:"準備手機拍照記錄,有問題當場登記。"},
-  {t:"交屋",s:"todo",d:"點交鑰匙、水電錶與相關文件。",p:"帶齊身分證與印章。"},
-  {t:"入住",s:"todo",d:"清潔、搬家、家具進場,正式入住。",p:"提早兩週預約搬家公司。"}
+  {t:"簽約完成",d:"合約與付款期程都已確認。",p:"妥善保存合約與繳款收據。"},
+  {t:"建築施工",d:"建商依進度施工,我會定期回報工地狀況。",p:"可以開始想想喜歡的裝潢風格。"},
+  {t:"結構完成",d:"房子的骨架已完成,格局正式定案。",p:"適合開始規劃家具尺寸與系統櫃。"},
+  {t:"取得使用執照",d:"政府審核通過後,房子就能正式交屋。",p:"建議先預約窗簾、系統櫃丈量,交屋後就能馬上施工。"},
+  {t:"驗屋",d:"我會陪您一起驗屋,並提供驗屋清單。",p:"準備手機拍照記錄,有問題當場登記。"},
+  {t:"交屋",d:"點交鑰匙、水電錶與相關文件。",p:"帶齊身分證與印章。"},
+  {t:"入住",d:"清潔、搬家、家具進場,正式入住。",p:"提早兩週預約搬家公司。"}
 ];
+const EXAMPLE_IDX=3;
 const TAGS={done:"已完成",now:"進行中",todo:"尚未開始"};
-const I=p=>`<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+const I=p=>`<svg viewBox="0 0 24 24" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
 const SERVICES=[
-  {n:"窗簾",d:"到府丈量,遮光、紗簾都有",i:I('<path d="M3 3h18M5 3v18M19 3v18"/><path d="M5 3c0 6 4 10 5 18M19 3c0 6-4 10-5 18"/>')},
+  {n:"窗簾",d:"到府丈量,遮光、紗簾",i:I('<path d="M3 3h18M5 3v18M19 3v18"/><path d="M5 3c0 6 4 10 5 18M19 3c0 6-4 10-5 18"/>')},
   {n:"家具",d:"沙發、床組、餐桌搭配",i:I('<path d="M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3"/><path d="M2 13a2 2 0 0 1 4 0v2h12v-2a2 2 0 0 1 4 0v5H2z"/><path d="M5 18v2M19 18v2"/>')},
   {n:"油漆",d:"牆面配色與施工",i:I('<rect x="3" y="3" width="16" height="6" rx="1"/><path d="M19 6h2v5h-9v3"/><rect x="10" y="14" width="4" height="7" rx="1"/>')},
   {n:"系統櫃",d:"衣櫃、廚櫃量身訂做",i:I('<rect x="4" y="3" width="16" height="18" rx="1"/><path d="M12 3v18M10 10v3M14 10v3"/>')},
@@ -503,45 +648,100 @@ const SERVICES=[
   {n:"清潔",d:"交屋後細清,乾淨入住",i:I('<path d="M12 3v8"/><path d="M8 11h8l1 10H7z"/><path d="M10 15v3M14 15v3"/>')},
   {n:"搬家",d:"打包、運送一次搞定",i:I('<path d="M1 7h13v10H1zM14 10h4l3 3v4h-7"/><circle cx="5" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>')}
 ];
-const CHECK='<svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>';
-const HOME='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>';
+const FAQ=[
+  ["交屋前我需要準備什麼?","身分證正本、印鑑章與印鑑證明,以及買賣契約書和繳款收據。貸款部分,建議交屋前 3 個月先找銀行試估,並多預留一到兩成自備款。"],
+  ["驗屋可以請主任陪同嗎?","可以。我會陪您一起驗屋,並提供驗屋清單。有問題當場拍照登記,請建商在交屋前修繕。"],
+  ["一條龍服務怎麼收費?","依項目與坪數不同而報價。您先在「服務」選好需要的項目並登記,我會幫您安排,確認後才會進行。"],
+  ["怎麼查我家的交屋進度?","到下方「進度」分頁,輸入棟別、樓層與手機末 3 碼,就能看到您家目前在哪個階段。"]
+];
+const FALLBACK_NEWS=[
+  {source:"好房網",date:"2026-10-06",title:"8 月房價指數價量齊揚,淡季出現回溫訊號",link:"https://news.housefun.com.tw/",why:"市場沒有大跌,交屋後的資產價值相對穩定。"},
+  {source:"好房網",date:"2026-10-06",title:"預售屋解約統計出爐,台中西屯區居全台前段",link:"https://news.housefun.com.tw/",why:"提早規劃自備款與貸款,就能安心交屋。"},
+  {source:"工商時報",date:"2026-09-26",title:"台中房市降溫,五大建商仍推百億大案",link:"https://www.ctee.com.tw/livenews/house",why:"中科、惠來產業園區帶動就業,台中長期需求有支撐。"},
+  {source:"中國時報",date:"2026-09-23",title:"央行鬆綁信用管制,業界看好市場信心回溫",link:"https://www.chinatimes.com/newspapers/20260923000584-260110",why:"有換屋計畫的朋友,第二戶貸款空間變大了。"}
+];
+const ARROW='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 11l6-6M6 5h5v5"/></svg>';
+const PLUS='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 3v10M3 8h10"/></svg>';
+const CHECK='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-7"/></svg>';
+const CHEV='<svg class="chev" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"/></svg>';
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 let picked=new Set();
 
-/* Supabase(網址與公開金鑰在 supabase-config.js) */
 const db=window.supabase&&window.SUPABASE_URL?window.supabase.createClient(window.SUPABASE_URL,window.SUPABASE_KEY):null;
 
-/* hero track + timeline:cur 是「進行中」那一步的索引 */
-const EXAMPLE_IDX=STAGES.findIndex(s=>s.s==='now');
-const track=document.getElementById('track'),fill=document.getElementById('fill'),tl=document.getElementById('timeline');
-function renderProgress(cur){
+function toast(t){const e=$('toast');e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),2200)}
+function el(tag,cls,html){const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e}
+
+/* ---------- 分頁(底部 Tab Bar + 網址 #) ---------- */
+const PANELS=['home','progress','services','learn','contact'];
+const scrollPos={};let current=null;
+function show(id,{instant}={}){
+  if(!PANELS.includes(id))id='home';
+  if(current===id){if(!instant)window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});return}
+  if(current)scrollPos[current]=window.scrollY;
+  PANELS.forEach(p=>$(p).classList.toggle('on',p===id));
+  document.querySelectorAll('.tabbar a').forEach(a=>{if(a.dataset.tab===id)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+  current=id;
+  window.scrollTo(0,scrollPos[id]||0);
+  $('topTitle').textContent=$(id).dataset.title;
+  updateTopbar();updateFab();
+  if(id==='learn')requestAnimationFrame(moveThumb);
+}
+function route(){
+  const h=location.hash.slice(1);
+  if(h==='request'){show(current||'services');openSheet();return}
+  show(h||'home');
+}
+window.addEventListener('hashchange',route);
+document.querySelectorAll('.tabbar a').forEach(a=>a.addEventListener('click',e=>{
+  if(a.dataset.tab===current){e.preventDefault();window.scrollTo({top:0,behavior:reduce?'auto':'smooth'})}
+}));
+
+/* 大標題捲動後縮成頂部小標題 */
+function updateTopbar(){
+  if(!current)return;
+  const ref=current==='home'?$('hero'):$(current).querySelector('.ltitle');
+  const r=ref.getBoundingClientRect();
+  const limit=current==='home'?r.bottom-60:r.bottom-50;
+  $('topbar').classList.toggle('solid',limit<=0);
+}
+window.addEventListener('scroll',updateTopbar,{passive:true});
+
+/* ---------- 進度圓環與階段 ---------- */
+const CIRC=314.16;
+function setRings(cur){
+  const frac=(cur+1)/STAGES.length;
+  document.querySelectorAll('[data-ring]').forEach(c=>c.style.strokeDashoffset=CIRC*(1-frac));
+  document.querySelectorAll('[data-ringtxt]').forEach(t=>t.textContent=`${cur+1}/${STAGES.length}`);
+  const label=STAGES[cur].t+(cur===STAGES.length-1?'':'中');
+  document.querySelectorAll('[data-stagev]').forEach(t=>t.textContent=label);
+  document.querySelectorAll('[data-stepk]').forEach(t=>t.textContent=`第 ${cur+1} 步,共 ${STAGES.length} 步`);
+  $('chipStage').textContent=STAGES[cur].t;
+  $('miniRing').style.strokeDashoffset=94.25*(1-frac);
+}
+function renderSteps(cur){
   const st=i=>i<cur?'done':i===cur?'now':'todo';
-  track.querySelectorAll('.dot').forEach(d=>d.remove());
-  STAGES.forEach((s,i)=>{const d=document.createElement('div');d.className='dot '+st(i)+(i===STAGES.length-1?' home':'');if(i===STAGES.length-1)d.innerHTML=HOME;track.appendChild(d)});
-  requestAnimationFrame(()=>setTimeout(()=>{fill.style.width=`calc(${cur/(STAGES.length-1)*100}% - 10px)`},200));
-  document.getElementById('jTitle').textContent=STAGES[cur].t+(cur===STAGES.length-1?'':'中');
-  document.getElementById('jStep').textContent=`第 ${cur+1} 步,共 ${STAGES.length} 步`;
-  tl.innerHTML='';
+  const tl=$('timeline');tl.innerHTML='';
   STAGES.forEach((s,i)=>{
-    const li=document.createElement('li');li.className=st(i);
-    li.innerHTML=`<span class="num">${st(i)==='done'?'✓':i+1}</span>
-    <button class="step" type="button" aria-expanded="${i===cur}">
-      <div class="step-top"><b>${s.t}</b><span class="tag ${st(i)}">${TAGS[st(i)]}</span></div>
-      <div class="step-body"><div><p>${s.d}</p><div class="prep">您可以先準備:${s.p}</div></div></div>
-    </button>`;
-    li.querySelector('.step').addEventListener('click',e=>{const b=e.currentTarget;b.setAttribute('aria-expanded',b.getAttribute('aria-expanded')!=='true')});
-    tl.appendChild(li);
+    const k=st(i),acc=el('div','acc '+k+(i===cur?' open':''));
+    acc.innerHTML=`<button type="button" class="press" aria-expanded="${i===cur}"><span class="sdot">${k==='done'?CHECK:''}</span><span class="t grow">${s.t}</span><span class="tag">${TAGS[k]}</span></button>
+      <div class="collapse"><div><div class="body">${s.d}<div class="prep">可以先準備:${s.p}</div></div></div></div>`;
+    const b=acc.querySelector('button');
+    b.addEventListener('click',()=>{const o=!acc.classList.contains('open');acc.classList.toggle('open',o);b.setAttribute('aria-expanded',o)});
+    tl.appendChild(acc);
   });
 }
-renderProgress(EXAMPLE_IDX);
+function renderProgress(cur){setRings(cur);renderSteps(cur)}
+renderSteps(EXAMPLE_IDX);
 
-/* 查詢我家進度 */
-const lookup=document.getElementById('lookup'),qMsg=document.getElementById('q-msg'),qBtn=document.getElementById('q-btn');
-if(!db)lookup.hidden=true; // 資料庫還沒設定好時,先不顯示查詢框
+/* ---------- 查詢我家進度 ---------- */
+const lookup=$('lookup'),qMsg=$('q-msg'),qBtn=$('q-btn');
+if(!db)lookup.hidden=true;
 function qSay(t,bad){qMsg.textContent=t;qMsg.classList.toggle('bad',!!bad);qMsg.hidden=!t}
 lookup.addEventListener('submit',async e=>{
   e.preventDefault();
-  const b=document.getElementById('q-bldg').value,f=document.getElementById('q-floor').value.replace(/\s|樓|F|f/g,''),l=document.getElementById('q-last3').value.replace(/\D/g,'');
-  if(!b||!f||l.length!==3){qSay('請選擇棟別、填寫樓層和手機末 3 碼',true);return}
+  const b=$('q-bldg').value,f=$('q-floor').value.replace(/\s|樓|F|f/g,''),l=$('q-last3').value.replace(/\D/g,'');
+  if(!b||!f||l.length!==3){qSay('請選擇棟別,並填寫樓層和手機末 3 碼',true);return}
   if(!db){qSay('查詢系統暫時無法使用,請直接聯絡主任',true);return}
   qBtn.disabled=true;qBtn.textContent='查詢中…';qSay('');
   try{
@@ -550,138 +750,201 @@ lookup.addEventListener('submit',async e=>{
     if(!data||!data.length){qSay('查不到符合的資料,請確認輸入是否正確,或直接聯絡主任',true);return}
     const r=data[0],d=new Date(r.updated_at);
     renderProgress(r.stage-1);
-    document.getElementById('mineText').textContent=`${b} ${f} 樓的進度`;
-    document.getElementById('mine').hidden=false;lookup.hidden=true;
-    document.getElementById('tlNote').textContent=`主任更新於 ${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()},實際時程以主任通知為準。`;
+    $('mineText').textContent=`${b} ${f} 樓的進度`;
+    $('mine').hidden=false;lookup.hidden=true;
+    $('tlNote').textContent=`主任更新於 ${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`;
+    window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
   }catch(err){qSay('查詢失敗,請稍後再試',true)}
   finally{qBtn.disabled=false;qBtn.textContent='查詢'}
 });
-document.getElementById('mineReset').onclick=()=>{
+$('mineReset').onclick=()=>{
   renderProgress(EXAMPLE_IDX);
-  document.getElementById('mine').hidden=true;lookup.hidden=false;qSay('');
-  document.getElementById('tlNote').textContent='進度為範例,實際時程以主任通知為準。';
+  $('mine').hidden=true;lookup.hidden=!db;qSay('');
+  $('tlNote').textContent='目前顯示範例進度';
 };
 
-/* services */
-const grid=document.getElementById('svcGrid');
+/* ---------- 服務卡片 ---------- */
+function svcCard(s,selectable){
+  const b=el('button','scard press');b.type='button';b.dataset.n=s.n;
+  b.innerHTML=`<span class="glow"></span><span class="art" aria-hidden="true">${s.i}</span>`+
+    (selectable?`<span class="chk" aria-hidden="true">${CHECK}</span><span class="lab"><b>${s.n}</b><span>${s.d}</span></span>`
+               :`<span class="lab"><span><b>${s.n}</b><span>${s.d}</span></span><span class="plus" aria-hidden="true">${PLUS}</span></span>`);
+  return b;
+}
 SERVICES.forEach(s=>{
-  const b=document.createElement('button');b.type='button';b.className='svc';b.setAttribute('aria-pressed','false');b.dataset.n=s.n;
-  b.innerHTML=`<span class="chk">${CHECK}</span>${s.i}<b>${s.n}</b><span>${s.d}</span>`;
-  b.addEventListener('click',()=>toggle(s.n));
-  grid.appendChild(b);
+  const r=svcCard(s,false);r.setAttribute('aria-label',`${s.n}:${s.d}。加入需求`);
+  r.addEventListener('click',()=>{if(!picked.has(s.n))toggle(s.n);location.hash='services';toast(`已加入「${s.n}」`)});
+  $('rail').appendChild(r);
+  const g=svcCard(s,true);g.setAttribute('aria-pressed','false');g.setAttribute('aria-label',`${s.n}:${s.d}`);
+  g.addEventListener('click',()=>toggle(s.n));
+  $('svcGrid').appendChild(g);
 });
-function toggle(n){picked.has(n)?picked.delete(n):picked.add(n);render();save()}
-function render(){
-  document.querySelectorAll('.svc').forEach(b=>b.setAttribute('aria-pressed',picked.has(b.dataset.n)));
-  const chips=document.getElementById('chips');chips.innerHTML='';
-  SERVICES.forEach(s=>{const c=document.createElement('button');c.type='button';c.textContent=s.n;c.setAttribute('aria-pressed',picked.has(s.n));c.onclick=()=>toggle(s.n);chips.appendChild(c)});
-  const n=picked.size,badge=document.getElementById('badge');
-  badge.textContent=n;badge.classList.toggle('show',n>0);
-  document.getElementById('svcHint').textContent=n?`已選 ${n} 項:${[...picked].join('、')}`:'還沒選擇,可以多選喔';
+SERVICES.slice(0,4).forEach((s,i)=>{
+  const t=el('button',i===0?'first press':'press');t.type='button';t.textContent=s.n;
+  t.addEventListener('click',()=>{if(!picked.has(s.n))toggle(s.n);location.hash='services'});
+  $('heroTags').appendChild(t);
+});
+(()=>{const words=SERVICES.map(s=>s.n);let h='';for(let k=0;k<2;k++)words.forEach(w=>h+=`<span>${w}</span><i>/</i>`);$('mq').innerHTML=h})();
+
+function toggle(n){picked.has(n)?picked.delete(n):picked.add(n);renderPicked();save()}
+function renderPicked(){
+  document.querySelectorAll('#svcGrid .scard').forEach(b=>b.setAttribute('aria-pressed',picked.has(b.dataset.n)));
+  const chips=$('chips');chips.innerHTML='';
+  SERVICES.forEach(s=>{const c=el('button','');c.type='button';c.textContent=s.n;c.setAttribute('aria-pressed',picked.has(s.n));c.onclick=()=>{toggle(s.n);$('e-svc').hidden=true;chips.classList.remove('err')};chips.appendChild(c)});
+  $('fabN').textContent=picked.size;updateFab();
+}
+function updateFab(){
+  const on=current==='services'&&picked.size>0&&!sheetOpen;
+  $('fab').classList.toggle('show',on);$('fab').setAttribute('aria-hidden',!on);$('fab').tabIndex=on?0:-1;
 }
 
-/* draft save */
-const F=['name','phone','bldg','floor','time','memo'];
-function save(){try{const o={picked:[...picked]};F.forEach(k=>o[k]=document.getElementById(k).value);localStorage.setItem('draft',JSON.stringify(o))}catch(e){}}
-function load(){try{const o=JSON.parse(localStorage.getItem('draft')||'null');if(!o)return;picked=new Set(o.picked||[]);F.forEach(k=>{if(o[k]!=null)document.getElementById(k).value=o[k]})}catch(e){}}
-F.forEach(k=>document.getElementById(k).addEventListener('input',save));
-load();render();
-
-/* form */
-const form=document.getElementById('form'),subBtn=form.querySelector('[type=submit]');
-let savedMsg='';
-form.addEventListener('submit',async e=>{
-  e.preventDefault();
-  const name=document.getElementById('name').value.trim();
-  const phone=document.getElementById('phone').value.replace(/\D/g,'');
-  let ok=true;
-  document.getElementById('f-name').classList.toggle('err',!name);if(!name)ok=false;
-  const pOk=/^09\d{8}$/.test(phone);document.getElementById('f-phone').classList.toggle('err',!pOk);if(!pOk)ok=false;
-  if(!ok){form.querySelector('.err input').focus();return}
-  if(!picked.size){toast('請至少選一項需要的服務');document.getElementById('chips').scrollIntoView({block:'center'});return}
-  const bldg=document.getElementById('bldg').value,floor=document.getElementById('floor').value.trim();
-  const unit=(bldg||'')+(floor?floor+'樓':'');
-  const memo=document.getElementById('memo').value.trim();
-  const msg=`黃主任您好,我想登記交屋服務:\n稱呼:${name}\n電話:${phone}\n戶別:${unit||'未填'}\n需要:${[...picked].join('、')}\n方便時間:${document.getElementById('time').value}${memo?'\n備註:'+memo:''}`;
-  // 先存進資料庫(同樣內容重送不會重複存)
-  let stored=msg===savedMsg;
-  if(!stored&&db){
-    subBtn.disabled=true;subBtn.textContent='送出中…';
-    try{
-      const {error}=await db.from('requests').insert({name,phone,building:bldg||null,floor:floor||null,services:[...picked],contact_time:document.getElementById('time').value,memo:memo||null});
-      if(error)throw error;
-      stored=true;savedMsg=msg;
-    }catch(err){}
-    subBtn.disabled=false;subBtn.textContent='確認並傳送需求';
-  }
-  // 存失敗也讓客戶能用 LINE/簡訊聯絡,避免漏掉需求
-  document.getElementById('sheetTitle').textContent=stored?'需求已送出 ✓':'系統忙碌中';
-  document.getElementById('sheetDesc').textContent=stored?'主任已經收到您的需求。也可以再用 LINE 或簡訊傳給黃主任,訊息內容已經幫您寫好。':'需求暫時沒有存進系統,請用 LINE 或簡訊傳給黃主任,訊息內容已經幫您寫好。';
-  document.getElementById('summary').textContent=msg;
-  document.getElementById('sendLine').href='https://line.me/R/msg/text/?'+encodeURIComponent(msg);
-  document.getElementById('sendSms').href='sms:0956775561?&body='+encodeURIComponent(msg);
-  openSheet();
-});
-const bg=document.getElementById('sheetBg');
-function openSheet(){bg.classList.add('open');document.getElementById('sendLine').focus()}
-function closeSheet(){bg.classList.remove('open')}
-document.getElementById('closeSheet').onclick=closeSheet;
-bg.addEventListener('click',e=>{if(e.target===bg)closeSheet()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
-document.getElementById('barReq').onclick=()=>document.getElementById('request').scrollIntoView();
-
-/* copy */
-document.getElementById('copyLine').onclick=async()=>{try{await navigator.clipboard.writeText('0956775561');toast('已複製 LINE ID')}catch(e){toast('LINE ID:0956775561')}};
-function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('show');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('show'),2000)}
-
-/* nav highlight */
-const links=document.querySelectorAll('.nav a');
-const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.dataset.sec===en.target.id))})},{rootMargin:'-40% 0px -55% 0px'});
-['progress','services','request','learn','contact'].forEach(id=>io.observe(document.getElementById(id)));
-
-/* tabs */
-const tabs=[...document.querySelectorAll('.seg [role=tab]')];
-function pick(t){tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on})}
-tabs.forEach((t,i)=>{t.addEventListener('click',()=>pick(t));t.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const n=tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];pick(n);n.focus()}})});
-pick(tabs[0]);
-
-/* 房市新聞:讀取每天自動更新的 news.json,讀不到就保留上面寫好的新聞 */
+/* ---------- 新聞 ---------- */
+function md(d){const x=new Date(d);return isNaN(x)?'':`${x.getMonth()+1}/${x.getDate()}`}
+function newsRow(n,withWhy){
+  const a=el('a','nrow press');a.href=n.link;a.target='_blank';a.rel='noopener';
+  const src=el('div','src');const s1=el('span');s1.textContent=n.source||'新聞';const s2=el('span');s2.textContent=md(n.date);src.append(s1,s2);
+  const b=el('b');b.textContent=n.title;a.append(src,b);
+  if(withWhy&&n.why){const w=el('div','why');w.textContent='給您的提醒:'+n.why;a.append(w)}
+  return a;
+}
+function renderNews(items,auto){
+  $('newsList').replaceChildren(...items.map(n=>newsRow(n,!auto)));
+  $('homeNews').replaceChildren(...items.slice(0,3).map(n=>newsRow(n,false)));
+}
+renderNews(FALLBACK_NEWS,false);
 (async()=>{
   try{
-    const r=await fetch('news.json',{cache:'no-store'});
-    if(!r.ok)return;
+    const r=await fetch('news.json',{cache:'no-store'});if(!r.ok)return;
     const {updated,items}=await r.json();
-    if(!Array.isArray(items)||!items.length)return;
-    const md=d=>{const x=new Date(d);return `${String(x.getMonth()+1).padStart(2,'0')}/${String(x.getDate()).padStart(2,'0')}`};
-    const list=document.getElementById('newsList');list.innerHTML='';
-    items.forEach(n=>{
-      if(!/^https?:\/\//.test(n.link))return;
-      const a=document.createElement('a');a.className='news';a.href=n.link;a.target='_blank';a.rel='noopener';
-      const m=document.createElement('div');m.className='meta';
-      const s1=document.createElement('span');s1.textContent=n.source||'新聞';
-      const s2=document.createElement('span');s2.textContent=md(n.date);
-      m.append(s1,s2);
-      const b=document.createElement('b');b.textContent=n.title;
-      a.append(m,b);list.appendChild(a);
-    });
+    const ok=(items||[]).filter(n=>n&&n.title&&/^https?:\/\//.test(n.link));
+    if(!ok.length)return;
+    renderNews(ok,true);
     const u=new Date(updated);
-    document.getElementById('newsUpdated').textContent=`自動更新於 ${u.getFullYear()}/${u.getMonth()+1}/${u.getDate()} ${String(u.getHours()).padStart(2,'0')}:${String(u.getMinutes()).padStart(2,'0')}`;
-    document.getElementById('newsNote').hidden=false;
+    if(!isNaN(u))$('newsUpdated').textContent=`自動更新於 ${u.getMonth()+1}/${u.getDate()} ${String(u.getHours()).padStart(2,'0')}:${String(u.getMinutes()).padStart(2,'0')}`;
+    $('newsNote').hidden=false;
   }catch(e){}
 })();
 
-/* mortgage calc */
-function calc(){
-  const P=parseFloat(document.getElementById('c-amt').value)*10000;
-  const r=parseFloat(document.getElementById('c-rate').value)/100/12;
-  const n=parseInt(document.getElementById('c-yr').value)*12;
-  const out=document.getElementById('c-out');
-  if(!(P>0)||!(r>=0)){out.textContent='—';return}
-  const m=r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
-  out.textContent=Math.round(m).toLocaleString('zh-TW')+' 元';
+/* ---------- 常見問題 ---------- */
+FAQ.forEach(([q,a],i)=>{
+  const acc=el('div','acc');
+  acc.innerHTML=`<button type="button" aria-expanded="false" aria-controls="faq${i}"><span class="grow"></span><span class="pm" aria-hidden="true">${PLUS}</span></button><div class="collapse" id="faq${i}"><div><div class="ans"></div></div></div>`;
+  acc.querySelector('.grow').textContent=q;acc.querySelector('.ans').textContent=a;
+  const b=acc.querySelector('button');
+  b.addEventListener('click',()=>{const o=!acc.classList.contains('open');acc.classList.toggle('open',o);b.setAttribute('aria-expanded',o)});
+  $('faq').appendChild(acc);
+});
+
+/* ---------- 知識分段控制 ---------- */
+const segTabs=[...document.querySelectorAll('.seg [role=tab]')];
+function moveThumb(){
+  const t=segTabs.find(x=>x.getAttribute('aria-selected')==='true'),th=$('segThumb');
+  if(!t||!t.offsetWidth)return;
+  th.style.width=t.offsetWidth+'px';th.style.transform=`translateX(${t.offsetLeft-2}px)`;
 }
-['c-amt','c-rate','c-yr'].forEach(id=>document.getElementById(id).addEventListener('input',calc));
-calc();
+function pickSeg(t){segTabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;$(x.getAttribute('aria-controls')).hidden=!on});moveThumb()}
+segTabs.forEach((t,i)=>{t.addEventListener('click',()=>pickSeg(t));t.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const n=segTabs[(i+(e.key==='ArrowRight'?1:segTabs.length-1))%segTabs.length];pickSeg(n);n.focus()}})});
+pickSeg(segTabs[0]);
+window.addEventListener('resize',moveThumb);
+
+/* ---------- 房貸試算 ---------- */
+function calc(){
+  const P=parseFloat($('c-amt').value)*10000,r=parseFloat($('c-rate').value)/100/12,n=parseInt($('c-yr').value)*12;
+  if(!(P>0)||!(r>=0)||!(n>0)){$('c-out').textContent='—';return}
+  const m=r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+  $('c-out').textContent=Math.round(m).toLocaleString('zh-TW')+' 元';
+}
+['c-amt','c-rate','c-yr'].forEach(id=>$(id).addEventListener('input',calc));calc();
+
+/* ---------- 複製 LINE ID ---------- */
+$('copyLine').onclick=async()=>{try{await navigator.clipboard.writeText('0956775561');toast('已複製 LINE ID')}catch(e){toast('LINE ID:0956775561')}};
+
+/* ---------- 草稿自動保存 ---------- */
+const F=['name','phone','bldg','floor','time','memo'];
+function save(){try{const o={picked:[...picked]};F.forEach(k=>o[k]=$(k).value);localStorage.setItem('draft',JSON.stringify(o))}catch(e){}}
+function load(){try{const o=JSON.parse(localStorage.getItem('draft')||'null');if(!o)return;picked=new Set((o.picked||[]).filter(n=>SERVICES.some(s=>s.n===n)));F.forEach(k=>{if(o[k]!=null)$(k).value=o[k]})}catch(e){}}
+F.forEach(k=>$(k).addEventListener('input',save));
+load();renderPicked();
+
+/* ---------- 表單抽屜(可往下拉關閉) ---------- */
+const sheet=$('sheet'),scrim=$('scrim');let sheetOpen=false,lastFocus=null;
+function openSheet(){
+  if(sheetOpen)return;sheetOpen=true;lastFocus=document.activeElement;
+  $('form').hidden=false;$('doneView').hidden=true;$('sheetTitle').textContent='登記需求';
+  sheet.setAttribute('aria-hidden','false');sheet.classList.add('on');scrim.classList.add('on');document.body.classList.add('sheet-open');
+  $('app').setAttribute('aria-hidden','true');$('app').inert=true;
+  updateFab();
+  setTimeout(()=>$('sheetCancel').focus({preventScroll:true}),reduce?0:350);
+}
+function closeSheet(){
+  if(!sheetOpen)return;sheetOpen=false;
+  sheet.style.transform='';sheet.classList.remove('on','drag');scrim.classList.remove('on');document.body.classList.remove('sheet-open');
+  sheet.setAttribute('aria-hidden','true');$('app').removeAttribute('aria-hidden');$('app').inert=false;
+  if(location.hash==='#request')history.replaceState(null,'','#'+(current||'home'));
+  updateFab();
+  if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true});
+}
+document.querySelectorAll('[data-open-sheet]').forEach(b=>b.addEventListener('click',openSheet));
+$('sheetCancel').onclick=closeSheet;$('doneBtn').onclick=closeSheet;scrim.onclick=closeSheet;
+document.addEventListener('keydown',e=>{
+  if(!sheetOpen)return;
+  if(e.key==='Escape')closeSheet();
+  if(e.key==='Tab'){const f=[...sheet.querySelectorAll('button,a[href],input,select,textarea')].filter(x=>!x.disabled&&x.offsetParent);if(!f.length)return;const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}
+});
+(()=>{ // 拖曳關閉
+  let y0=null,dy=0,t0=0;
+  const start=e=>{y0=e.clientY;dy=0;t0=performance.now();sheet.classList.add('drag')};
+  const move=e=>{if(y0==null)return;dy=Math.max(0,e.clientY-y0);sheet.style.transform=`translateY(${dy}px)`;scrim.style.opacity=String(Math.max(0,1-dy/500))};
+  const end=()=>{if(y0==null)return;const v=dy/Math.max(1,performance.now()-t0);sheet.classList.remove('drag');scrim.style.opacity='';y0=null;
+    if(dy>140||v>.6)closeSheet();else sheet.style.transform=''};
+  [$('grab'),$('sheetBar')].forEach(h=>{
+    h.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;h.setPointerCapture(e.pointerId);start(e)});
+    h.addEventListener('pointermove',move);h.addEventListener('pointerup',end);h.addEventListener('pointercancel',end);
+  });
+})();
+
+/* ---------- 送出需求 ---------- */
+let savedMsg='';
+$('form').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const name=$('name').value.trim(),phone=$('phone').value.replace(/\D/g,'');
+  const nOk=!!name,pOk=/^09\d{8}$/.test(phone),sOk=picked.size>0;
+  $('f-name').classList.toggle('err',!nOk);$('f-phone').classList.toggle('err',!pOk);
+  $('e-svc').hidden=sOk;$('chips').classList.toggle('err',!sOk);
+  const info=!nOk&&!pOk?'請填寫稱呼和 10 碼手機號碼':!nOk?'請填寫稱呼,方便主任聯繫您':!pOk?'手機請填 10 碼,例如 0912345678':'';
+  $('e-info').textContent=info;$('e-info').hidden=!info;
+  if(!sOk){$('chips').scrollIntoView({block:'center',behavior:reduce?'auto':'smooth'});return}
+  if(!nOk){$('name').focus();return}
+  if(!pOk){$('phone').focus();return}
+  const bldg=$('bldg').value,floor=$('floor').value.trim().replace(/\s|樓|F|f/g,''),memo=$('memo').value.trim(),time=$('time').value;
+  const unit=(bldg||'')+(floor?floor+'樓':'');
+  const msg=`黃主任您好,我想登記交屋服務:\n稱呼:${name}\n電話:${phone}\n戶別:${unit||'未填'}\n需要:${[...picked].join('、')}\n方便時間:${time}${memo?'\n備註:'+memo:''}`;
+  let stored=msg===savedMsg;
+  if(!stored&&db){
+    $('subBtn').disabled=true;$('subBtn').textContent='送出中…';
+    try{
+      const {error}=await db.from('requests').insert({name,phone,building:bldg||null,floor:floor||null,services:[...picked],contact_time:time,memo:memo||null});
+      if(error)throw error;stored=true;savedMsg=msg;
+    }catch(err){}
+    $('subBtn').disabled=false;$('subBtn').textContent='送出需求';
+  }
+  $('doneView').classList.toggle('warn',!stored);
+  $('doneTitle').textContent=stored?'已收到您的需求':'請改用 LINE 或簡訊';
+  $('doneDesc').textContent=stored?'主任會盡快與您聯繫。想更快回覆,也可以直接傳給主任。':'系統暫時忙碌,需求還沒存進去。請用下方按鈕傳給主任,內容已經幫您寫好。';
+  $('summary').textContent=msg;
+  $('sendLine').href='https://line.me/R/msg/text/?'+encodeURIComponent(msg);
+  $('sendSms').href='sms:0956775561?&body='+encodeURIComponent(msg);
+  $('form').hidden=true;$('doneView').hidden=false;$('sheetTitle').textContent=stored?'已送出':'登記需求';
+  $('sheetBody').scrollTop=0;
+  if(stored){picked.clear();renderPicked();['memo'].forEach(k=>$(k).value='');save()}
+});
+
+/* ---------- 開場:檯燈亮起、圓環填滿 ---------- */
+route();
+requestAnimationFrame(()=>{
+  $('hero').classList.add('lit');
+  setTimeout(()=>setRings(EXAMPLE_IDX),reduce?0:450);
+});
 </script>
 </body>
 </html>

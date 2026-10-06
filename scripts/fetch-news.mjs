@@ -28,6 +28,8 @@ export function parseRss(xml) {
     let title = tag(raw, 'title');
     // Google News 標題結尾會加「 - 來源」,拿掉
     if (source && title.endsWith(' - ' + source)) title = title.slice(0, -(source.length + 3));
+    // 去掉結尾的「| 欄目名稱」,例如「| 房產新訊」
+    title = title.replace(/\s*[|｜]\s*[^|｜]{1,14}$/, '').trim();
     const link = tag(raw, 'link');
     const date = new Date(tag(raw, 'pubDate'));
     if (!title || !/^https?:\/\//.test(link) || isNaN(date)) continue;
