@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>交屋一條龍服務|黃芝亭主任</title>
 <meta name="description" content="黃芝亭主任的預售屋交屋一條龍服務:交屋進度查詢、窗簾家具油漆等裝修需求登記、房市與過戶知識。">
-<meta name="theme-color" content="#F7F2EA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#F6F4F0" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#110D0A" media="(prefers-color-scheme: dark)">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -19,10 +19,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --page:#F7F2EA; --surface:#FFFDF9; --group:#EFE6D9; --ink:#1E1914; --ink-2:#6E6157; --ink-3:#A39586;
-  --line:rgba(40,28,18,.09); --espresso:#17110D; --espresso-2:#2A1E16; --on-dark:#F6EEE3; --on-dark-2:rgba(246,238,227,.68);
+  --page:#F6F4F0; --surface:#FFFFFF; --group:#ECE8E2; --ink:#1E1914; --ink-2:#6B6259; --ink-3:#A1988E;
+  --line:rgba(40,28,18,.09); --line-2:rgba(40,28,18,.18); --espresso:#17110D; --espresso-2:#2A1E16; --on-dark:#F6EEE3; --on-dark-2:rgba(246,238,227,.68);
   --amber:#E3A14B; --amber-ink:#8E5A1B; --amber-soft:rgba(227,161,75,.16); --danger:#C2412D; --ok:#3C8C5A; --line-green:#06C755;
-  --glass:rgba(247,242,234,.72); --glass-dark:rgba(255,244,228,.12);
+  --glass:rgba(246,244,240,.74); --glass-dark:rgba(255,244,228,.12);
   --serif:"Cormorant Garamond","Noto Serif TC","Songti TC",serif;
   --serif-tc:"Noto Serif TC","Songti TC","Cormorant Garamond",serif;
   --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang TC","Helvetica Neue","Noto Sans TC","Microsoft JhengHei",sans-serif;
@@ -33,13 +33,13 @@
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --page:#110D0A; --surface:#1B1511; --group:#231B15; --ink:#F3EBE0; --ink-2:#AE9F90; --ink-3:#7C6E61;
-    --line:rgba(255,236,214,.09); --espresso:#0B0806; --espresso-2:#1F1712; --amber-ink:#E9B467; --amber-soft:rgba(227,161,75,.18);
+    --line:rgba(255,236,214,.09); --line-2:rgba(255,236,214,.18); --espresso:#0B0806; --espresso-2:#1F1712; --amber-ink:#E9B467; --amber-soft:rgba(227,161,75,.18);
     --danger:#F08A73; --ok:#7CCB98; --glass:rgba(17,13,10,.72);
   }
 }
 :root[data-theme="dark"]{
   --page:#110D0A; --surface:#1B1511; --group:#231B15; --ink:#F3EBE0; --ink-2:#AE9F90; --ink-3:#7C6E61;
-  --line:rgba(255,236,214,.09); --espresso:#0B0806; --espresso-2:#1F1712; --amber-ink:#E9B467; --amber-soft:rgba(227,161,75,.18);
+  --line:rgba(255,236,214,.09); --line-2:rgba(255,236,214,.18); --espresso:#0B0806; --espresso-2:#1F1712; --amber-ink:#E9B467; --amber-soft:rgba(227,161,75,.18);
   --danger:#F08A73; --ok:#7CCB98; --glass:rgba(17,13,10,.72);
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -330,16 +330,42 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
 .toast.show{transform:translate(-50%,0);visibility:visible;transition:transform .45s var(--spring),visibility 0s}
 
 
+
+/* 加入主畫面 */
+.a2card{display:flex;align-items:center;gap:14px;margin-top:12px;padding:14px 14px 14px 14px;border-radius:22px;background:var(--surface)}
+.a2card img{width:54px;height:54px;border-radius:13px;flex:none;box-shadow:0 0 0 .5px var(--line),0 4px 12px rgba(30,20,10,.12)}
+.a2card b{display:block;font-size:16px;font-weight:600}
+.a2card span{font-size:13px;color:var(--ink-2)}
+.a2act{display:flex;flex-direction:column;align-items:center;gap:2px;flex:none}
+.a2go{border:none;background:var(--ink);color:var(--page);border-radius:999px;padding:8px 18px;font-size:15px;font-weight:600;min-height:36px}
+.a2x{border:none;background:none;color:var(--ink-3);font-size:12px;padding:6px 6px;min-height:28px}
+.sheet.short{height:auto;max-height:calc(100% - var(--top) - 22px)}
+.a2head{display:flex;flex-direction:column;align-items:center;text-align:center;padding:6px 0 18px}
+.a2head img{width:76px;height:76px;border-radius:18px;box-shadow:0 0 0 .5px var(--line),0 10px 26px rgba(30,20,10,.18);margin-bottom:12px}
+.a2head b{font-size:19px;font-weight:600}
+.a2head span{font-size:14px;color:var(--ink-2);margin-top:2px}
+.a2steps{list-style:none;margin:0 0 18px;padding:0;background:var(--surface);border-radius:16px;overflow:hidden}
+.a2steps li{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;position:relative}
+.a2steps li+li::before{content:"";position:absolute;top:0;left:60px;right:0;border-top:.5px solid var(--line)}
+.a2n{display:none}
+.a2i{width:32px;height:32px;border-radius:9px;background:var(--group);display:grid;place-items:center;flex:none;color:var(--ink)}
+.a2i svg{width:19px;height:19px}
+.a2steps b{display:block;font-size:16px;font-weight:600}
+.a2steps div span{font-size:14px;color:var(--ink-2);line-height:1.5}
+
 /* EDITORIAL SPREADS(情境跨頁) */
-.spread{--sp-ink:#2A2119;--sp-ink2:#6F6255;--sp-paper:#ECE3D6;--sp-line:rgba(42,33,25,.22);margin:48px 0 0;color:var(--sp-ink);background:var(--sp-paper)}
+.spread{--sp-ink:var(--ink);--sp-ink2:var(--ink-2);--sp-line:var(--line-2);margin:48px 0 0;color:var(--sp-ink)}
 .spread .scene{position:relative;margin:0;background-size:cover;background-position:center bottom;overflow:hidden}
 .spread .kick{font-family:var(--sans);font-size:10.5px;letter-spacing:.32em;font-weight:500;color:var(--sp-ink2);margin:0}
 .spread .no{font-family:"Cormorant Garamond",var(--serif-tc);font-weight:400;font-size:44px;line-height:1;display:block}
-.spread .rule{width:56px;height:1px;background:var(--sp-ink);opacity:.5;border:0;margin:14px 0}
+.spread .rule{width:44px;height:1px;background:currentColor;opacity:.45;border:0;margin:16px 0}
 .spread .sp-t{font-family:var(--serif-tc);font-weight:300;letter-spacing:.06em;line-height:1.3;margin:0}
 .spread .sp-b{font-family:var(--serif-tc);font-weight:400;font-size:14.5px;line-height:1.9;color:var(--sp-ink2);margin:0}
-.spread .cap{position:absolute;right:14px;bottom:12px;font-size:11px;letter-spacing:.12em;color:rgba(42,33,25,.55)}
-.spread .tag{display:flex;align-items:center;gap:14px;justify-content:center;padding:22px 20px 26px;font-size:10.5px;letter-spacing:.34em;color:var(--sp-ink2);text-align:center}
+.spread .cap{position:absolute;right:16px;bottom:14px;font-size:10.5px;letter-spacing:.16em;color:rgba(42,33,25,.5)}
+.sp-morning .ov{--sp-ink:#2A2119;--sp-ink2:#5C534A;color:#2A2119}
+.sp-arch .ov{--sp-ink:#F3EADF;--sp-ink2:rgba(243,234,223,.72);color:#F3EADF}
+.sp-arch .cap{color:rgba(243,234,223,.5)}
+.spread .tag{display:flex;align-items:center;gap:14px;justify-content:center;padding:26px 20px 4px;font-size:10.5px;letter-spacing:.34em;color:var(--sp-ink2);text-align:center}
 .spread .tag::before,.spread .tag::after{content:"";flex:1;max-width:70px;height:1px;background:var(--sp-line)}
 /* spread 1: morning */
 .sp-morning .scene{aspect-ratio:1080/1990}
@@ -353,24 +379,25 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
 .sp-arch .ov .kick{margin-top:10px}
 .sp-arch .ov .rule{margin:14px auto}
 .sp-arch .ov .sub{font-family:var(--serif-tc);font-size:15px;letter-spacing:.1em;color:var(--sp-ink2);margin:0}
-.principles{display:grid;grid-template-columns:1fr;gap:0;padding:6px 24px 0}
-.principles .pr{display:grid;grid-template-columns:64px 1fr;gap:4px 14px;padding:20px 0;border-bottom:1px solid var(--sp-line)}
+.principles{display:grid;grid-template-columns:1fr;gap:0;padding:8px 20px 0}
+.principles .pr{display:grid;grid-template-columns:58px 1fr;gap:2px 12px;padding:22px 0;border-bottom:.5px solid var(--sp-line)}
+.principles .pr:last-child{border-bottom:0}
 .principles .pr .no{font-size:38px;grid-row:span 2}
 .principles .pr h3{font-family:var(--sans);font-size:12px;letter-spacing:.3em;font-weight:600;margin:6px 0 0}
 .principles .pr h3 span{font-family:var(--serif-tc);font-size:17px;letter-spacing:.12em;font-weight:400;display:block;margin-bottom:4px}
 .principles .pr .sp-b{grid-column:2}
 /* spread 3: textures (services) */
-.sp-tex{margin:6px -20px 28px;padding:22px 20px 4px}
+.sp-tex{margin:8px 0 30px}
 .mosaic{display:grid;grid-template-columns:1.15fr 1fr;gap:10px}
 .mosaic .t{position:relative;margin:0}
-.mosaic .t .img{background-size:cover;background-position:center;border-radius:2px}
+.mosaic .t .img{background-size:cover;background-position:center;border-radius:4px}
 .mosaic .t1{grid-row:span 2;display:flex;flex-direction:column}
 .mosaic .t1 .img{flex:1;min-height:260px}
 .mosaic .t2 .img,.mosaic .t3 .img{aspect-ratio:1/1}
 .mosaic figcaption{padding:8px 0 2px}
 .mosaic figcaption b{display:block;font-family:var(--sans);font-size:10px;letter-spacing:.28em;font-weight:600;color:var(--sp-ink)}
 .mosaic figcaption span{font-family:var(--serif-tc);font-size:13px;color:var(--sp-ink2)}
-.tex-title{grid-column:1/-1;padding:18px 0 10px;display:grid;grid-template-columns:1fr auto;align-items:end;gap:12px;border-bottom:1px solid var(--sp-line);margin-bottom:6px}
+.tex-title{grid-column:1/-1;padding:22px 0 14px;display:grid;grid-template-columns:1fr auto;align-items:end;gap:12px;border-bottom:.5px solid var(--sp-line);margin-bottom:8px}
 .tex-title .sp-t{font-size:clamp(32px,9.5vw,44px);letter-spacing:.1em}
 .tex-title .kick{text-align:right;line-height:2}
 .mosaic .t4 .img{aspect-ratio:1/1}
@@ -381,8 +408,8 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
 .spread .scene,.mosaic .img{transition:opacity 1.1s ease,transform 1.4s var(--ease)}
 .js .spread:not(.seen) .scene,.js .spread:not(.seen) .mosaic .img{opacity:.001;transform:scale(1.03)}
 @media (min-width:700px){
-  .sp-morning .scene{aspect-ratio:auto;height:780px;background-size:auto 100%;background-color:#E9DECF;background-repeat:no-repeat}
-  .sp-arch .scene{aspect-ratio:auto;height:780px;background-size:auto 100%;background-color:#E7DCCB;background-repeat:no-repeat}
+  .sp-morning .scene{aspect-ratio:auto;height:780px;background-size:auto 100%;background-color:#E8E4DE;background-repeat:no-repeat}
+  .sp-arch .scene{aspect-ratio:auto;height:780px;background-size:auto 100%;background-color:#4B3E33;background-repeat:no-repeat}
   .principles{grid-template-columns:repeat(3,1fr);gap:24px;max-width:900px;margin:0 auto}
 }
 
@@ -435,6 +462,15 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
         <div class="k" data-stepk>第 4 步,共 7 步</div>
         <div class="v" data-stagev>取得使用執照中</div>
         <a class="lnk" href="#progress">查詢我家進度 <svg class="chev" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+
+    <div class="a2card" id="a2card" hidden>
+      <img src="icons/apple-touch-icon.png" alt="" width="54" height="54">
+      <div class="grow"><b>把網站加到主畫面</b><span>像 App 一樣,下次一點就打開</span></div>
+      <div class="a2act">
+        <button class="a2go press" type="button" id="a2btn">加入</button>
+        <button class="a2x" type="button" id="a2Later" aria-label="先不要">先不要</button>
       </div>
     </div>
 
@@ -725,6 +761,19 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
     </div>
   </div>
 </div>
+<div class="sheet short" id="a2Sheet" role="dialog" aria-modal="true" aria-labelledby="a2Title" aria-hidden="true">
+  <div class="grab" id="a2Grab"><i></i></div>
+  <div class="bar" id="a2Bar"><span class="sp"></span><h3 id="a2Title">加入主畫面</h3><button type="button" id="a2Close" style="text-align:right;font-weight:600">完成</button></div>
+  <div class="body">
+    <div class="a2head">
+      <img src="icons/apple-touch-icon.png" alt="" width="76" height="76">
+      <b>交給Tara就好</b>
+      <span>加到主畫面後,就像 App 一樣一點就開</span>
+    </div>
+    <ol class="a2steps" id="a2Steps"></ol>
+    <a class="btn dark press" id="a2Open" hidden>用手機瀏覽器打開</a>
+  </div>
+</div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -971,41 +1020,95 @@ function load(){try{const o=JSON.parse(localStorage.getItem('draft')||'null');if
 F.forEach(k=>$(k).addEventListener('input',save));
 load();renderPicked();
 
-/* ---------- 表單抽屜(可往下拉關閉) ---------- */
-const sheet=$('sheet'),scrim=$('scrim');let sheetOpen=false,lastFocus=null;
-function openSheet(){
-  if(sheetOpen)return;sheetOpen=true;lastFocus=document.activeElement;
-  $('form').hidden=false;$('doneView').hidden=true;$('sheetTitle').textContent='登記需求';
-  sheet.setAttribute('aria-hidden','false');sheet.classList.add('on');scrim.classList.add('on');document.body.classList.add('sheet-open');
+/* ---------- 抽屜(需求表單、加入主畫面;可往下拉關閉) ---------- */
+const sheet=$('sheet'),scrim=$('scrim');let sheetOpen=false,lastFocus=null,openEl=null;
+function openModal(el,focusEl){
+  if(openEl)return;openEl=el;sheetOpen=true;lastFocus=document.activeElement;
+  el.setAttribute('aria-hidden','false');el.classList.add('on');scrim.classList.add('on');document.body.classList.add('sheet-open');
   $('app').setAttribute('aria-hidden','true');$('app').inert=true;
   updateFab();
-  setTimeout(()=>$('sheetCancel').focus({preventScroll:true}),reduce?0:350);
+  setTimeout(()=>focusEl&&focusEl.focus({preventScroll:true}),reduce?0:350);
 }
-function closeSheet(){
-  if(!sheetOpen)return;sheetOpen=false;
-  sheet.style.transform='';sheet.classList.remove('on','drag');scrim.classList.remove('on');document.body.classList.remove('sheet-open');
-  sheet.setAttribute('aria-hidden','true');$('app').removeAttribute('aria-hidden');$('app').inert=false;
+function closeModal(){
+  if(!openEl)return;const el=openEl;openEl=null;sheetOpen=false;
+  el.style.transform='';el.classList.remove('on','drag');scrim.classList.remove('on');scrim.style.opacity='';document.body.classList.remove('sheet-open');
+  el.setAttribute('aria-hidden','true');$('app').removeAttribute('aria-hidden');$('app').inert=false;
   if(location.hash==='#request')history.replaceState(null,'','#'+(current||'home'));
   updateFab();
   if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true});
 }
+function openSheet(){
+  if(openEl)return;
+  $('form').hidden=false;$('doneView').hidden=true;$('sheetTitle').textContent='登記需求';
+  openModal(sheet,$('sheetCancel'));
+}
+const closeSheet=closeModal;
 document.querySelectorAll('[data-open-sheet]').forEach(b=>b.addEventListener('click',openSheet));
-$('sheetCancel').onclick=closeSheet;$('doneBtn').onclick=closeSheet;scrim.onclick=closeSheet;
+$('sheetCancel').onclick=closeModal;$('doneBtn').onclick=closeModal;scrim.onclick=closeModal;
 document.addEventListener('keydown',e=>{
-  if(!sheetOpen)return;
-  if(e.key==='Escape')closeSheet();
-  if(e.key==='Tab'){const f=[...sheet.querySelectorAll('button,a[href],input,select,textarea')].filter(x=>!x.disabled&&x.offsetParent);if(!f.length)return;const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}
+  if(!openEl)return;
+  if(e.key==='Escape')closeModal();
+  if(e.key==='Tab'){const f=[...openEl.querySelectorAll('button,a[href],input,select,textarea')].filter(x=>!x.disabled&&x.offsetParent);if(!f.length)return;const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}
 });
-(()=>{ // 拖曳關閉
+function draggable(el,handles){ // 拖曳關閉
   let y0=null,dy=0,t0=0;
-  const start=e=>{y0=e.clientY;dy=0;t0=performance.now();sheet.classList.add('drag')};
-  const move=e=>{if(y0==null)return;dy=Math.max(0,e.clientY-y0);sheet.style.transform=`translateY(${dy}px)`;scrim.style.opacity=String(Math.max(0,1-dy/500))};
-  const end=()=>{if(y0==null)return;const v=dy/Math.max(1,performance.now()-t0);sheet.classList.remove('drag');scrim.style.opacity='';y0=null;
-    if(dy>140||v>.6)closeSheet();else sheet.style.transform=''};
-  [$('grab'),$('sheetBar')].forEach(h=>{
-    h.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;h.setPointerCapture(e.pointerId);start(e)});
+  const start=e=>{y0=e.clientY;dy=0;t0=performance.now();el.classList.add('drag')};
+  const move=e=>{if(y0==null)return;dy=Math.max(0,e.clientY-y0);el.style.transform=`translateY(${dy}px)`;scrim.style.opacity=String(Math.max(0,1-dy/500))};
+  const end=()=>{if(y0==null)return;const v=dy/Math.max(1,performance.now()-t0);el.classList.remove('drag');scrim.style.opacity='';y0=null;
+    if(dy>120||v>.6)closeModal();else el.style.transform=''};
+  handles.forEach(h=>{
+    h.addEventListener('pointerdown',e=>{if(e.target.closest('button,a'))return;h.setPointerCapture(e.pointerId);start(e)});
     h.addEventListener('pointermove',move);h.addEventListener('pointerup',end);h.addEventListener('pointercancel',end);
   });
+}
+draggable(sheet,[$('grab'),$('sheetBar')]);
+
+/* ---------- 加入主畫面 ---------- */
+(()=>{
+  const ua=navigator.userAgent;
+  const isIOS=/iPhone|iPad|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  const inLine=/\bLine\//i.test(ua), inSocial=/FBAN|FBAV|Instagram/i.test(ua);
+  const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+  const mobile=matchMedia('(pointer: coarse)').matches;
+  const card=$('a2card'),a2=$('a2Sheet');let deferred=null;
+  const ICON={
+    share:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg>',
+    add:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8.5v7M8.5 12h7"/></svg>',
+    ok:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+    dots:'<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>',
+    out:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>'
+  };
+  const STEPS=inLine||inSocial?[
+    ['out',inLine?'先用手機瀏覽器打開':'先點右上角「⋯」','選「在瀏覽器中開啟」(或按下方按鈕),LINE、FB 裡面沒辦法加入主畫面。'],
+    ['add','再按一次「加入主畫面」','在瀏覽器裡打開後,照著指示就能完成。']
+  ]:isIOS?[
+    ['share','點 Safari 的「分享」按鈕','在畫面下方,方框加向上箭頭。沒看到的話,先點右下角「⋯」。'],
+    ['add','選「加入主畫面」','在分享選單往下滑就會看到。'],
+    ['ok','按右上角「新增」','名稱會自動帶出「交給Tara就好」。']
+  ]:[
+    ['dots','點瀏覽器右上角「⋮」','Chrome、Samsung 瀏覽器都在右上角或右下角。'],
+    ['add','選「加到主畫面」或「安裝應用程式」','不同手機的字可能略有不同。'],
+    ['ok','按「新增」或「安裝」','圖示就會出現在主畫面。']
+  ];
+  $('a2Steps').innerHTML=STEPS.map(([i,t,d],n)=>`<li><span class="a2n">${n+1}</span><span class="a2i">${ICON[i]}</span><div><b>${t}</b><span>${d}</span></div></li>`).join('');
+  if(inLine){const u=new URL(location.href);u.searchParams.set('openExternalBrowser','1');$('a2Open').href=u.toString();$('a2Open').hidden=false}
+  let dismissed=false;try{dismissed=Date.now()-(+localStorage.getItem('a2dismiss')||0)<7*864e5}catch(e){}
+  const show=()=>{if(!standalone&&!dismissed)card.hidden=false};
+  if(mobile)show();
+  window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e;show()});
+  window.addEventListener('appinstalled',()=>{card.hidden=true;deferred=null;toast('已加入主畫面')});
+  $('a2btn').addEventListener('click',async()=>{
+    if(deferred){
+      deferred.prompt();
+      try{const {outcome}=await deferred.userChoice;if(outcome==='accepted'){card.hidden=true;toast('已加入主畫面')}}catch(e){}
+      deferred=null;return;
+    }
+    openModal(a2,$('a2Close'));
+  });
+  $('a2Later').addEventListener('click',()=>{card.hidden=true;try{localStorage.setItem('a2dismiss',Date.now())}catch(e){}});
+  $('a2Close').onclick=closeModal;
+  draggable(a2,[$('a2Grab'),$('a2Bar')]);
+  if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));
 })();
 
 /* ---------- 送出需求 ---------- */
