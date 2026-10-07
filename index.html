@@ -418,6 +418,51 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
   .glass-chip{display:none}
   .lamp{right:8%}
 }
+
+/* ---------- 健康小遊戲 ---------- */
+.hentry{display:flex;align-items:center;gap:16px;background:var(--surface);border-radius:22px;padding:16px 18px;margin-top:12px}
+.hentry .ring{width:64px;height:64px;flex:none}
+.hentry .k{font-size:13px;color:var(--ink-2)}
+.hentry .v{font-family:var(--serif-tc);font-size:19px;margin:2px 0 0}
+.hentry .chev{width:8px;height:14px;color:var(--ink-3);margin-left:auto;flex:none}
+.bigring .streak{margin-top:14px;font-size:14px;font-weight:600;padding:6px 14px;border-radius:999px;background:rgba(255,200,140,.14);color:var(--on-dark)}
+.hweek{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;background:var(--surface);border-radius:16px;padding:14px 10px;margin-top:12px;text-align:center}
+.hweek .d{font-size:12px;color:var(--ink-2)}
+.hweek .dot{width:28px;height:28px;margin:6px auto 0;border-radius:50%;display:grid;place-items:center;background:var(--group);color:transparent}
+.hweek .dot svg{width:14px;height:14px}
+.hweek .dot.part{background:var(--amber-soft)}
+.hweek .dot.met{background:var(--amber);color:#1E1408}
+.hweek .today .d{color:var(--amber-ink);font-weight:600}
+.hwater .ring{width:88px;height:88px}
+.hwater .grow{flex:1;min-width:0}
+.hbtns{display:flex;gap:8px;margin-top:8px}
+.hbtns button{border:none;border-radius:999px;padding:8px 14px;font-size:15px;font-weight:600}
+.hbtns .add{background:var(--ink);color:var(--page)}
+.hbtns .sub{background:var(--group);color:var(--ink);width:40px;padding:8px 0}
+.wsum{display:flex;justify-content:space-between;align-items:flex-end;padding:16px 16px 4px}
+.wsum .big{font-family:var(--serif-tc);font-size:30px;line-height:1}
+.wsum .big small{font-size:15px;color:var(--ink-2);margin-left:4px}
+.wsum .chg{font-size:14px;color:var(--ink-2);text-align:right}
+.wsum .chg b{display:block;font-size:17px;color:var(--ink)}
+.wchart{display:block;width:100%;height:auto;padding:4px 8px 10px}
+.wchart .ln{fill:none;stroke:var(--amber-ink);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
+.wchart .ar{fill:var(--amber-soft)}
+.wchart .pt{fill:var(--surface);stroke:var(--amber-ink);stroke-width:2}
+.wchart .gl{stroke:var(--line);stroke-width:1}
+.wchart text{font-size:10px;fill:var(--ink-3);font-family:var(--sans)}
+.wempty{padding:22px 16px 26px;color:var(--ink-2);font-size:15px;text-align:center}
+.hreset{display:block;margin:34px auto 0;background:none;border:none;color:var(--ink-3);font-size:14px;text-decoration:underline;padding:10px}
+.hbadge{position:fixed;inset:0;z-index:80;display:grid;place-items:center;background:rgba(20,14,10,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:24px}
+.hbadge[hidden]{display:none}
+.hbadge .card{background:var(--espresso);color:var(--on-dark);border-radius:28px;padding:30px 26px 22px;width:min(320px,100%);text-align:center;position:relative;overflow:hidden;animation:pop .5s var(--spring)}
+.hbadge .card::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 45% at 50% 30%,rgba(255,170,80,.35),transparent 70%);pointer-events:none}
+.hbadge svg.medal{width:96px;height:96px;position:relative;animation:wob 1.2s var(--spring)}
+@keyframes wob{0%{transform:scale(.3) rotate(-25deg)}60%{transform:scale(1.08) rotate(6deg)}100%{transform:none}}
+.hbadge h3{font-family:var(--serif-tc);font-weight:400;font-size:26px;margin:14px 0 4px;position:relative}
+.hbadge p{color:var(--on-dark-2);margin:0 0 20px;font-size:15px;position:relative}
+.hbadge .spark{position:absolute;width:7px;height:7px;border-radius:2px;top:38%;left:50%;opacity:0;animation:spark 1.1s ease-out forwards}
+@keyframes spark{0%{opacity:1;transform:translate(0,0) rotate(0)}100%{opacity:0;transform:translate(var(--x),var(--y)) rotate(220deg)}}
+@media (prefers-reduced-motion: reduce){.hbadge .card,.hbadge svg.medal{animation:none}.hbadge .spark{display:none}}
 </style>
 </head>
 <body>
@@ -456,6 +501,18 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
         <a class="lnk" href="#progress">查詢我家進度 <svg class="chev" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"/></svg></a>
       </div>
     </div>
+
+
+    <a class="hentry press" href="#health" aria-label="健康小遊戲">
+      <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+        <defs><linearGradient id="rgH0" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6C77C"/><stop offset="1" stop-color="#C9822E"/></linearGradient></defs>
+        <circle class="track" cx="60" cy="60" r="50" fill="none" stroke-width="14"/>
+        <circle class="prog" id="hEntryRing" cx="60" cy="60" r="50" fill="none" stroke="url(#rgH0)" stroke-width="14" stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="314.16" transform="rotate(-90 60 60)"/>
+        <text class="ringtxt" id="hEntryPct" x="60" y="64" text-anchor="middle" font-size="20" fill="currentColor">0%</text>
+      </svg>
+      <div><div class="k">健康小遊戲</div><div class="v" id="hEntryV">今天還沒記錄步數</div></div>
+      <svg class="chev" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"/></svg>
+    </a>
 
     <div class="a2card" id="a2card" hidden>
       <img src="icons/apple-touch-icon.png" alt="" width="54" height="54">
@@ -647,6 +704,79 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
   </div>
 </section>
 
+<!-- ========== 健康小遊戲 ========== -->
+<section class="panel" id="health" data-title="健康小遊戲" aria-label="健康小遊戲">
+  <div class="wrap">
+    <h1 class="ltitle">健康小遊戲</h1>
+    <p class="lsub">每天動一動。記錄只存在您的手機裡。</p>
+
+    <div class="bigring">
+      <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+        <defs><linearGradient id="rgH1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F9D193"/><stop offset="1" stop-color="#D08A33"/></linearGradient></defs>
+        <circle class="track" cx="60" cy="60" r="50" fill="none" stroke-width="12"/>
+        <circle class="prog" id="hRing" cx="60" cy="60" r="50" fill="none" stroke="url(#rgH1)" stroke-width="12" stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="314.16" transform="rotate(-90 60 60)"/>
+        <text class="ringtxt" id="hPct" x="60" y="62" text-anchor="middle" font-size="24" fill="#F6EEE3">0%</text>
+        <text x="60" y="80" text-anchor="middle" font-size="10" fill="rgba(246,238,227,.6)" id="hGoalTxt">目標 6,000 步</text>
+      </svg>
+      <div class="st" id="hStepsV">今天 0 步</div>
+      <div class="sm" id="hStepsSub">約 0 大卡・0 公里</div>
+      <div class="streak" id="hStreak">連續達標 0 天</div>
+    </div>
+    <div class="hweek" id="hWeek" aria-label="最近七天"></div>
+
+    <div class="gcap">記錄今天的步數</div>
+    <div class="group">
+      <label class="row"><span class="lbl">今天步數</span><input id="hStepIn" inputmode="numeric" placeholder="看手機健康 App 填入" autocomplete="off"></label>
+      <label class="row"><span class="lbl grow">每日目標</span><select id="hGoal" aria-label="每日步數目標"><option value="4000">4,000 步</option><option value="6000">6,000 步</option><option value="8000">8,000 步</option><option value="10000">10,000 步</option><option value="12000">12,000 步</option></select></label>
+    </div>
+    <button class="btn dark press" type="button" id="hStepBtn" style="margin-top:14px">記錄步數</button>
+    <p class="gfoot">大卡與公里數是依步數估算(有記錄體重會更準),僅供參考。</p>
+
+    <div class="shead"><h2>喝水</h2></div>
+    <div class="ringcard hwater">
+      <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+        <defs><linearGradient id="rgH2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A9D3E8"/><stop offset="1" stop-color="#4C8DB0"/></linearGradient></defs>
+        <circle class="track" cx="60" cy="60" r="50" fill="none" stroke-width="14"/>
+        <circle class="prog" id="hWRing" cx="60" cy="60" r="50" fill="none" stroke="url(#rgH2)" stroke-width="14" stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="314.16" transform="rotate(-90 60 60)"/>
+        <text class="ringtxt" id="hWTxt" x="60" y="64" text-anchor="middle" font-size="20" fill="currentColor">0/8</text>
+      </svg>
+      <div class="grow">
+        <div class="k">今天</div>
+        <div class="v" id="hWV">0 杯</div>
+        <div class="k" id="hWml">0 / 2,000 毫升</div>
+        <div class="hbtns"><button type="button" class="sub press" id="hWMinus" aria-label="少一杯">−</button><button type="button" class="add press" id="hWPlus">+1 杯</button></div>
+      </div>
+    </div>
+    <div class="group" style="margin-top:12px">
+      <label class="row"><span class="lbl grow">每日目標</span><select id="hWGoal" aria-label="每日喝水目標"><option value="6">6 杯</option><option value="8">8 杯</option><option value="10">10 杯</option><option value="12">12 杯</option></select></label>
+    </div>
+    <p class="gfoot">一杯以 250 毫升計算。</p>
+
+    <div class="shead"><h2>體重</h2></div>
+    <div class="group" id="hWeightBox"></div>
+    <div class="group" style="margin-top:12px">
+      <label class="row"><span class="lbl">今天體重</span><input id="hKg" inputmode="decimal" placeholder="例如 55.2" autocomplete="off"><span class="meta">公斤</span></label>
+    </div>
+    <button class="btn plain press" type="button" id="hKgBtn" style="margin-top:14px">記錄體重</button>
+    <p class="gfoot">同一天記錄多次,以最後一次為準。</p>
+
+    <button class="hreset" type="button" id="hReset">清除所有健康記錄</button>
+  </div>
+</section>
+
+<div class="hbadge" id="hBadge" hidden role="dialog" aria-modal="true" aria-labelledby="hBadgeT">
+  <div class="card">
+    <svg class="medal" viewBox="0 0 96 96" aria-hidden="true">
+      <path d="M34 8h12l-6 28h-10z" fill="#C9822E"/><path d="M62 8H50l6 28h10z" fill="#E3A14B"/>
+      <circle cx="48" cy="58" r="28" fill="#F6C77C"/><circle cx="48" cy="58" r="21" fill="none" stroke="#C9822E" stroke-width="2.5"/>
+      <path d="M48 45l4 8.5 9.3 1.1-6.9 6.3 1.9 9.1L48 65.4l-8.3 4.6 1.9-9.1-6.9-6.3 9.3-1.1z" fill="#8E5A1B"/>
+    </svg>
+    <h3 id="hBadgeT">今日達標!</h3>
+    <p id="hBadgeP">連續達標 1 天</p>
+    <button class="btn amber press" type="button" id="hBadgeOk">太棒了</button>
+  </div>
+</div>
+
 <!-- ========== 聯絡主任 ========== -->
 <section class="panel" id="contact" data-title="聯絡主任" aria-label="聯絡主任">
   <div class="wrap">
@@ -803,7 +933,7 @@ function toast(t){const e=$('toast');e.textContent=t;e.classList.add('show');cle
 function el(tag,cls,html){const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e}
 
 /* ---------- 分頁(底部 Tab Bar + 網址 #) ---------- */
-const PANELS=['home','progress','services','learn','contact'];
+const PANELS=['home','progress','services','learn','contact','health'];
 const scrollPos={};let current=null;
 function show(id,{instant}={}){
   if(!PANELS.includes(id))id='home';
@@ -1147,6 +1277,103 @@ $('form').addEventListener('submit',async e=>{
   if(reduce||!('IntersectionObserver' in window)){sps.forEach(x=>x.classList.add('seen'));return}
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('seen');io.unobserve(e.target)}}),{threshold:.12});
   sps.forEach(x=>io.observe(x));
+})();
+
+
+/* ---------- 健康小遊戲(資料只存在這支手機) ---------- */
+(()=>{
+  const KEY='health',C=314.16,CUP=250;
+  const dk=d=>{const z=n=>String(n).padStart(2,'0');return d.getFullYear()+'-'+z(d.getMonth()+1)+'-'+z(d.getDate())};
+  const today=()=>dk(new Date());
+  const fmt=n=>Math.round(n).toLocaleString('en-US');
+  let H={goal:6000,wgoal:8,days:{},weights:[]};
+  try{const o=JSON.parse(localStorage.getItem(KEY)||'null');if(o)H=Object.assign(H,o)}catch(e){}
+  const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(H))}catch(e){}};
+  const day=k=>H.days[k]||(H.days[k]={steps:0,water:0});
+  const latestKg=()=>H.weights.length?H.weights[H.weights.length-1].kg:null;
+  const ring=(id,f)=>{const e=$(id);if(e)e.style.strokeDashoffset=C*(1-Math.max(0,Math.min(1,f)))};
+  function streak(){
+    let n=0;const d=new Date();
+    if((H.days[dk(d)]?.steps||0)<H.goal)d.setDate(d.getDate()-1);
+    while((H.days[dk(d)]?.steps||0)>=H.goal){n++;d.setDate(d.getDate()-1)}
+    return n;
+  }
+  function render(){
+    const t=day(today()),st=t.steps,f=st/H.goal,kg=latestKg()||60;
+    const kcal=st*0.00055*kg,km=st*0.7/1000;
+    ring('hRing',f);ring('hEntryRing',f);
+    $('hPct').textContent=Math.min(999,Math.round(f*100))+'%';
+    $('hEntryPct').textContent=Math.min(999,Math.round(f*100))+'%';
+    $('hGoalTxt').textContent='目標 '+fmt(H.goal)+' 步';
+    $('hStepsV').textContent='今天 '+fmt(st)+' 步';
+    $('hStepsSub').textContent='約 '+fmt(kcal)+' 大卡・'+km.toFixed(1)+' 公里';
+    const s=streak();
+    $('hStreak').textContent=s?'🔥 連續達標 '+s+' 天':'今天達標,開始累積連勝';
+    $('hEntryV').textContent=st?(st>=H.goal?'今天已達標 🎉':'今天 '+fmt(st)+' 步・還差 '+fmt(H.goal-st)):'今天還沒記錄步數';
+    $('hGoal').value=H.goal;$('hWGoal').value=H.wgoal;
+    // 最近七天
+    const W=['日','一','二','三','四','五','六'],box=$('hWeek');box.innerHTML='';
+    for(let i=6;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);const v=H.days[dk(d)]?.steps||0;
+      const c=el('div',i===0?'today':'');c.innerHTML='<div class="d">'+(i===0?'今天':W[d.getDay()])+'</div><div class="dot '+(v>=H.goal?'met':v>0?'part':'')+'" title="'+fmt(v)+' 步">'+CHECK+'</div>';box.appendChild(c)}
+    // 喝水
+    const w=t.water;ring('hWRing',w/H.wgoal);
+    $('hWTxt').textContent=w+'/'+H.wgoal;$('hWV').textContent=w+' 杯'+(w>=H.wgoal?' ✓':'');
+    $('hWml').textContent=fmt(w*CUP)+' / '+fmt(H.wgoal*CUP)+' 毫升';
+    renderWeight();
+  }
+  function renderWeight(){
+    const box=$('hWeightBox'),L=H.weights.slice(-30);
+    if(!L.length){box.innerHTML='<div class="wempty">還沒有記錄。記下第一筆,之後就能看到變化趨勢。</div>';return}
+    const last=L[L.length-1].kg,first=L[0].kg,diff=last-first;
+    const chg=L.length<2?'<span>第一筆記錄</span>':'<span>'+L[0].d.slice(5).replace('-','/')+' 以來</span><b>'+(diff>0?'+':diff<0?'−':'±')+Math.abs(diff).toFixed(1)+' 公斤</b>';
+    let svg='';
+    if(L.length>=2){
+      const Wd=320,Ht=130,pl=30,pr=10,pt=12,pb=22;
+      let mn=Math.min(...L.map(x=>x.kg)),mx=Math.max(...L.map(x=>x.kg));if(mx-mn<1){const m=(mx+mn)/2;mn=m-.5;mx=m+.5}
+      const X=i=>pl+i*(Wd-pl-pr)/(L.length-1),Y=v=>pt+(mx-v)*(Ht-pt-pb)/(mx-mn);
+      const pts=L.map((x,i)=>X(i).toFixed(1)+','+Y(x.kg).toFixed(1)).join(' ');
+      svg='<svg class="wchart" viewBox="0 0 '+Wd+' '+Ht+'" role="img" aria-label="體重變化趨勢">'+
+        '<line class="gl" x1="'+pl+'" x2="'+(Wd-pr)+'" y1="'+Y(mx)+'" y2="'+Y(mx)+'"/><line class="gl" x1="'+pl+'" x2="'+(Wd-pr)+'" y1="'+Y(mn)+'" y2="'+Y(mn)+'"/>'+
+        '<text x="'+(pl-4)+'" y="'+(Y(mx)+3)+'" text-anchor="end">'+mx.toFixed(1)+'</text><text x="'+(pl-4)+'" y="'+(Y(mn)+3)+'" text-anchor="end">'+mn.toFixed(1)+'</text>'+
+        '<polygon class="ar" points="'+X(0)+','+(Ht-pb)+' '+pts+' '+X(L.length-1)+','+(Ht-pb)+'"/>'+
+        '<polyline class="ln" points="'+pts+'"/>'+
+        (L.length<=14?L.map((x,i)=>'<circle class="pt" cx="'+X(i)+'" cy="'+Y(x.kg)+'" r="3.2"/>').join(''):'<circle class="pt" cx="'+X(L.length-1)+'" cy="'+Y(last)+'" r="3.8"/>')+
+        '<text x="'+pl+'" y="'+(Ht-6)+'">'+L[0].d.slice(5).replace('-','/')+'</text><text x="'+(Wd-pr)+'" y="'+(Ht-6)+'" text-anchor="end">'+L[L.length-1].d.slice(5).replace('-','/')+'</text></svg>';
+    }else svg='<div class="wempty" style="padding-top:10px">再記一筆,就會畫出趨勢圖。</div>';
+    box.innerHTML='<div class="wsum"><div class="big">'+last.toFixed(1)+'<small>公斤</small></div><div class="chg">'+chg+'</div></div>'+svg;
+  }
+  function celebrate(){
+    const s=streak();$('hBadgeP').textContent=s>1?'🔥 連續達標 '+s+' 天,繼續保持!':'走了 '+fmt(day(today()).steps)+' 步,明天繼續!';
+    const card=$('hBadge').querySelector('.card');card.querySelectorAll('.spark').forEach(x=>x.remove());
+    if(!reduce){const cols=['#F6C77C','#E3A14B','#A9D3E8','#F6EEE3'];for(let i=0;i<18;i++){const sp=el('i','spark');const a=Math.random()*Math.PI*2,r=80+Math.random()*80;sp.style.setProperty('--x',Math.cos(a)*r+'px');sp.style.setProperty('--y',Math.sin(a)*r+'px');sp.style.background=cols[i%4];sp.style.animationDelay=(Math.random()*.15)+'s';card.appendChild(sp)}}
+    $('hBadge').hidden=false;$('hBadgeOk').focus();
+    if(navigator.vibrate)try{navigator.vibrate([30,40,30])}catch(e){}
+  }
+  $('hBadgeOk').addEventListener('click',()=>{$('hBadge').hidden=true});
+  $('hBadge').addEventListener('click',e=>{if(e.target===$('hBadge'))$('hBadge').hidden=true});
+  $('hStepBtn').addEventListener('click',()=>{
+    const v=parseInt(String($('hStepIn').value).replace(/[^\d]/g,''),10);
+    if(!(v>=0)||v>100000){toast('請輸入正確的步數');$('hStepIn').focus();return}
+    const t=day(today()),was=t.steps>=H.goal;t.steps=v;save();$('hStepIn').value='';$('hStepIn').blur();render();
+    if(!was&&v>=H.goal)celebrate();else toast('已記錄 '+fmt(v)+' 步');
+  });
+  $('hStepIn').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();$('hStepBtn').click()}});
+  $('hGoal').addEventListener('change',()=>{H.goal=+$('hGoal').value;save();render();toast('每日目標改為 '+fmt(H.goal)+' 步')});
+  $('hWGoal').addEventListener('change',()=>{H.wgoal=+$('hWGoal').value;save();render()});
+  $('hWPlus').addEventListener('click',()=>{const t=day(today());if(t.water>=30)return;t.water++;save();render();if(t.water===H.wgoal)toast('今天喝水達標 💧');});
+  $('hWMinus').addEventListener('click',()=>{const t=day(today());if(t.water>0){t.water--;save();render()}});
+  $('hKgBtn').addEventListener('click',()=>{
+    const v=parseFloat(String($('hKg').value).replace(',','.'));
+    if(!(v>=20&&v<=300)){toast('請輸入正確的體重(公斤)');$('hKg').focus();return}
+    const k=today(),kg=Math.round(v*10)/10,i=H.weights.findIndex(x=>x.d===k);
+    if(i>=0)H.weights[i].kg=kg;else H.weights.push({d:k,kg});
+    H.weights.sort((a,b)=>a.d<b.d?-1:1);if(H.weights.length>365)H.weights=H.weights.slice(-365);
+    save();$('hKg').value='';$('hKg').blur();render();toast('已記錄 '+kg.toFixed(1)+' 公斤');
+  });
+  $('hKg').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();$('hKgBtn').click()}});
+  $('hReset').addEventListener('click',()=>{if(!confirm('確定要清除所有步數、喝水和體重記錄嗎?清除後無法復原。'))return;H={goal:H.goal,wgoal:H.wgoal,days:{},weights:[]};save();render();toast('已清除')});
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)render()});
+  render();
 })();
 
 /* ---------- 開場:檯燈亮起、圓環填滿 ---------- */
