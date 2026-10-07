@@ -460,6 +460,32 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
 .hbadge .spark{position:absolute;width:7px;height:7px;border-radius:2px;top:38%;left:50%;opacity:0;animation:spark 1.1s ease-out forwards}
 @keyframes spark{0%{opacity:1;transform:translate(0,0) rotate(0)}100%{opacity:0;transform:translate(var(--x),var(--y)) rotate(220deg)}}
 @media (prefers-reduced-motion: reduce){.hbadge .card,.hbadge svg.medal{animation:none}.hbadge .spark{display:none}}
+
+/* ---------- 服務情境介紹 ---------- */
+.sheet.svc .body{padding-top:0}
+.sv-pics{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px;padding:0 20px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.sv-pics::-webkit-scrollbar{display:none}
+.sv-pics figure{flex:none;width:88%;margin:0;scroll-snap-align:center;position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/5;background:var(--espresso)}
+.sv-pics figure:only-child{width:100%}
+.sv-pics img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .5s var(--ease)}
+.sv-pics img.ok{opacity:1}
+.sv-pics figure .fb{position:absolute;inset:0;display:grid;place-items:center;color:#FFD28C;background:radial-gradient(60% 45% at 50% 45%,rgba(255,170,80,.35),transparent 70%),linear-gradient(180deg,#1C140E,#2A1D14)}
+.sv-pics figure .fb svg{width:34%;height:auto;stroke:currentColor;filter:drop-shadow(0 0 10px rgba(255,180,90,.6))}
+.sv-pics figure.loaded .fb{display:none}
+.sv-pics figcaption{position:absolute;left:12px;bottom:12px;font-size:12px;color:#fff;background:rgba(0,0,0,.38);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:4px 10px;border-radius:999px}
+.sv-dots{display:flex;justify-content:center;gap:6px;margin:12px 0 0}
+.sv-dots i{width:6px;height:6px;border-radius:50%;background:var(--ink-3);opacity:.4;transition:all .3s}
+.sv-dots i.on{opacity:1;background:var(--amber-ink);width:16px;border-radius:3px}
+.sv-h{font-family:var(--serif-tc);font-weight:400;font-size:30px;margin:18px 0 4px}
+.sv-d{color:var(--ink-2);font-size:16px;line-height:1.65;margin:0 0 18px}
+.sv-pts{list-style:none;margin:0;padding:0}
+.sv-pts li{display:flex;gap:12px;align-items:center;padding:13px 16px;font-size:16px}
+.sv-pts li+li{border-top:1px solid var(--line)}
+.sv-pts li svg{width:16px;height:16px;color:var(--amber-ink);flex:none}
+.sv-note{font-size:13px;color:var(--ink-2);margin:10px 4px 18px;line-height:1.5}
+.sv-act{display:grid;gap:10px}
+.sgrid .scard .see{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:#FFD28C;margin-top:6px}
+.sgrid .scard .see svg{width:6px;height:10px}
 </style>
 </head>
 <body>
@@ -589,9 +615,9 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
 <section class="panel" id="services" data-title="加值服務" aria-label="加值服務">
   <div class="wrap">
     <h1 class="ltitle">加值服務</h1>
-    <p class="lsub">選好需要的項目,一次登記給主任。</p>
+    <p class="lsub">點一下看情境示意,喜歡再留資料給主任。</p>
     <div class="sgrid" id="svcGrid"></div>
-    <p class="gfoot" style="text-align:center;margin-top:16px">可以多選。費用依項目與坪數報價,確認後才會進行。</p>
+    <p class="gfoot" style="text-align:center;margin-top:16px">可以加入多項,一次登記。費用依項目與坪數報價,確認後才會進行。</p>
   </div>
 </section>
 
@@ -801,6 +827,30 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
 
 <button class="btn amber fab" type="button" id="fab" data-open-sheet aria-hidden="true" tabindex="-1">登記需求<span class="n" id="fabN">0</span></button>
 
+
+<!-- 服務情境介紹 -->
+<div class="sheet svc" id="svcSheet" role="dialog" aria-modal="true" aria-labelledby="svTitle" aria-hidden="true">
+  <div class="grab" id="svGrab"><i></i></div>
+  <div class="bar" id="svBar">
+    <button type="button" id="svClose">關閉</button>
+    <h3 id="svTitle">服務介紹</h3>
+    <span class="sp"></span>
+  </div>
+  <div class="body" id="svBody">
+    <div class="sv-pics" id="svPics"></div>
+    <div class="sv-dots" id="svDots" aria-hidden="true"></div>
+    <h2 class="sv-h" id="svName"></h2>
+    <p class="sv-d" id="svDesc"></p>
+    <div class="gcap">服務內容</div>
+    <div class="group"><ul class="sv-pts" id="svPts"></ul></div>
+    <p class="sv-note">情境圖僅供示意。加值服務有需要再說,依項目與坪數報價,確認後才會進行。</p>
+    <div class="sv-act">
+      <button class="btn amber press" type="button" id="svGo">我有興趣,留下聯絡資料</button>
+      <button class="btn plain press" type="button" id="svAdd">先加入清單,再看看其他</button>
+    </div>
+  </div>
+</div>
+
 <!-- 需求表單抽屜 -->
 <div class="scrim" id="scrim"></div>
 <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" aria-hidden="true">
@@ -999,21 +1049,21 @@ const SITE_PICS=[
 function svcCard(s,selectable){
   const b=el('button','scard press');b.type='button';b.dataset.n=s.n;
   b.innerHTML=`<span class="glow"></span><span class="art" aria-hidden="true">${s.i}</span>`+
-    (selectable?`<span class="chk" aria-hidden="true">${CHECK}</span><span class="lab"><b>${s.n}</b><span>${s.d}</span></span>`
+    (selectable?`<span class="chk" aria-hidden="true">${CHECK}</span><span class="lab"><b>${s.n}</b><span>${s.d}</span><span class="see">看情境示意 ${CHEV}</span></span>`
                :`<span class="lab"><span><b>${s.n}</b><span>${s.d}</span></span><span class="plus" aria-hidden="true">${PLUS}</span></span>`);
   return b;
 }
 SERVICES.forEach(s=>{
-  const r=svcCard(s,false);r.setAttribute('aria-label',`${s.n}:${s.d}。加入需求`);
-  r.addEventListener('click',()=>{if(!picked.has(s.n))toggle(s.n);location.hash='services';toast(`已加入「${s.n}」`)});
+  const r=svcCard(s,false);r.setAttribute('aria-label',`${s.n}:${s.d}。看情境示意`);
+  r.addEventListener('click',()=>{location.hash='services';setTimeout(()=>openSvc(s.n),60)});
   $('rail').appendChild(r);
-  const g=svcCard(s,true);g.setAttribute('aria-pressed','false');g.setAttribute('aria-label',`${s.n}:${s.d}`);
-  g.addEventListener('click',()=>toggle(s.n));
+  const g=svcCard(s,true);g.setAttribute('aria-pressed','false');g.setAttribute('aria-label',`${s.n}:${s.d}。看情境示意`);
+  g.addEventListener('click',()=>openSvc(s.n));
   $('svcGrid').appendChild(g);
 });
 SERVICES.slice(0,4).forEach((s,i)=>{
   const t=el('button',i===0?'first press':'press');t.type='button';t.textContent=s.n;
-  t.addEventListener('click',()=>{if(!picked.has(s.n))toggle(s.n);location.hash='services'});
+  t.addEventListener('click',()=>{location.hash='services';setTimeout(()=>openSvc(s.n),60)});
   $('heroTags').appendChild(t);
 });
 (()=>{const words=SERVICES.map(s=>s.n);let h='';for(let k=0;k<2;k++)words.forEach(w=>h+=`<span>${w}</span><i>/</i>`);$('mq').innerHTML=h})();
@@ -1140,6 +1190,37 @@ function draggable(el,handles){ // 拖曳關閉
   });
 }
 draggable(sheet,[$('grab'),$('sheetBar')]);
+const SVC_INFO={"窗簾": {"imgs": [{"u": "https://images.unsplash.com/photo-1754611380518-61a923cc47ca", "a": "窗簾框住窗景的明亮房間"}, {"u": "https://images.unsplash.com/photo-1754611362309-71297e9f42fd", "a": "中性色調的極簡客廳"}], "long": "讓光線剛剛好。依每扇窗的方位和用途,建議遮光簾、紗簾或捲簾,到府丈量後再報價。", "pts": ["到府丈量", "遮光、紗簾、捲簾、調光簾", "交屋後安裝,一次到位"]}, "家具": {"imgs": [{"u": "https://images.unsplash.com/photo-1550581190-9c1c48d21d6c", "a": "L 型沙發與圓形白色茶几"}, {"u": "https://images.unsplash.com/photo-1615800001964-5afd0ae8e49a", "a": "白色沙發搭配橘色抱枕"}], "long": "依您家的格局和生活習慣,幫您搭配沙發、床組、餐桌,尺寸先量好,不怕買了放不下。", "pts": ["依平面圖建議尺寸與動線", "沙發、床組、餐桌椅搭配", "配合入住時間送貨"]}, "油漆": {"imgs": [{"u": "https://images.unsplash.com/photo-1778604293492-2b0aa0be088a", "a": "綠色主牆搭配灰色沙發"}, {"u": "https://images.unsplash.com/photo-1676136449197-babffb1125f0", "a": "綠色牆面與黃色沙發的客廳"}], "long": "一面主牆就能改變整個空間的感覺。從配色建議到施工,讓新家住起來更有自己的味道。", "pts": ["色票與配色建議", "主牆、全室油漆皆可", "漆料等級可依需求挑選"]}, "系統櫃": {"imgs": [{"u": "https://images.unsplash.com/photo-1722349674028-a148f4364e43", "a": "臥室裡的木質衣櫃"}, {"u": "https://images.unsplash.com/photo-1665507279638-5b48073c637b", "a": "白色系統廚櫃"}], "long": "衣櫃、廚櫃、鞋櫃、電視櫃量身訂做,把收納做好,空間自然清爽。", "pts": ["依實際尺寸設計", "衣櫃、廚櫃、鞋櫃、收納櫃", "設計圖確認後才施工"]}, "燈具": {"imgs": [{"u": "https://images.unsplash.com/photo-1785458033665-11755691809b", "a": "三盞吊燈照亮的餐廳"}, {"u": "https://images.unsplash.com/photo-1656403002413-2ac6137237d6", "a": "有燈光與綠植的餐桌空間"}], "long": "主燈、嵌燈、吊燈一起規劃,讓每個角落都有合適的光。", "pts": ["依空間規劃照明", "主燈、嵌燈、吊燈、間接照明", "配合水電一起安裝"]}, "冷氣": {"imgs": [{"u": "https://images.unsplash.com/photo-1762341123870-d706f257a12e", "a": "顯示 22 度的壁掛式冷氣"}, {"u": "https://images.unsplash.com/photo-1726614846573-c1ac2e6161d1", "a": "安裝在牆上的白色冷氣"}], "long": "依坪數與方位建議合適的機型,配管走線也幫您先想好,住起來安靜又省電。", "pts": ["依坪數建議噸數與機型", "能效與變頻機種建議", "專業安裝與配管"]}, "清潔": {"imgs": [{"u": "https://images.unsplash.com/photo-1585128792103-0b591f96512e", "a": "窗邊潔白的床鋪"}, {"u": "https://images.unsplash.com/photo-1665249934445-1de680641f50", "a": "有大窗戶的明亮客廳"}], "long": "交屋後的粉塵、殘膠一次細清,打開門就能安心入住。", "pts": ["全室細清、玻璃窗溝", "廚房、浴室去污除膠", "可配合入住前一天施作"]}, "搬家": {"imgs": [{"u": "https://images.unsplash.com/photo-1758523671071-4e3c43d055e6", "a": "搬著紙箱和盆栽入住新家"}, {"u": "https://images.unsplash.com/photo-1600725935160-f67ee4f6084a", "a": "桌上整齊的搬家紙箱"}], "long": "打包、搬運、拆裝一次搞定,讓入住新家這天輕鬆又順利。", "pts": ["事先估價,價格透明", "打包材料與專業打包", "大型家具拆裝"]}};
+
+let svCur=null;
+function openSvc(n){
+  const s=SERVICES.find(x=>x.n===n),info=SVC_INFO[n];if(!s||!info)return;
+  if(openEl)closeModal();
+  svCur=n;
+  $('svTitle').textContent=n;$('svName').textContent=n;$('svDesc').textContent=info.long;
+  const pics=$('svPics');pics.replaceChildren();pics.scrollLeft=0;
+  info.imgs.forEach(im=>{
+    const f=el('figure','');const fb=el('div','fb',s.i);const img=new Image();
+    img.alt=im.a;img.decoding='async';
+    img.srcset=`${im.u}?w=600&q=70&auto=format&fit=crop 600w, ${im.u}?w=1000&q=70&auto=format&fit=crop 1000w`;
+    img.sizes='(max-width:620px) 88vw, 540px';img.src=`${im.u}?w=1000&q=70&auto=format&fit=crop`;
+    img.onload=()=>{img.classList.add('ok');f.classList.add('loaded')};
+    img.onerror=()=>img.remove();
+    f.append(fb,img,el('figcaption','','情境示意'));pics.appendChild(f);
+  });
+  const dots=$('svDots');dots.replaceChildren(...info.imgs.map((_,i)=>el('i',i?'':'on')));dots.hidden=info.imgs.length<2;
+  $('svPts').replaceChildren(...info.pts.map(t=>{const li=el('li','',CHECK);li.append(document.createTextNode(t));return li}));
+  const had=picked.has(n);
+  $('svAdd').textContent=had?'已在清單中,從清單移除':'先加入清單,再看看其他';
+  $('svBody').scrollTop=0;
+  openModal($('svcSheet'),$('svClose'));
+}
+$('svPics').addEventListener('scroll',()=>{const p=$('svPics'),f=p.firstElementChild;if(!f)return;const i=Math.round(p.scrollLeft/(f.offsetWidth+10));$('svDots').querySelectorAll('i').forEach((d,k)=>d.classList.toggle('on',k===i))},{passive:true});
+$('svClose').onclick=closeModal;
+$('svAdd').onclick=()=>{const n=svCur,had=picked.has(n);toggle(n);closeModal();toast(had?`已從清單移除「${n}」`:`已加入「${n}」,右下角可一次登記`)};
+$('svGo').onclick=()=>{const n=svCur;if(!picked.has(n))toggle(n);closeModal();setTimeout(openSheet,reduce?0:420)};
+draggable($('svcSheet'),[$('svGrab'),$('svBar')]);
+
 
 /* ---------- 加入主畫面 ---------- */
 (()=>{
