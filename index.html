@@ -90,6 +90,16 @@ body.sheet-open #app{transform:scale(.94) translateY(calc(var(--top) + 10px));bo
 
 /* grouped list (iOS settings style) */
 .group{background:var(--surface);border-radius:16px;overflow:hidden}
+.sitepics{display:grid;gap:10px}
+.sitepic{position:relative;display:block;width:100%;padding:0;border:0;border-radius:18px;overflow:hidden;background:var(--group);aspect-ratio:4/3;cursor:zoom-in}
+.sitepic img{width:100%;height:100%;object-fit:cover;display:block}
+.sitepic .cp{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 12px;text-align:left;color:#fff;background:linear-gradient(transparent,rgba(20,14,10,.62));font-size:14px}
+.sitepic .cp small{display:block;font-size:12px;opacity:.8;margin-top:2px}
+.lbox{position:fixed;inset:0;z-index:200;background:rgba(12,9,7,.94);display:none;flex-direction:column;align-items:center;justify-content:center;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+.lbox.on{display:flex}
+.lbox img{max-width:100%;max-height:78vh;object-fit:contain;touch-action:pinch-zoom}
+.lbox p{color:#F6EEE3;font-size:14px;margin:14px 20px 0;text-align:center}
+.lbox button{position:absolute;top:calc(env(safe-area-inset-top) + 12px);right:14px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.16);color:#fff;font-size:22px}
 .gcap{font-size:13px;color:var(--ink-2);margin:22px 4px 8px}
 .gfoot{font-size:13px;color:var(--ink-2);margin:8px 4px 0;line-height:1.5}
 .row{display:flex;align-items:center;gap:12px;min-height:52px;padding:12px 16px;position:relative;width:100%;background:none;border:none;text-align:left}
@@ -517,6 +527,10 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
       <button class="btn dark press" type="submit" id="q-btn" style="margin-top:14px">查詢</button>
     </form>
 
+    <div class="gcap" style="margin-top:30px">工地現況</div>
+    <div class="sitepics" id="sitepics"></div>
+    <p class="gfoot">主任到現場拍攝的照片,點一下可看大圖。</p>
+
     <div class="gcap" style="margin-top:30px">每個階段</div>
     <div class="group steps" id="timeline"></div>
     <p class="gfoot">點一下階段,看看會發生什麼、可以先準備什麼。實際時程以主任通知為準。</p>
@@ -532,6 +546,8 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
     <p class="gfoot" style="text-align:center;margin-top:16px">可以多選。費用依項目與坪數報價,確認後才會進行。</p>
   </div>
 </section>
+
+<div class="lbox" id="lbox" role="dialog" aria-modal="true" aria-label="工地照片" aria-hidden="true"><button type="button" id="lboxX" aria-label="關閉">✕</button><img id="lboxImg" alt=""><p id="lboxCap"></p></div>
 
 <!-- ========== 房市知識 ========== -->
 <section class="panel" id="learn" data-title="房市知識" aria-label="房市知識">
@@ -840,6 +856,23 @@ function renderSteps(cur){
 }
 function renderProgress(cur){setRings(cur);renderSteps(cur)}
 renderSteps(EXAMPLE_IDX);
+
+/* ---------- 工地現況照片(新增照片:放進 site/ 並在這裡加一行) ---------- */
+const SITE_PICS=[
+  {src:"site/site-1.webp",thumb:"site/site-1-s.webp",t:"地下室結構完成,準備起造一樓",d:"2026 年 10 月",alt:"工地現場:地下室鋼筋與模板,遠方為台中市區"}
+];
+(()=>{
+  const box=$('sitepics'),lb=$('lbox'),im=$('lboxImg');let last=null;
+  SITE_PICS.forEach(p=>{
+    const b=el('button','sitepic press');b.type='button';
+    b.innerHTML=`<img src="${p.thumb}" alt="${p.alt}" loading="lazy"><span class="cp">${p.t}<small>${p.d}</small></span>`;
+    b.onclick=()=>{last=b;im.src=p.src;im.alt=p.alt;$('lboxCap').textContent=p.t+'・'+p.d;lb.classList.add('on');lb.setAttribute('aria-hidden','false');$('lboxX').focus()};
+    box.appendChild(b);
+  });
+  const close=()=>{lb.classList.remove('on');lb.setAttribute('aria-hidden','true');im.removeAttribute('src');last&&last.focus()};
+  $('lboxX').onclick=close;lb.addEventListener('click',e=>{if(e.target!==$('lboxX')&&e.target.tagName!=='IMG')close()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&lb.classList.contains('on'))close()});
+})();
 
 /* ---------- 查詢我家進度 ---------- */
 const lookup=$('lookup'),qMsg=$('q-msg'),qBtn=$('q-btn');
