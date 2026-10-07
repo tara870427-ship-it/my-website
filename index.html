@@ -204,6 +204,7 @@ body.sheet-open #app{transform:scale(.94) translateY(calc(var(--top) + 10px));bo
 /* news rows */
 .nrow{display:block;padding:14px 16px;position:relative}
 .nrow+.nrow::before{content:"";position:absolute;top:0;left:16px;right:0;border-top:.5px solid var(--line)}
+.nrow .good{display:inline-block;font-size:12px;font-weight:600;color:var(--ok);background:rgba(60,140,90,.12);border-radius:6px;padding:1px 7px;margin-right:8px}
 .nrow .src{font-size:13px;color:var(--ink-2);display:flex;justify-content:space-between;gap:10px}
 .nrow b{display:block;font-size:16px;font-weight:500;line-height:1.5;margin-top:3px}
 .nrow .why{font-size:14px;color:var(--amber-ink);margin-top:6px}
@@ -1079,7 +1080,7 @@ function updateFab(){
 function md(d){const x=new Date(d);return isNaN(x)?'':`${x.getMonth()+1}/${x.getDate()}`}
 function newsRow(n,withWhy){
   const a=el('a','nrow press');a.href=n.link;a.target='_blank';a.rel='noopener';
-  const src=el('div','src');const s1=el('span');s1.textContent=n.source||'新聞';const s2=el('span');s2.textContent=md(n.date);src.append(s1,s2);
+  const src=el('div','src');const s1=el('span');if(n.good)s1.append(el('span','good','好消息'));s1.append(document.createTextNode(n.source||'新聞'));const s2=el('span');s2.textContent=md(n.date);src.append(s1,s2);
   const b=el('b');b.textContent=n.title;a.append(src,b);
   if(withWhy&&n.why){const w=el('div','why');w.textContent='給您的提醒:'+n.why;a.append(w)}
   return a;

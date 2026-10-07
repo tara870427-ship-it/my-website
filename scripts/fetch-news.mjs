@@ -3,7 +3,12 @@
 import { writeFileSync } from 'node:fs';
 
 const QUERIES = ['台中 房市', '預售屋', '房貸 央行'];
+// 正向新聞:建設、交通、優惠、交屋入住等好消息,和一般房市新聞穿插顯示
+const GOOD_QUERIES = ['台中 捷運 建設', '台中 重大建設 啟用', '首購 優惠 房貸', '交屋 入住 新家', '台中 公園 綠地 啟用'];
+const GOOD_WORDS = /通車|啟用|開幕|完工|動工|落成|新建|建設|捷運|公園|綠地|優惠|補助|減稅|首購|回溫|升溫|成長|增加|提升|利多|好消息|入住|喬遷|圓夢|宜居|幸福|新地標|啟航|亮點/;
+const BAD_WORDS = /急凍|冷風|冰|跌|崩|慘|糾紛|違約|斷頭|爛尾|詐|虧|套牢|警訊|危機|衰退|退場|倒閉|停工|事故|火警|死|傷|告|罰|抗議|泡沫|恐慌|下修|縮水|減少|打房/;
 const MAX_ITEMS = 8;
+const GOOD_SLOTS = 4; // 8 則裡最多 4 則好消息,一則一般、一則好消息交錯
 const MAX_AGE_DAYS = 14;
 
 const rssUrl = q =>
@@ -41,24 +46,48 @@ export function parseRss(xml) {
 // 標題去掉標點空白後比對,避免同一則新聞重複出現
 const key = t => t.replace(/[\s\p{P}\p{S}]/gu, '').slice(0, 24);
 
-async function main() {
-  const all = [];
-  for (const q of QUERIES) {
+export const isGood = t => GOOD_WORDS.test(t) && !BAD_WORDS.test(t);
+
+async function fetchAll(queries) {
+  const out = [];
+  for (const q of queries) {
     try {
       const res = await fetch(rssUrl(q), { headers: { 'User-Agent': 'Mozilla/5.0 (news-bot for my-website)' } });
       if (!res.ok) throw new Error('HTTP ' + res.status);
-      all.push(...parseRss(await res.text()));
+      out.push(...parseRss(await res.text()));
     } catch (e) {
       console.error(`抓取「${q}」失敗:`, e.message);
     }
   }
+  return out;
+}
+
+// 一般新聞與好消息交錯排列:好消息、一般、好消息、一般…(第一則放好消息);好消息不夠就用一般新聞補滿
+export function mix(normal, good, max = MAX_ITEMS, goodSlots = GOOD_SLOTS) {
   const cutoff = Date.now() - MAX_AGE_DAYS * 864e5;
   const seen = new Set();
-  const items = all
+  const prep = list => list
     .filter(n => new Date(n.date) >= cutoff)
     .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .filter(n => { const k = key(n.title); if (seen.has(k)) return false; seen.add(k); return true; })
-    .slice(0, MAX_ITEMS);
+    .filter(n => { const k = key(n.title); if (seen.has(k)) return false; seen.add(k); return true; });
+  // 一般新聞裡本來就是好消息的也算進好消息
+  const g = prep([...good.filter(n => isGood(n.title)), ...normal.filter(n => isGood(n.title))]).slice(0, goodSlots).map(n => ({ ...n, good: true }));
+  const r = prep(normal);
+  const out = [];
+  let gi = 0, ri = 0;
+  while (out.length < max && (gi < g.length || ri < r.length)) {
+    const wantGood = out.length % 2 === 0;
+    if (wantGood && gi < g.length) out.push(g[gi++]);
+    else if (ri < r.length) out.push(r[ri++]);
+    else out.push(g[gi++]);
+  }
+  return out;
+}
+
+async function main() {
+  const normal = await fetchAll(QUERIES);
+  const good = await fetchAll(GOOD_QUERIES);
+  const items = mix(normal, good);
 
   if (!items.length) {
     console.error('這次沒有抓到新聞,保留原本的 news.json');
