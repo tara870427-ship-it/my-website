@@ -229,10 +229,6 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
 .bigring .ring .track{stroke:rgba(255,200,140,.14)}
 .bigring .st{font-family:var(--serif-tc);font-size:24px;margin:16px 0 2px}
 .bigring .sm{font-size:13px;color:var(--on-dark-2)}
-.mine{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;padding:10px 12px 10px 16px;border-radius:14px;background:var(--amber-soft);font-size:15px}
-.mine button{border:none;background:var(--surface);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:500}
-.qmsg{font-size:14px;margin:10px 4px 0;color:var(--ink-2)}
-.qmsg.bad{color:var(--danger)}
 .steps .acc>button{width:100%;display:flex;align-items:center;gap:14px;padding:14px 16px;background:none;border:none;text-align:left}
 .sdot{width:26px;height:26px;border-radius:50%;flex:none;display:grid;place-items:center;border:1.5px solid var(--ink-3)}
 .sdot svg{width:13px;height:13px}
@@ -499,7 +495,7 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
       <div>
         <div class="k" data-stepk>第 2 步,共 7 步</div>
         <div class="v" data-stagev>建築施工中</div>
-        <a class="lnk" href="#progress">查詢我家進度 <svg class="chev" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"/></svg></a>
+        <a class="lnk" href="#progress">看工程進度 <svg class="chev" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"/></svg></a>
       </div>
     </div>
 
@@ -567,7 +563,7 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
 <section class="panel" id="progress" data-title="交屋進度" aria-label="交屋進度">
   <div class="wrap">
     <h1 class="ltitle">交屋進度</h1>
-    <p class="lsub">輸入您的戶別,查看專屬進度。</p>
+    <p class="lsub">建案目前的工程階段與工地現況。</p>
     <div class="bigring">
       <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
         <defs><linearGradient id="rg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F9D193"/><stop offset="1" stop-color="#D08A33"/></linearGradient></defs>
@@ -579,19 +575,6 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
       <div class="st" data-stagev>建築施工中</div>
       <div class="sm" id="tlNote">工程現況:地下室完成,一樓施工中</div>
     </div>
-    <div class="mine" id="mine" hidden><span id="mineText"></span><button type="button" class="press" id="mineReset">看整體進度</button></div>
-
-    <form id="lookup" novalidate>
-      <div class="gcap">查詢我家進度</div>
-      <div class="group">
-        <label class="row"><span class="lbl grow">棟別</span><select id="q-bldg" aria-label="棟別"><option value="">請選擇</option><option>A棟</option><option>B棟</option><option>C棟</option><option>D棟</option></select></label>
-        <label class="row"><span class="lbl">樓層</span><input id="q-floor" inputmode="numeric" placeholder="例如 5" autocomplete="off"></label>
-        <label class="row"><span class="lbl" style="white-space:nowrap">手機末 3 碼</span><input id="q-last3" inputmode="numeric" maxlength="3" placeholder="例如 678" autocomplete="off"></label>
-      </div>
-      <p class="qmsg" id="q-msg" role="status" hidden></p>
-      <button class="btn dark press" type="submit" id="q-btn" style="margin-top:14px">查詢</button>
-    </form>
-
     <div class="gcap" style="margin-top:30px">工地現況</div>
     <div class="sitepics" id="sitepics"></div>
     <p class="gfoot">主任到現場拍攝的照片,點一下可看大圖。</p>
@@ -913,7 +896,7 @@ const FAQ=[
   ["交屋前我需要準備什麼?","身分證正本、印鑑章與印鑑證明,以及買賣契約書和繳款收據。貸款部分,建議交屋前 3 個月先找銀行試估,並多預留一到兩成自備款。"],
   ["驗屋可以請主任陪同嗎?","可以。我會陪您一起驗屋,並提供驗屋清單。有問題當場拍照登記,請建商在交屋前修繕。"],
   ["加值服務怎麼收費?","依項目與坪數不同而報價。您先在「服務」選好需要的項目並登記,我會幫您安排,確認後才會進行。"],
-  ["怎麼查我家的交屋進度?","到下方「進度」分頁,輸入棟別、樓層與手機末 3 碼,就能看到您家目前在哪個階段。"]
+  ["交屋進度在哪裡看?","到下方「進度」分頁,就能看到建案目前的工程階段和主任拍的工地照片。"]
 ];
 const FALLBACK_NEWS=[
   {source:"好房網",date:"2026-10-06",title:"8 月房價指數價量齊揚,淡季出現回溫訊號",link:"https://news.housefun.com.tw/",why:"市場沒有大跌,交屋後的資產價值相對穩定。"},
@@ -1011,35 +994,6 @@ const SITE_PICS=[
   $('lboxX').onclick=close;lb.addEventListener('click',e=>{if(e.target!==$('lboxX')&&e.target.tagName!=='IMG')close()});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&lb.classList.contains('on'))close()});
 })();
-
-/* ---------- 查詢我家進度 ---------- */
-const lookup=$('lookup'),qMsg=$('q-msg'),qBtn=$('q-btn');
-if(!db)lookup.hidden=true;
-function qSay(t,bad){qMsg.textContent=t;qMsg.classList.toggle('bad',!!bad);qMsg.hidden=!t}
-lookup.addEventListener('submit',async e=>{
-  e.preventDefault();
-  const b=$('q-bldg').value,f=$('q-floor').value.replace(/\s|樓|F|f/g,''),l=$('q-last3').value.replace(/\D/g,'');
-  if(!b||!f||l.length!==3){qSay('請選擇棟別,並填寫樓層和手機末 3 碼',true);return}
-  if(!db){qSay('查詢系統暫時無法使用,請直接聯絡主任',true);return}
-  qBtn.disabled=true;qBtn.textContent='查詢中…';qSay('');
-  try{
-    const {data,error}=await db.rpc('lookup_unit',{p_building:b,p_floor:f,p_last3:l});
-    if(error)throw error;
-    if(!data||!data.length){qSay('查不到符合的資料,請確認輸入是否正確,或直接聯絡主任',true);return}
-    const r=data[0],d=new Date(r.updated_at);
-    renderProgress(r.stage-1);
-    $('mineText').textContent=`${b} ${f} 樓的進度`;
-    $('mine').hidden=false;lookup.hidden=true;
-    $('tlNote').textContent=`主任更新於 ${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`;
-    window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
-  }catch(err){qSay('查詢失敗,請稍後再試',true)}
-  finally{qBtn.disabled=false;qBtn.textContent='查詢'}
-});
-$('mineReset').onclick=()=>{
-  renderProgress(EXAMPLE_IDX);
-  $('mine').hidden=true;lookup.hidden=!db;qSay('');
-  $('tlNote').textContent='工程現況:地下室完成,一樓施工中';
-};
 
 /* ---------- 服務卡片 ---------- */
 function svcCard(s,selectable){
