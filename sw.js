@@ -1,5 +1,5 @@
 // 讓網站可以「安裝」到手機主畫面;網頁一律先抓最新版,沒網路時才用上次存下的版本
-const CACHE = 'tara-v3';
+const CACHE = 'tara-v4';
 self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
 self.addEventListener('fetch', e => {
