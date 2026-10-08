@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>預售屋交屋服務|黃芝亭主任</title>
-<meta name="description" content="黃芝亭主任陪您從簽約一路到交屋:工程進度隨時查、驗屋交屋全程協助。窗簾、家具、油漆等加值服務,有需要再說。">
+<meta name="description" content="黃芝亭主任陪您從簽約一路到交屋:工程進度隨時查、驗屋交屋全程協助。窗簾、家具、油漆等Tara的貼心服務,有需要再說。">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="交給Tara就好">
 <meta property="og:url" content="https://my-website-delta-kohl.vercel.app/">
 <meta property="og:title" content="預售屋交屋服務|黃芝亭主任">
-<meta property="og:description" content="黃芝亭主任陪您從簽約一路到交屋:工程進度隨時查、驗屋交屋全程協助。窗簾、家具、油漆等加值服務,有需要再說。">
+<meta property="og:description" content="黃芝亭主任陪您從簽約一路到交屋:工程進度隨時查、驗屋交屋全程協助。窗簾、家具、油漆等Tara的貼心服務,有需要再說。">
 <meta property="og:image" content="https://my-website-delta-kohl.vercel.app/icons/icon-512.png">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#F6F4F0" media="(prefers-color-scheme: light)">
@@ -486,6 +486,15 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
 .sv-act{display:grid;gap:10px}
 .sgrid .scard .see{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:#FFD28C;margin-top:6px}
 .sgrid .scard .see svg{width:6px;height:10px}
+
+/* 小螢幕:標題不換行、服務卡片文字不擋到圖示 */
+.shead h2{white-space:nowrap}
+@media (max-width:420px){
+  .shead h2{font-size:23px}
+  .shead .pill{padding-left:12px;gap:8px;font-size:13px}
+  .sgrid .scard .lab span:not(.see){display:none}
+  .sgrid .scard .see{margin-top:4px}
+}
 </style>
 </head>
 <body>
@@ -549,7 +558,7 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
   </div>
 
   <div class="wrap">
-    <div class="shead"><h2>加值服務</h2><a class="pill press" href="#services">全部服務<span class="arr"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 11l6-6M6 5h5v5"/></svg></span></a></div>
+    <div class="shead"><h2>Tara的貼心服務</h2><a class="pill press" href="#services">全部服務<span class="arr"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 11l6-6M6 5h5v5"/></svg></span></a></div>
     <div class="rail" id="rail"></div>
   </div>
 
@@ -611,10 +620,10 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
   </div>
 </section>
 
-<!-- ========== 加值服務 ========== -->
-<section class="panel" id="services" data-title="加值服務" aria-label="加值服務">
+<!-- ========== Tara的貼心服務 ========== -->
+<section class="panel" id="services" data-title="Tara的貼心服務" aria-label="Tara的貼心服務">
   <div class="wrap">
-    <h1 class="ltitle">加值服務</h1>
+    <h1 class="ltitle">Tara的貼心服務</h1>
     <p class="lsub">點一下看情境示意,喜歡再留資料給主任。</p>
     <div class="sgrid" id="svcGrid"></div>
     <p class="gfoot" style="text-align:center;margin-top:16px">可以加入多項,一次登記。費用依項目與坪數報價,確認後才會進行。</p>
@@ -843,7 +852,7 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
     <p class="sv-d" id="svDesc"></p>
     <div class="gcap">服務內容</div>
     <div class="group"><ul class="sv-pts" id="svPts"></ul></div>
-    <p class="sv-note">情境圖僅供示意。加值服務有需要再說,依項目與坪數報價,確認後才會進行。</p>
+    <p class="sv-note">情境圖僅供示意。Tara的貼心服務有需要再說,依項目與坪數報價,確認後才會進行。</p>
     <div class="sv-act">
       <button class="btn amber press" type="button" id="svGo">我有興趣,留下聯絡資料</button>
       <button class="btn plain press" type="button" id="svAdd">先加入清單,再看看其他</button>
@@ -945,7 +954,7 @@ const SERVICES=[
 const FAQ=[
   ["交屋前我需要準備什麼?","身分證正本、印鑑章與印鑑證明,以及買賣契約書和繳款收據。貸款部分,建議交屋前 3 個月先找銀行試估,並多預留一到兩成自備款。"],
   ["驗屋可以請主任陪同嗎?","可以。我會陪您一起驗屋,並提供驗屋清單。有問題當場拍照登記,請建商在交屋前修繕。"],
-  ["加值服務怎麼收費?","依項目與坪數不同而報價。您先在「服務」選好需要的項目並登記,我會幫您安排,確認後才會進行。"],
+  ["Tara的貼心服務怎麼收費?","依項目與坪數不同而報價。您先在「服務」選好需要的項目並登記,我會幫您安排,確認後才會進行。"],
   ["交屋進度在哪裡看?","到下方「進度」分頁,就能看到建案目前的工程階段和主任拍的工地照片。"]
 ];
 const FALLBACK_NEWS=[
