@@ -502,6 +502,29 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
 #sofa3d .s3-ar{background:#17110D;color:#F6EEE3}
 #sofa3d .s3-hint{color:#6B6259}
 #sofa3d .s3-sw[aria-pressed=true]{outline-color:var(--amber-ink)}
+
+/* ---------- 幸運數字占卜(首頁小卡) ---------- */
+.luck{margin-top:12px;background:var(--surface);border-radius:22px;padding:14px 16px;position:relative;overflow:hidden}
+.luck .top{display:flex;align-items:center;gap:12px}
+.luck .orb{width:40px;height:40px;flex:none;border-radius:50%;display:grid;place-items:center;font-size:20px;background:radial-gradient(circle at 35% 30%,#FFE3B0,#E3A14B 70%);box-shadow:0 0 14px rgba(227,161,75,.45)}
+.luck .orb.spin{animation:orb 1s var(--ease)}
+@keyframes orb{0%{transform:rotate(0) scale(1)}50%{transform:rotate(200deg) scale(1.15)}100%{transform:rotate(360deg) scale(1)}}
+.luck .k{font-size:13px;color:var(--ink-2)}
+.luck .t{font-family:var(--serif-tc);font-size:17px;line-height:1.3}
+.luck form{display:flex;gap:8px;margin-top:12px}
+.luck input{flex:1;min-width:0;border:1px solid var(--line-2);background:var(--page);border-radius:12px;padding:9px 12px;font-size:16px;color:var(--ink);outline:none;-webkit-appearance:none;appearance:none}
+.luck input:focus{border-color:var(--amber)}
+.luck button{border:none;border-radius:12px;padding:9px 14px;font-size:15px;font-weight:600;background:var(--ink);color:var(--page);white-space:nowrap}
+.luck .res{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);animation:in .45s var(--ease)}
+.luck .res[hidden]{display:none}
+.luck .score{display:flex;align-items:baseline;gap:8px}
+.luck .score b{font-family:var(--serif-tc);font-weight:400;font-size:30px;color:var(--amber-ink)}
+.luck .score span{font-size:15px}
+.luck .msg{font-size:15px;line-height:1.6;margin:4px 0 8px}
+.luck .tips{display:flex;flex-wrap:wrap;gap:6px}
+.luck .tips i{font-style:normal;font-size:12px;padding:3px 10px;border-radius:999px;background:var(--amber-soft);color:var(--amber-ink)}
+.luck .fine{font-size:12px;color:var(--ink-3);margin:10px 0 0;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.luck .fine a{color:var(--amber-ink);font-weight:500;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -552,6 +575,24 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
       <div><div class="k">健康小遊戲</div><div class="v" id="hEntryV">今天還沒記錄步數</div></div>
       <svg class="chev" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"/></svg>
     </a>
+
+
+    <div class="luck" id="luck">
+      <div class="top">
+        <div class="orb" id="lkOrb" aria-hidden="true">🔮</div>
+        <div><div class="k">幸運數字小占卜</div><div class="t">這間房跟我合不合?</div></div>
+      </div>
+      <form id="lkForm" novalidate>
+        <input id="lkNum" inputmode="numeric" maxlength="3" placeholder="輸入你的幸運數字" aria-label="幸運數字" autocomplete="off">
+        <button type="submit" class="press">測一下</button>
+      </form>
+      <div class="res" id="lkRes" hidden aria-live="polite">
+        <div class="score"><b id="lkScore"></b><span id="lkTitle"></span></div>
+        <p class="msg" id="lkMsg"></p>
+        <div class="tips" id="lkTips"></div>
+        <p class="fine"><span>純屬趣味,買房還是問主任最準 😉</span><a href="#contact">問主任 ›</a></p>
+      </div>
+    </div>
 
     <div class="a2card" id="a2card" hidden>
       <img src="icons/apple-touch-icon.png" alt="" width="54" height="54">
@@ -1440,6 +1481,39 @@ $('form').addEventListener('submit',async e=>{
   $('hReset').addEventListener('click',()=>{if(!confirm('確定要清除所有步數、喝水和體重記錄嗎?清除後無法復原。'))return;H={goal:H.goal,wgoal:H.wgoal,days:{},weights:[]};save();render();toast('已清除')});
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)render()});
   render();
+})();
+
+
+/* ---------- 幸運數字小占卜(純娛樂,同一個數字同一天結果相同) ---------- */
+(()=>{
+  const R=[
+    [95,'天生一對 💘','這間房像是為你量身打造的!門一打開,好運就跟著搬進來。'],
+    [92,'緣分滿滿 ✨','房子已經在偷偷等你了,記得找主任安排看看喔。'],
+    [88,'好感爆棚 🥰','採光、格局、心情都對了,住進來每天都想哼歌。'],
+    [85,'招財體質 💰','幸運數字跟這間房很合拍,荷包和心情都會滿滿的。'],
+    [81,'溫暖小窩 🏡','是那種下班回家,一開燈就覺得「啊,好放鬆」的房子。'],
+    [78,'穩穩的幸福 🍀','不浮誇但很耐住,越住越有感情的好房子。'],
+    [74,'值得心動 💫','有好感就多看幾次,好房子會越看越順眼。'],
+    [70,'再約會一次 ☕','第一印象不錯!再多比較一下,心裡會更踏實。'],
+  ];
+  const TIPS={c:['奶茶色','霧藍色','米白色','墨綠色','焦糖色','暖金色','淺灰色'],d:['東方','南方','西方','北方','東南方','西南方','東北方','西北方'],t:['早上 9 點','中午 12 點','下午 3 點','傍晚 6 點','晚上 8 點'],x:['穿亮色衣服去看房','帶一杯手搖飲','先在附近散步一圈','和家人一起去','記得拍下採光','多看一次廚房']};
+  const day=()=>{const d=new Date();return d.getFullYear()*1e4+(d.getMonth()+1)*100+d.getDate()};
+  const rnd=seed=>()=>{seed=(seed*1103515245+12345)&0x7fffffff;return seed/0x7fffffff};
+  $('lkForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    const v=parseInt(String($('lkNum').value).replace(/\D/g,''),10);
+    if(!(v>=0)){toast('先輸入一個幸運數字吧');$('lkNum').focus();return}
+    const r=rnd(v*7919+day());r();r();
+    const pick=a=>a[Math.floor(r()*a.length)];
+    const base=pick(R),score=Math.min(99,base[0]+Math.floor(r()*5));
+    const orb=$('lkOrb');orb.classList.remove('spin');void orb.offsetWidth;if(!reduce)orb.classList.add('spin');
+    $('lkNum').blur();
+    setTimeout(()=>{
+      $('lkScore').textContent=score+'%';$('lkTitle').textContent=base[1];$('lkMsg').textContent=base[2];
+      $('lkTips').replaceChildren(...['幸運色:'+pick(TIPS.c),'幸運方位:'+pick(TIPS.d),'看房好時機:'+pick(TIPS.t),'小撇步:'+pick(TIPS.x)].map(t=>el('i','',t)));
+      $('lkRes').hidden=false;
+    },reduce?0:600);
+  });
 })();
 
 /* ---------- 開場:檯燈亮起、圓環填滿 ---------- */
