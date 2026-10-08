@@ -495,6 +495,13 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
   .sgrid .scard .lab span:not(.see){display:none}
   .sgrid .scard .see{margin-top:4px}
 }
+
+/* 3D 沙發:配合網站深淺色 */
+#sofa3d{margin-top:22px}
+#sofa3d .s3-cta,#sofa3d .s3-seg[aria-pressed=true]{color:var(--page)}
+#sofa3d .s3-ar{background:#17110D;color:#F6EEE3}
+#sofa3d .s3-hint{color:#6B6259}
+#sofa3d .s3-sw[aria-pressed=true]{outline-color:var(--amber-ink)}
 </style>
 </head>
 <body>
@@ -852,6 +859,7 @@ footer{text-align:center;color:var(--ink-3);font-size:12px;margin-top:34px;line-
     <p class="sv-d" id="svDesc"></p>
     <div class="gcap">服務內容</div>
     <div class="group"><ul class="sv-pts" id="svPts"></ul></div>
+    <div id="sofa3d" data-lazy hidden></div>
     <p class="sv-note">情境圖僅供示意。Tara的貼心服務有需要再說,依項目與坪數報價,確認後才會進行。</p>
     <div class="sv-act">
       <button class="btn amber press" type="button" id="svGo">我有興趣,留下聯絡資料</button>
@@ -1219,6 +1227,8 @@ function openSvc(n){
   });
   const dots=$('svDots');dots.replaceChildren(...info.imgs.map((_,i)=>el('i',i?'':'on')));dots.hidden=info.imgs.length<2;
   $('svPts').replaceChildren(...info.pts.map(t=>{const li=el('li','',CHECK);li.append(document.createTextNode(t));return li}));
+  const s3=$('sofa3d');s3.hidden=n!=='家具';
+  if(n==='家具'&&!s3.firstChild&&window.Sofa3D)Sofa3D.mount(s3);
   const had=picked.has(n);
   $('svAdd').textContent=had?'已在清單中,從清單移除':'先加入清單,再看看其他';
   $('svBody').scrollTop=0;
@@ -1229,6 +1239,17 @@ $('svClose').onclick=closeModal;
 $('svAdd').onclick=()=>{const n=svCur,had=picked.has(n);toggle(n);closeModal();toast(had?`已從清單移除「${n}」`:`已加入「${n}」,右下角可一次登記`)};
 $('svGo').onclick=()=>{const n=svCur;if(!picked.has(n))toggle(n);closeModal();setTimeout(openSheet,reduce?0:420)};
 draggable($('svcSheet'),[$('svGrab'),$('svBar')]);
+
+/* 3D 沙發:客人按「我喜歡這個配色」→ 加入家具、寫進備註、打開登記表 */
+document.addEventListener('sofa3d:pick',e=>{
+  e.preventDefault();
+  if(!picked.has('家具'))toggle('家具');
+  const memo=$('memo'),line='想看:'+e.detail.text;
+  if(!memo.value.includes(line))memo.value=(memo.value?memo.value+'\n':'')+line;
+  save();
+  closeModal();setTimeout(openSheet,reduce?0:420);
+});
+
 
 
 /* ---------- 加入主畫面 ---------- */
@@ -1428,5 +1449,6 @@ requestAnimationFrame(()=>{
   setTimeout(()=>setRings(EXAMPLE_IDX),reduce?0:450);
 });
 </script>
+<script type="module" src="sofa/sofa3d.js"></script>
 </body>
 </html>
