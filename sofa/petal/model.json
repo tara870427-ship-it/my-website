@@ -1,0 +1,46 @@
+{
+  "name": "花瓣沙發",
+  "spec": "全長 360 × 深 156 cm・高 83.5 cm・座高 39.5 cm",
+  "size": {
+    "w": 360,
+    "d": 156,
+    "h": 83.5
+  },
+  "files": {
+    "left": "petal-left.glb",
+    "right": "petal-right.glb"
+  },
+  "side": "left",
+  "sideLabel": "五角座方向",
+  "sides": {
+    "left": "五角座在左",
+    "right": "五角座在右"
+  },
+  "bend": {
+    "label": "花瓣綻放",
+    "pick": 100
+  },
+  "parts": [
+    {
+      "key": "body",
+      "label": "靠背底座",
+      "pick": "駝色"
+    },
+    {
+      "key": "seat",
+      "label": "座墊",
+      "pick": "淺駝"
+    },
+    {
+      "key": "pillow",
+      "label": "抱枕",
+      "pick": "海軍藍"
+    },
+    {
+      "key": "pillow2",
+      "label": "點綴抱枕",
+      "pick": "米白"
+    }
+  ],
+  "planner": ""
+}

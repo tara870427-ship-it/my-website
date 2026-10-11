@@ -1,0 +1,47 @@
+{
+  "name": "聖日耳曼沙發",
+  "spec": "寬 320 × 深 153.5 cm（直段深 100）・扶手高 65 cm",
+  "size": {
+    "w": 320,
+    "d": 153.5,
+    "h": 65
+  },
+  "files": {
+    "left": "germain-left.glb",
+    "right": "germain-right.glb"
+  },
+  "side": "left",
+  "sideLabel": "轉折方向",
+  "sides": {
+    "left": "轉折在左",
+    "right": "轉折在右"
+  },
+  "parts": [
+    {
+      "key": "shell",
+      "label": "扶手矮背",
+      "pick": "奶油"
+    },
+    {
+      "key": "seat",
+      "label": "上層座墊",
+      "pick": "奶油"
+    },
+    {
+      "key": "base",
+      "label": "下層底座",
+      "pick": "奶油"
+    },
+    {
+      "key": "pillow",
+      "label": "抱枕",
+      "pick": "炭黑"
+    },
+    {
+      "key": "pillow2",
+      "label": "點綴抱枕",
+      "pick": "淺灰"
+    }
+  ],
+  "planner": ""
+}

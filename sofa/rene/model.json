@@ -1,0 +1,37 @@
+{
+  "name": "雷內沙發",
+  "spec": "寬 308 × 貴妃深 150 cm・座高 40 cm・貓抓布",
+  "size": {
+    "w": 308,
+    "d": 150,
+    "h": 73
+  },
+  "files": {
+    "left": "rene-left.glb",
+    "right": "rene-right.glb"
+  },
+  "side": "left",
+  "sideLabel": "貴妃方向",
+  "sides": {
+    "left": "貴妃在左",
+    "right": "貴妃在右"
+  },
+  "parts": [
+    {
+      "key": "main",
+      "label": "主座",
+      "pick": "米白"
+    },
+    {
+      "key": "chaise",
+      "label": "圓貴妃",
+      "pick": "深灰"
+    },
+    {
+      "key": "pillow",
+      "label": "圓抱枕",
+      "pick": "芥末黃"
+    }
+  ],
+  "planner": "https://andytsai-000.github.io/furniture-planner/?openExternalBrowser=1#FP25HjNSiJG6qb8B80DJ1tDgdIAc4iLLX4bN8cRukmVFa4pFOKlV1QVLGO5aKm0FPSbRZ5qbpQq3Wih3DFxd5UUXx4IDTp7yqzfREuEEjeyJXBgE7Hhz99IensbA63LGucRV1v5FfPW4gax8oAEy1dNi947Rk5zZLqyFkU8M5HwOyxoZEp70gdJWrgfKZAFSjp5FkmrvY0LhdrSAzGTK92gXbw9V0wq6w5f0GbCKdsI3hTmRntazc5azyUNoOPyzKOkwWmRLTjd0LjozB1wKqX88lGNDeVJyT5L3WbxJKWEnGVJiVsIT2ZxFMmQH91H1WzDm2eUBwCaz01ypF1EleO5fE1KasZKochaJQDD0PzxEVOEI39TqwBBWZLt37Mlc5WZ12sFxNxdsInzFQV0KelUsWv6ZXOrum9joyEbGQ2yyJJJH9SxAgWuipMGBhGcq92UdXa6O3JeaQ2MyTBLT"
+}

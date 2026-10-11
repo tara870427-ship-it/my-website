@@ -1,0 +1,37 @@
+{
+  "name": "GET BACK",
+  "spec": "寬 381 × 深 163 cm・高 87 cm・扶手高 62 cm・座高 45 cm",
+  "size": {
+    "w": 381,
+    "d": 163,
+    "h": 87
+  },
+  "files": {
+    "left": "getback-left.glb",
+    "right": "getback-right.glb"
+  },
+  "side": "right",
+  "sideLabel": "轉角座方向",
+  "sides": {
+    "left": "轉角座在左",
+    "right": "轉角座在右"
+  },
+  "parts": [
+    {
+      "key": "shell",
+      "label": "皮革外殼",
+      "pick": "焦糖"
+    },
+    {
+      "key": "fabric",
+      "label": "座墊靠背",
+      "pick": "淺灰"
+    },
+    {
+      "key": "pillow",
+      "label": "抱枕",
+      "pick": "磚紅"
+    }
+  ],
+  "planner": ""
+}
